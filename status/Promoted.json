@@ -1,0 +1,7 @@
+{
+    "id": "Promoted",
+    "title": "You're Promoted",
+    "effects": {
+        "Money": "%50"
+    }
+}

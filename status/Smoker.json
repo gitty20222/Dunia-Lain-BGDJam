@@ -1,0 +1,9 @@
+{
+    "id": "smoker",
+    "title": "smoker",
+    "effects": {
+        "Health": "-1",
+        "Money": "-1",
+        "Happiness": "+1"
+    }
+}

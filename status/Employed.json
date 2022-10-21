@@ -1,0 +1,8 @@
+{
+    "id": "employed",
+    "title": "employee",
+    "effects": {
+        "Money": "+4",
+        "Happiness": "-1"
+    }
+}

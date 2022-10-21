@@ -1,0 +1,8 @@
+{
+    "id": "fruit_eater",
+    "title": "Eating Fruit",
+    "effects": {
+        "Health": "+1",
+        "Money": "-1"
+    }
+}
