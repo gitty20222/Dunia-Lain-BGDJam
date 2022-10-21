@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://node/ui_test/StatDisplay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://node/ui_test/TestSim.gd" type="Script" id=2]
+
+[node name="Test" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 73.0
+margin_top = 145.0
+margin_right = 274.0
+margin_bottom = 205.0
+
+[node name="LeftButton" type="Button" parent="HBoxContainer"]
+margin_right = 98.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "LEFT"
+
+[node name="RightButton" type="Button" parent="HBoxContainer"]
+margin_left = 102.0
+margin_right = 201.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "RIGHT"
+
+[node name="HealthDisplay" parent="." instance=ExtResource( 1 )]
+margin_left = 99.0
+margin_top = 70.0
+margin_right = 139.0
+margin_bottom = 104.0
+title = "Health"
