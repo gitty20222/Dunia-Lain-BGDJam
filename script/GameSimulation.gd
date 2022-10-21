@@ -1,8 +1,6 @@
 extends Node
 class_name GameSimulation
 
-#export var deck: Deck
-
 enum AttributeModifier {
 	Fitness,
 	Work,
@@ -32,41 +30,10 @@ onready var AttributeCurrent = {
 }
 
 var status_list: Array
+var choice_list: Array
 
 func _ready():
-	initialize_status_list()
-	pass
+	var data = GameData.new("res://game_data/")
+	status_list = data.statuses
+	choice_list = data.choices
 
-func initialize_status_list():
-	var files = list_files_in_directory("res://status")
-
-	for file in files:
-		var f := File.new()
-		var err = f.open("res://status/" + file, File.READ)
-		if err != null:
-			get_tree().quit()
-		var file_result = parse_json(f.get_as_text())
-
-		print(file_result)
-
-		var new_status := Status.new(file_result["id"], file_result["title"], file_result["effects"])
-
-		status_list.append(new_status)
-	pass
-
-func list_files_in_directory(path):
-	var files = []
-	var dir = Directory.new()
-	dir.open(path)
-	dir.list_dir_begin()
-
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif not file.begins_with("."):
-			files.append(file)
-
-	dir.list_dir_end()
-
-	return files

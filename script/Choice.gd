@@ -1,48 +1,29 @@
-extends Object
+extends Resource
 class_name Choice
 
-var id: String
-var title: String
-var yes_effect: Dictionary
-var no_effect: Dictionary
-var yes_child_id: String
-var no_child_id: String
-var chance: int
+export(String) var id: String
+export(String) var title: String
+export(String) var description: String
+export(Dictionary) var yes_effects: Dictionary
+export(Dictionary) var no_effects: Dictionary
+export(String) var yes_child_id: String
+export(String) var no_child_id: String
+export(int) var weight: int
 
-func _init():
-	id = "" 
-	title = "" 
-	yes_effect = Dictionary()
-	no_effect = Dictionary()
-	yes_child_id = ""
-	no_child_id = ""
-	chance = 0
-	pass
-
-func set_id(new_id: String):
-	id = new_id
-	return self
-
-func set_title(new_title: String):
-	title = new_title
-	return self
-
-func set_yes_effect(new_yes_effect: Dictionary):
-	yes_effect = new_yes_effect
-	return self
-
-func set_no_effect(new_no_effect: Dictionary):
-	no_effect = new_no_effect
-	return self
-
-func set_yes_child_id(new_yes_child_id: String):
-	yes_child_id = new_yes_child_id
-	return self
-
-func set_no_child_id(new_no_child_id: String):
-	no_child_id = new_no_child_id
-	return self
-
-func set_chance(new_chance: int):
-	chance = new_chance
-	return self
+func _init(
+	p_id = "no_choice", 
+	p_title = "noTitle", 
+	p_yes_effects = {}, 
+	p_no_effects = {},
+	p_weight = 0,
+	p_yes_child_id = "",
+	p_no_child_id = ""
+	):
+		id = p_id
+		title = p_title
+		yes_effects = p_yes_effects
+		no_effects = p_no_effects
+		weight = p_weight
+		yes_child_id = p_yes_child_id
+		no_child_id = p_no_child_id
+		

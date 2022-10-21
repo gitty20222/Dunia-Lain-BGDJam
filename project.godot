@@ -9,23 +9,29 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Object",
+"base": "Resource",
 "class": "Choice",
 "language": "GDScript",
 "path": "res://script/Choice.gd"
+}, {
+"base": "Object",
+"class": "GameData",
+"language": "GDScript",
+"path": "res://script/GameData.gd"
 }, {
 "base": "Node",
 "class": "GameSimulation",
 "language": "GDScript",
 "path": "res://script/GameSimulation.gd"
 }, {
-"base": "Object",
+"base": "Resource",
 "class": "Status",
 "language": "GDScript",
 "path": "res://script/Status.gd"
 } ]
 _global_script_class_icons={
 "Choice": "",
+"GameData": "",
 "GameSimulation": "",
 "Status": ""
 }
