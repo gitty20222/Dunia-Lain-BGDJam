@@ -2,20 +2,20 @@ extends Object
 class_name GameData
 
 var statuses: Array
-var choices: Array
+var events: Array
 	
 func _init(dir: String):
-	self.choices = get_choice_list_from_dir(dir + "choices/")
+	self.events = get_choice_list_from_dir(dir + "events/")
 	self.statuses = get_status_list_from_dir(dir + "status/")
 
 func get_choice_list_from_dir(dir: String) -> Array:
 	var files = list_files_in_directory(dir)
-	var choices := []
+	var events := []
 	for file in files:
 		if !(file.ends_with(".tres") or file.ends_with(".res")):
 			continue
-		choices.append(ResourceLoader.load(dir + file)) 
-	return choices
+		events.append(ResourceLoader.load(dir + file)) 
+	return events
 
 func get_status_list_from_dir(dir: String) -> Array:
 	var files = list_files_in_directory(dir)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://script/Choice.gd" type="Script" id=1]
+[ext_resource path="res://script/game/Event.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )
@@ -11,6 +11,9 @@ yes_effects = {
 }
 no_effects = {
 }
+base_weight = 0
 yes_child_id = ""
 no_child_id = ""
-weight = 100
+tags = [  ]
+duration = 0
+categories = [  ]
