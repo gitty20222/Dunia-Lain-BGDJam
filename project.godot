@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Choice",
+"language": "GDScript",
+"path": "res://game/Choice.gd"
+}, {
+"base": "Node",
+"class": "GameSimulation",
+"language": "GDScript",
+"path": "res://game/GameSimulation.gd"
+} ]
+_global_script_class_icons={
+"Choice": "",
+"GameSimulation": ""
+}
+
 [application]
 
 config/name="Dunia Lain"
