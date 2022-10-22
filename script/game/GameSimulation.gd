@@ -31,14 +31,14 @@ var turn_number := 0
 var history := [] # Array(DynamicWheelItem)
 
 # Consumable Resources
-var health: float = 70/100 setget _set_health
-var happiness: float = 70/100 setget _set_happiness
+var health: float = 70 setget _set_health
+var happiness: float = 70 setget _set_happiness
 var money := 30.0 setget _set_money
 
-var fitness_value: float = 60/100 setget _set_fitness_value
-var work_value: float = 60/100 setget _set_work_value
-var social_value: float = 60/100 setget _set_social_value
-var sleep_value: float = 70/70 setget _set_sleep_value
+var fitness_value: float = 60 setget _set_fitness_value
+var work_value: float = 60 setget _set_work_value
+var social_value: float = 60 setget _set_social_value
+var sleep_value: float = 70 setget _set_sleep_value
 
 # Current State
 var active_statuses := {} # Dictionary(status_id, time_remaining(int))
@@ -46,12 +46,14 @@ var current_event_idx = null
 var event_chosen_this_turn = true
 
 func _set_health(value: float):
+	value = clamp(value, 0, 100)
 	emit_signal("health_updated", health, value)
 	health = value
 	if (value <= 0):
 		emit_signal("game_ended")
 
 func _set_happiness(value: float):
+	value = clamp(value, 0, 100)
 	emit_signal("happiness_updated", happiness, value)
 	happiness = value
 	if (value <= 0):
@@ -64,33 +66,24 @@ func _set_money(value: float):
 		emit_signal("game_ended")
 
 func _set_fitness_value(value: float):
+	value = clamp(value, 0, 100)
 	emit_signal("fitness_value_updated", fitness_value, value)
 	fitness_value = value
 
 func _set_work_value(value: float):
+	value = clamp(value, 0, 100)
 	emit_signal("work_value_updated", work_value, value)
 	work_value = value
 	
 func _set_social_value(value: float):
+	value = clamp(value, 0, 100)
 	emit_signal("social_value_updated", social_value, value)
 	social_value = value
 	
 func _set_sleep_value(value: float):
+	value = clamp(value, 0, 70)
 	emit_signal("sleep_value_updated", sleep_value, value)
 	sleep_value = value
-
-func _ready():
-	pass
-#	# Load Game Data
-#	var data_load = GameData.new("res://game_data/")
-#	for event in data_load.events:
-#		events[event.id] = event
-#	for status in data_load.statuses:
-#		statuses[status.id] = status
-#
-#	# Game Setup
-#	for event in data_load.events:
-#		deck[event.id] = 1
 
 # List of all events are stored, 
 # And events are converted to weighted wheel items
@@ -147,33 +140,22 @@ func play(priorities: Dictionary) -> String:
 		work_value,
 		social_value,
 		sleep_value)
+	var stat_tags = _parse_stats(health, happiness)
 	factors.append_array(history)
-	factors.append(priority_tags)
-	factors.append(status_tags)
-	factors.append(aspect_tags)
+	factors.append_array(
+		[
+			priority_tags,
+			status_tags,
+			aspect_tags,
+			stat_tags
+		]
+	)
 	emit_signal("_factors_computed", factors)
 	current_event_idx = event_selector.spin_dynamic(event_weighted_pool, factors)
-	print(turn_number)
-	print(data_event_list[current_event_idx].id)
 	
 	turn_number += 1
 	event_chosen_this_turn = false
 	return data_event_list[current_event_idx].id
-
-func _get_value_level(percentage: float) -> String:
-	if percentage < 0.3: return "low"
-	elif percentage < 0.6: return "medium"
-	else: return "high"
-
-func _parse_aspect_values(fitness_value: float, work_value: float, social_value: float, sleep_value: float) -> DynamicWheelItem:
-	var item := DynamicWheelItem.new()
-	item.tags_array = [
-		"fitness_" + _get_value_level(fitness_value),
-		"work_" + _get_value_level(work_value),
-		"social_" + _get_value_level(social_value),
-		"sleep_" + _get_value_level(sleep_value)
-	]
-	return item
 
 func _process_effects(effects: Dictionary) -> void:
 	var health_to_add = effects["add_health"]
@@ -251,9 +233,9 @@ func _process_sleep_priority(degree_of_priority: int) -> void:
 		0:
 			_add_health_point(-1)
 			_add_happiness_point(-1)
-			_set_sleep_value(40/70)
+			_set_sleep_value(40)
 		1:
-			_set_sleep_value(70/70)
+			_set_sleep_value(70)
 		2:
 			_add_health_point(1)
 			_add_happiness_point(1)
@@ -279,23 +261,46 @@ func _parse_statuses(status_ids: Array) -> DynamicWheelItem:
 	tagged_item.tags_array = status_ids
 	return tagged_item
 
+func _parse_aspect_values(fitness_value: float, work_value: float, social_value: float, sleep_value: float) -> DynamicWheelItem:
+	var item := DynamicWheelItem.new()
+	item.tags_array = [
+		"fitness_" + _get_value_level(fitness_value),
+		"work_" + _get_value_level(work_value),
+		"social_" + _get_value_level(social_value),
+		"sleep_" + _get_value_level(sleep_value)
+	]
+	return item
+
+func _parse_stats(health: float, happiness: float) -> DynamicWheelItem:
+	var item := DynamicWheelItem.new()
+	item.tags_array = [
+		"health_" + _get_value_level(health),
+		"happiness_" + _get_value_level(happiness),
+	]
+	return item
+
+func _get_value_level(percentage: float) -> String:
+	if percentage < 33: return "low"
+	elif percentage < 66: return "medium"
+	else: return "high"
+
 func _add_health_point(amount: float):
-	_set_health(health + amount/100)
+	_set_health(health + amount)
 
 func _add_happiness_point(amount: float):
-	_set_happiness(happiness + amount/100)
+	_set_happiness(happiness + amount)
 
 func _add_money(amount: float):
 	_set_money(money + amount)
 
 func _add_fitness_value_point(amount: float):
-	_set_fitness_value(fitness_value + amount/100)
+	_set_fitness_value(fitness_value + amount)
 	
 func _add_work_value_point(amount: float):
-	_set_work_value(work_value + amount/100)
+	_set_work_value(work_value + amount)
 	
 func _add_social_value_point(amount: float):
-	_set_social_value(social_value + amount/100)
+	_set_social_value(social_value + amount)
 	
 func _add_sleep_value_point(amount: float):
-	_set_sleep_value(sleep_value + amount/70)
+	_set_sleep_value(sleep_value + amount)
