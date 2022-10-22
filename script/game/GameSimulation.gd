@@ -31,7 +31,7 @@ var data_status_repo: Dictionary # Dictionary(StatusId to Status)
 var event_weighted_pool := [] # Array(Event as FortuneWheelItem)
 
 # Overall Game State
-var turn_number := 0
+var turn_number := 1
 
 # Consumable Resources
 var health: float = 70 setget _set_health
@@ -116,6 +116,7 @@ func accept_event(event_idx: int):
 		return
 	
 	var event = data_event_repo[active_events[event_idx]]
+	event_resolved[event_idx] = true
 	_process_effects(event.effect_on_accept)
 	for tag in event.add_tags_on_accept:
 		event_tag_set[tag] = true
@@ -131,6 +132,7 @@ func decline_event(event_idx: int):
 		return
 	
 	var event = data_event_repo[active_events[event_idx]]
+	event_resolved[event_idx] = true
 	_process_effects(event.effect_on_decline)
 	for tag in event.add_tags_on_decline:
 		event_tag_set[tag] = true
@@ -139,10 +141,11 @@ func decline_event(event_idx: int):
 			event_tag_set.erase(tag)
 
 # Advance Time
-func play(priorities: Dictionary, events_to_draw: int) -> Array:
+# Returns next list of events OR Enum for gameover/ending
+func play(priorities: Dictionary, events_to_draw: int):
 	
 	# Decline any unresolved events
-	for i in n_events_this_turn:
+	for i in range(n_events_this_turn):
 		if not event_resolved[i]:
 			decline_event(i)
 	
@@ -151,11 +154,6 @@ func play(priorities: Dictionary, events_to_draw: int) -> Array:
 	event_resolved.clear()
 	active_events.resize(n_events_this_turn)
 	event_resolved.resize(n_events_this_turn)
-	
-	# ENDING
-	if turn_number >= 30:
-		_process_ending()
-		return []
 	
 	# Remove expired status
 	for status_id in active_statuses.keys():
@@ -170,6 +168,14 @@ func play(priorities: Dictionary, events_to_draw: int) -> Array:
 	
 	# Apply effects of priorities
 	_process_priorities(priorities)
+	
+	# GAME OVER
+	if health <= 0: return Enums.GameOver.Died
+	if happiness <= 0: return Enums.GameOver.Depressed
+	if money < 0: return Enums.GameOver.Destitute
+	
+	# ENDING
+	if turn_number > 30: return _process_ending()
 	
 	# Compute event draw factors
 	var priority_tags = _parse_priorities(priorities)
@@ -190,6 +196,7 @@ func play(priorities: Dictionary, events_to_draw: int) -> Array:
 			event_tags
 		]
 	emit_signal("_factors_computed", factors)
+	
 	var event_indexes = event_selector.spin_dynamic_batch(event_weighted_pool, factors, events_to_draw)
 	for i in range(events_to_draw):
 		active_events[i] = data_event_list[event_indexes[i]].id
@@ -246,7 +253,7 @@ func _process_effects(effects: Dictionary) -> void:
 		else:
 			emit_signal("status_remove_failed", status_id)
 
-func _process_ending() -> void:
+func _process_ending():
 	# TODO: Ending Logic
 	pass
 
