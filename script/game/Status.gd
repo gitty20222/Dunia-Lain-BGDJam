@@ -13,10 +13,12 @@ export(Dictionary) var per_turn_effects: Dictionary = {
 	"add_sleep_value" : 0
 }
 export(int) var default_duration = -1 # 0 means no duration
+export(bool) var hidden = false
 
-func _init(id = "", title = "", effects = {}, default_duration = -1):
+func _init(id = "", title = "", effects = {}, default_duration = -1, hidden = false):
 	self.id = id
 	self.title = title
 	self.per_turn_effects["status_to_add[id]"] = null
 	self.per_turn_effects["status_to_remove[id]"] = null
 	self.default_duration = default_duration
+	self.hidden = hidden
