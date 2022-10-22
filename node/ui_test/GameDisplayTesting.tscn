@@ -783,11 +783,13 @@ margin_right = 1107.0
 margin_bottom = 604.0
 
 [node name="YesButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+unique_name_in_owner = true
 margin_right = 33.0
 margin_bottom = 604.0
 text = "YES"
 
 [node name="NoButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 37.0
 margin_right = 70.0
 margin_bottom = 604.0
@@ -802,10 +804,6 @@ text = "GO"
 
 [node name="GameSimulation" parent="." instance=ExtResource( 6 )]
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.98
-autostart = true
-
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/YesButton" to="." method="_on_YesButton_button_up"]
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/NoButton" to="." method="_on_NoButton_button_up"]
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/GO" to="." method="_on_GO_button_up"]
@@ -813,4 +811,3 @@ autostart = true
 [connection signal="happiness_updated" from="GameSimulation" to="." method="_on_GameSimulation_happiness_updated"]
 [connection signal="health_updated" from="GameSimulation" to="." method="_on_GameSimulation_health_updated"]
 [connection signal="money_updated" from="GameSimulation" to="." method="_on_GameSimulation_money_updated"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

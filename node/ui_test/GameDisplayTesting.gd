@@ -1,5 +1,7 @@
 extends Control
 
+const Enums = preload("res://script/Enums.gd")
+
 var data_event_dict: Dictionary
 var event_chosen_this_turn: bool = true
 
@@ -9,12 +11,7 @@ func _ready():
 	$GameSimulation.init(events, statuses)
 	for event in events:
 		data_event_dict[event.id] = event
-
-func _on_Timer_timeout():
-	return
-	$GameSimulation.health += 1
-	$GameSimulation.money += 1
-	$GameSimulation.happiness += 1
+#	get_node("%GO").emit_signal("button_up")
 
 func _on_GameSimulation_happiness_updated(old, new):
 	get_node("%HappinessLabelNumber").text = str(new)
@@ -40,16 +37,28 @@ func _on_GO_button_up():
 	
 	# Priorities must be selected 
 	
-	# Play out event
-	event_chosen_this_turn = false
-	var event_id = $GameSimulation.play({
+	# Play out next day
+	var next_turn_result = $GameSimulation.play({
 		"fitness" : 1,
 		"work" : 0,
 		"social" : 2,
 		"sleep" : 0
-	}, 1)[0]
-	var event = data_event_dict[event_id]
-	get_node("%EventLabel").text = event.description
+	}, 1)
+	match next_turn_result:
+		Enums.GameOver.Died:
+			print("Game over DIE")
+		Enums.GameOver.Depressed:
+			print("Game over DEP")
+		Enums.GameOver.Destitute:
+			print("Game over DES")
+		[var event_id]:
+			var event = data_event_dict[event_id]
+			get_node("%EventLabel").text = event.description
+	event_chosen_this_turn = false
+	
+#	get_node("%YesButton").emit_signal("button_up")
+#	get_node("%GO").emit_signal("button_up")
+	
 
 func _on_GameSimulation__factors_computed(factors):
 		var tag_count_result = $GameSimulation.event_selector.count_tags(factors)
@@ -57,4 +66,4 @@ func _on_GameSimulation__factors_computed(factors):
 		for factor in factors:
 			break
 			print_debug(factor.tags_array)
-		get_node("%DebugInfo").text = "\n\n".join(weight_debug)
+#		get_node("%DebugInfo").text = "\n\n".join(weight_debug)
