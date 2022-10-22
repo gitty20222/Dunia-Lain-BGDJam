@@ -2,10 +2,13 @@
 
 [ext_resource path="res://script/game/Status.gd" type="Script" id=1]
 
-
 [resource]
 script = ExtResource( 1 )
 id = "eating_fruit"
 title = "Eating Fruit"
-effects = {
+per_turn_effects = {
+"add_happiness": 0,
+"add_health": 1,
+"add_money": -1
 }
+default_duration = 5

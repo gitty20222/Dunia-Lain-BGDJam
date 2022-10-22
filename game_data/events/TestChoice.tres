@@ -23,7 +23,7 @@ effect_on_accept = {
 "status_to_add[id]": "",
 "status_to_remove[id]": ""
 }
-tags_on_accept = [ "had_choice_1" ]
+tags_on_accept = [ "choice_1_accepted" ]
 effect_on_decline = {
 "add_happiness": 10,
 "add_health": 0,

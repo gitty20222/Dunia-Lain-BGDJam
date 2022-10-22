@@ -742,6 +742,17 @@ custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = SubResource( 16 )
 text = "High"
 
+[node name="DebugContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 615.0
+margin_right = 615.0
+margin_bottom = 156.0
+
+[node name="DebugInfo" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/DebugContainer"]
+unique_name_in_owner = true
+margin_top = 71.0
+margin_bottom = 85.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
 [node name="MarginContainer3" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
 margin_top = 200.0
 margin_right = 1107.0
@@ -797,6 +808,7 @@ autostart = true
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/YesButton" to="." method="_on_YesButton_button_up"]
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/NoButton" to="." method="_on_NoButton_button_up"]
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/GO" to="." method="_on_GO_button_up"]
+[connection signal="_factors_computed" from="GameSimulation" to="." method="_on_GameSimulation__factors_computed"]
 [connection signal="happiness_updated" from="GameSimulation" to="." method="_on_GameSimulation_happiness_updated"]
 [connection signal="health_updated" from="GameSimulation" to="." method="_on_GameSimulation_health_updated"]
 [connection signal="money_updated" from="GameSimulation" to="." method="_on_GameSimulation_money_updated"]
