@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 id = "merokok"
 title = "Merokok"
-description = "Aku belum pernah mencobanya tapi terlihat menarik.."
+description = "Kayaknya pengen coba merokok.."
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]

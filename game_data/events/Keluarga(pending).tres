@@ -4,30 +4,32 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "keracunan"
-title = "Keracunan Makanan"
-description = "Perutku sakit banget.."
-auto_accept = true
+id = "keluarga"
+title = "Habiskan Waktu dengan Keluarga"
+description = "Setelah "
+auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
 base_weight = 1
 multiplier_per_tag = ""
-multiplier_if_tag_present = "status_makandiluar 10;"
+multiplier_if_tag_present = "social_1 40;
+social_2 40;
+"
 multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {
-"add_fitness_value": -5,
-"add_happiness": -10,
-"add_health": -2,
-"add_money": -5,
+"add_fitness_value": 0,
+"add_happiness": 5,
+"add_health": 0,
+"add_money": -3,
 "add_sleep_value": 0,
-"add_social_value": 0,
-"add_work_value": 0,
+"add_social_value": 5,
+"add_work_value": 5,
 "statuses_to_add[id]": [  ],
 "statuses_to_remove[id]": [  ]
 }
-add_tags_on_accept = [  ]
+add_tags_on_accept = [ "mabuk" ]
 remove_tags_on_accept = [  ]
 effect_on_decline = {
 "add_fitness_value": 0,
@@ -35,7 +37,7 @@ effect_on_decline = {
 "add_health": 0,
 "add_money": 0,
 "add_sleep_value": 0,
-"add_social_value": 0,
+"add_social_value": -5,
 "add_work_value": 0,
 "statuses_to_add[id]": [  ],
 "statuses_to_remove[id]": [  ]

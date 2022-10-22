@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 id = "masaksendiri"
 title = "Masak Makanan"
-description = "Memasak makanan sehari-hari dapat menghemat uang ku dalam jangka panjang.."
+description = "Masak sendiri bakal lebih hemat dalam jangka waktu panjang.."
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
