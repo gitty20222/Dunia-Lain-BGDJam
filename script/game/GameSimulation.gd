@@ -1,6 +1,8 @@
 extends Node
 class_name GameSimulation
 
+const Enums = preload("res://script/Enums.gd")
+
 signal health_updated(old, new)
 signal happiness_updated(old, new)
 signal money_updated(old, new)
@@ -17,7 +19,9 @@ signal status_remove_failed(status_id)
 
 signal _factors_computed(factors)
 
-signal game_ended()
+signal game_over(reason)
+signal game_ended(ending)
+signal events_pending(events)
 
 var event_selector := FortuneWheel.new()
 
@@ -50,20 +54,20 @@ func _set_health(value: float):
 	emit_signal("health_updated", health, value)
 	health = value
 	if (value <= 0):
-		emit_signal("game_ended")
+		emit_signal("game_over", Enums.GameOver.Died)
 
 func _set_happiness(value: float):
 	value = clamp(value, 0, 100)
 	emit_signal("happiness_updated", happiness, value)
 	happiness = value
 	if (value <= 0):
-		emit_signal("game_ended")
+		emit_signal("game_over", Enums.GameOver.Depressed)
 
 func _set_money(value: float):
 	emit_signal("money_updated", money, value)
 	money = value
 	if (value <= 0):
-		emit_signal("game_ended")
+		emit_signal("game_over", Enums.GameOver.Destitute)
 
 func _set_fitness_value(value: float):
 	value = clamp(value, 0, 100)
@@ -88,6 +92,8 @@ func _set_sleep_value(value: float):
 # List of all events are stored, 
 # And events are converted to weighted wheel items
 func init(event_list: Array, status_list: Array):
+	Enums.Ending.LOST
+	Enums.GameState.Hello
 	self.data_event_list = event_list
 	for event in event_list:
 		self.event_weighted_pool.append(event.as_weighted())
@@ -125,7 +131,7 @@ func play(priorities: Dictionary) -> String:
 	
 	# ENDING
 	if turn_number >= 30:
-		emit_signal("game_ended")
+		_process_ending()
 		return ""
 	
 	# Remove expired status
@@ -214,6 +220,10 @@ func _process_effects(effects: Dictionary) -> void:
 			emit_signal("status_removed", status_id)
 		else:
 			emit_signal("status_remove_failed", status_id)
+
+func _process_ending() -> void:
+	# TODO: Ending Logic
+	pass
 
 func _process_priorities(priorities: Dictionary) -> void:
 	_process_fitness_priority(priorities["fitness"])
