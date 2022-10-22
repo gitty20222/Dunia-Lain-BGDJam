@@ -23,7 +23,7 @@ export(Dictionary) var effect_on_accept: Dictionary = {
 	"add_social_value" : 0,
 	"add_sleep_value" : 0,
 	"statuses_to_add[id]" : [],
-	"status_to_remove[id]" : []
+	"statuses_to_remove[id]" : []
 }
 export(Array, String) var add_tags_on_accept: Array = []
 export(Array, String) var remove_tags_on_accept: Array = []
@@ -35,7 +35,7 @@ export(Dictionary) var effect_on_decline: Dictionary = {
 	"add_work_value" : 0,
 	"add_social_value" : 0,
 	"add_sleep_value" : 0,
-	"statuseses_to_add[id]" : [],
+	"statuses_to_add[id]" : [],
 	"statuses_to_remove[id]" : []
 }
 export(Array, String) var add_tags_on_decline: Array = []

@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/advanced_random/advanced_die.gd"
 }, {
+"base": "Object",
+"class": "ArrayExt",
+"language": "GDScript",
+"path": "res://script/util/ArrayExt.gd"
+}, {
 "base": "Reference",
 "class": "CardDeck",
 "language": "GDScript",
@@ -106,6 +111,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AdvancedDie": "",
+"ArrayExt": "",
 "CardDeck": "",
 "CellEditor": "",
 "CellEditorArray": "",

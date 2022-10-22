@@ -21,13 +21,13 @@ signal _factors_computed(factors)
 
 signal game_over(reason)
 signal game_ended(ending)
-signal events_pending(events)
 
 var event_selector := FortuneWheel.new()
 
 # Game Data
 var data_event_list: Array # Array(Event)
-var data_status_repo: Dictionary
+var data_event_repo: Dictionary # Dictionary(EventId to Event)
+var data_status_repo: Dictionary # Dictionary(StatusId to Status)
 var event_weighted_pool := [] # Array(Event as FortuneWheelItem)
 
 # Overall Game State
@@ -46,8 +46,11 @@ var sleep_value: float = 70 setget _set_sleep_value
 # Current State
 var event_tag_set := {} #(Dictionary of tags [set])
 var active_statuses := {} # Dictionary(status_id, time_remaining(int))
-var current_event_idx = null
-var event_chosen_this_turn = true
+
+# Event State
+var n_events_this_turn := 0
+var active_events := [] # Array (Event Id)
+var event_resolved := [] # Array (bool)
 
 func _set_health(value: float):
 	value = clamp(value, 0, 100)
@@ -92,20 +95,21 @@ func _set_sleep_value(value: float):
 # List of all events are stored, 
 # And events are converted to weighted wheel items
 func init(event_list: Array, status_list: Array):
-	Enums.Ending.LOST
-	Enums.GameState.Hello
 	self.data_event_list = event_list
 	for event in event_list:
 		self.event_weighted_pool.append(event.as_weighted())
+		self.data_event_repo[event.id] = event
 	for status in status_list:
 		data_status_repo[status.id] = status
 
-func accept_event():
-	if event_chosen_this_turn:
+func accept_event(event_idx: int):
+	if event_idx < 0 or event_idx >= n_events_this_turn:
 		return
-	event_chosen_this_turn = true
 	
-	var event = data_event_list[current_event_idx]
+	if event_resolved[event_idx]:
+		return
+	
+	var event = data_event_repo[active_events[event_idx]]
 	_process_effects(event.effect_on_accept)
 	for tag in event.add_tags_on_accept:
 		event_tag_set[tag] = true
@@ -113,12 +117,14 @@ func accept_event():
 		if event_tag_set.has(tag):
 			event_tag_set.erase(tag)
 
-func decline_event():
-	if event_chosen_this_turn:
+func decline_event(event_idx: int):
+	if event_idx < 0 or event_idx >= n_events_this_turn:
 		return
-	event_chosen_this_turn = true
 	
-	var event = data_event_list[current_event_idx]
+	if event_resolved[event_idx]:
+		return
+	
+	var event = data_event_repo[active_events[event_idx]]
 	_process_effects(event.effect_on_decline)
 	for tag in event.add_tags_on_decline:
 		event_tag_set[tag] = true
@@ -127,12 +133,23 @@ func decline_event():
 			event_tag_set.erase(tag)
 
 # Advance Time
-func play(priorities: Dictionary) -> String:
+func play(priorities: Dictionary, events_to_draw: int) -> Array:
+	
+	# Decline any unresolved events
+	for i in n_events_this_turn:
+		if not event_resolved[i]:
+			decline_event(i)
+	
+	n_events_this_turn = events_to_draw
+	active_events.clear()
+	event_resolved.clear()
+	active_events.resize(n_events_this_turn)
+	event_resolved.resize(n_events_this_turn)
 	
 	# ENDING
 	if turn_number >= 30:
 		_process_ending()
-		return ""
+		return []
 	
 	# Remove expired status
 	for status_id in active_statuses.keys():
@@ -146,7 +163,6 @@ func play(priorities: Dictionary) -> String:
 		_process_effects(data_status_repo[status_id].per_turn_effects)
 	
 	# Compute event draw factors
-	var factors := [] # Array(Dynamic Wheel Item)
 	var priority_tags = _parse_priorities(priorities)
 	var status_tags = _parse_statuses(active_statuses.keys())
 	var aspect_tags = _parse_aspect_values(
@@ -156,21 +172,21 @@ func play(priorities: Dictionary) -> String:
 		sleep_value)
 	var stat_tags = _parse_stats(health, happiness)
 	var event_tags = _parse_event_tags(event_tag_set.keys())
-	factors.append_array(
-		[
+	
+	var factors = [ # Array(Dynamic Wheel Item)
 			priority_tags,
 			status_tags,
 			aspect_tags,
 			stat_tags,
 			event_tags
 		]
-	)
 	emit_signal("_factors_computed", factors)
-	current_event_idx = event_selector.spin_dynamic(event_weighted_pool, factors)
-	
+	var event_indexes = event_selector.spin_dynamic_batch(event_weighted_pool, factors, events_to_draw)
+	for i in range(events_to_draw):
+		active_events[i] = data_event_list[event_indexes[i]].id
+		event_resolved[i] = false
 	turn_number += 1
-	event_chosen_this_turn = false
-	return data_event_list[current_event_idx].id
+	return active_events
 
 func _process_effects(effects: Dictionary) -> void:
 	var health_to_add = effects["add_health"]

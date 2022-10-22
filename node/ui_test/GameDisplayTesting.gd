@@ -26,11 +26,11 @@ func _on_GameSimulation_money_updated(old, new):
 	get_node("%MoneyLabelNumber").text = str(new)
 
 func _on_YesButton_button_up():
-	$GameSimulation.accept_event()
+	$GameSimulation.accept_event(0)
 	event_chosen_this_turn = true
 
 func _on_NoButton_button_up():
-	$GameSimulation.decline_event()
+	$GameSimulation.decline_event(0)
 	event_chosen_this_turn = true
 
 func _on_GO_button_up():
@@ -47,7 +47,7 @@ func _on_GO_button_up():
 		"work" : 0,
 		"social" : 2,
 		"sleep" : 0
-	})
+	}, 1)[0]
 	var event = data_event_dict[event_id]
 	get_node("%EventLabel").text = event.description
 
