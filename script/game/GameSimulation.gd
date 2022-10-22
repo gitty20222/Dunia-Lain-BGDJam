@@ -28,7 +28,6 @@ var event_weighted_pool := [] # Array(Event as FortuneWheelItem)
 
 # Overall Game State
 var turn_number := 0
-var history := [] # Array(DynamicWheelItem)
 
 # Consumable Resources
 var health: float = 70 setget _set_health
@@ -41,6 +40,7 @@ var social_value: float = 60 setget _set_social_value
 var sleep_value: float = 70 setget _set_sleep_value
 
 # Current State
+var event_tag_set := {} #(Dictionary of tags [set])
 var active_statuses := {} # Dictionary(status_id, time_remaining(int))
 var current_event_idx = null
 var event_chosen_this_turn = true
@@ -101,7 +101,11 @@ func accept_event():
 	
 	var event = data_event_list[current_event_idx]
 	_process_effects(event.effect_on_accept)
-	history.append(event.accept())
+	for tag in event.add_tags_on_accept:
+		event_tag_set[tag] = true
+	for tag in event.remove_tags_on_accept:
+		if event_tag_set.has(tag):
+			event_tag_set.erase(tag)
 
 func decline_event():
 	if event_chosen_this_turn:
@@ -110,7 +114,11 @@ func decline_event():
 	
 	var event = data_event_list[current_event_idx]
 	_process_effects(event.effect_on_decline)
-	history.append(event.decline())
+	for tag in event.add_tags_on_decline:
+		event_tag_set[tag] = true
+	for tag in event.remove_tags_on_decline:
+		if event_tag_set.has(tag):
+			event_tag_set.erase(tag)
 
 # Advance Time
 func play(priorities: Dictionary) -> String:
@@ -141,13 +149,14 @@ func play(priorities: Dictionary) -> String:
 		social_value,
 		sleep_value)
 	var stat_tags = _parse_stats(health, happiness)
-	factors.append_array(history)
+	var event_tags = _parse_event_tags(event_tag_set.keys())
 	factors.append_array(
 		[
 			priority_tags,
 			status_tags,
 			aspect_tags,
-			stat_tags
+			stat_tags,
+			event_tags
 		]
 	)
 	emit_signal("_factors_computed", factors)
@@ -254,6 +263,11 @@ func _parse_priorities(priorities: Dictionary) -> DynamicWheelItem:
 		"social_" + str(social_p)
 	]
 	
+	return tagged_item
+
+func _parse_event_tags(tag_strings: Array) -> DynamicWheelItem:
+	var tagged_item := DynamicWheelItem.new()
+	tagged_item.tags_array = tag_strings
 	return tagged_item
 
 func _parse_statuses(status_ids: Array) -> DynamicWheelItem:

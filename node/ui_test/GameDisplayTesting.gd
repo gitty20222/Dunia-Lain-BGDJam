@@ -44,7 +44,7 @@ func _on_GO_button_up():
 	event_chosen_this_turn = false
 	var event_id = $GameSimulation.play({
 		"fitness" : 1,
-		"work" : 2,
+		"work" : 0,
 		"social" : 2,
 		"sleep" : 0
 	})

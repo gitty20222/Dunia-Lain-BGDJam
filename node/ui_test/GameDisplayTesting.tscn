@@ -794,6 +794,7 @@ margin_bottom = 604.0
 text = "NO"
 
 [node name="GO" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 74.0
 margin_right = 107.0
 margin_bottom = 604.0

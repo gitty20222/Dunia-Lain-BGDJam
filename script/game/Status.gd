@@ -13,7 +13,6 @@ export(int) var default_duration # 0 means no duration
 func _init(id = "", title = "", effects = {}, default_duration = 0):
 	self.id = id
 	self.title = title
-	self.effects = effects
-	self.effects["status_to_add[id]"] = null
-	self.effects["status_to_remove[id]"] = null
+	self.per_turn_effects["status_to_add[id]"] = null
+	self.per_turn_effects["status_to_remove[id]"] = null
 	self.default_duration = default_duration
