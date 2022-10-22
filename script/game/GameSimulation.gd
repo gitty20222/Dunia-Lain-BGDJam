@@ -189,17 +189,17 @@ func play(priorities: Dictionary, events_to_draw: int) -> Array:
 	return active_events
 
 func _process_effects(effects: Dictionary) -> void:
-	var health_to_add = effects["add_health"]
-	var happiness_to_add = effects["add_happiness"]
-	var money_to_add = effects["add_money"]
+	var health_to_add = effects.get("add_health") 
+	var happiness_to_add = effects.get("add_happiness")
+	var money_to_add = effects.get("add_money")
 	
-	var fitness_value_to_add = effects["add_fitness_value"]
-	var work_value_to_add = effects["add_work_value"]
-	var social_value_to_add = effects["add_social_value"]
-	var sleep_value_to_add = effects["add_sleep_value"]
+	var fitness_value_to_add = effects.get("add_fitness_value")
+	var work_value_to_add = effects.get("add_work_value")
+	var social_value_to_add = effects.get("add_social_value")
+	var sleep_value_to_add = effects.get("add_sleep_value")
 	
-	var status_ids_to_add = effects["statuses_to_add[id]"]
-	var status_ids_to_remove = effects["statuses_to_add[id]"]
+	var status_ids_to_add = effects.get("statuses_to_add[id]")
+	var status_ids_to_remove = effects.get("statuses_to_add[id]")
 	
 	if health_to_add and health_to_add != 0:
 		_set_health(health + health_to_add)
