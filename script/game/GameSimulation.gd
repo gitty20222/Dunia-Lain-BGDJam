@@ -162,6 +162,9 @@ func play(priorities: Dictionary, events_to_draw: int) -> Array:
 	for status_id in active_statuses.keys():
 		_process_effects(data_status_repo[status_id].per_turn_effects)
 	
+	# Apply effects of priorities
+	_process_priorities(priorities)
+	
 	# Compute event draw factors
 	var priority_tags = _parse_priorities(priorities)
 	var status_tags = _parse_statuses(active_statuses.keys())
