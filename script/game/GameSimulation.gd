@@ -57,20 +57,20 @@ func _set_health(value: float):
 	emit_signal("health_updated", health, value)
 	health = value
 	if (value <= 0):
-		emit_signal("game_over", Enums.GameOver.Died)
+		emit_signal("game_over", Enums.Ending.GameOver_Died)
 
 func _set_happiness(value: float):
 	value = clamp(value, 0, 100)
 	emit_signal("happiness_updated", happiness, value)
 	happiness = value
 	if (value <= 0):
-		emit_signal("game_over", Enums.GameOver.Depressed)
+		emit_signal("game_over", Enums.Ending.GameOver_Depressed)
 
 func _set_money(value: float):
 	emit_signal("money_updated", money, value)
 	money = value
 	if (value <= 0):
-		emit_signal("game_over", Enums.GameOver.Destitute)
+		emit_signal("game_over", Enums.Ending.GameOver_Destitute)
 
 func _set_fitness_value(value: float):
 	value = clamp(value, 0, 100)
@@ -99,8 +99,10 @@ func init(event_list: Array, status_list: Array):
 	for event in event_list:
 		self.event_weighted_pool.append(event.as_weighted())
 		self.data_event_repo[event.id] = event
+	assert(data_event_repo.keys().size() == event_weighted_pool.size(), "Make sure all event IDs are unique. Event database doesn't match event list.")
 	for status in status_list:
 		data_status_repo[status.id] = status
+	assert(data_status_repo.keys().size() == status_list.size(), "Make sure all status IDs are unique.")
 
 func apply_status(status_id: String):
 	_try_add_status(status_id)
@@ -177,12 +179,16 @@ func play(priorities: Dictionary, events_to_draw: int):
 	_process_priorities(priorities)
 	
 	# GAME OVER
-	if health <= 0: return Enums.GameOver.Died
-	if happiness <= 0: return Enums.GameOver.Depressed
-	if money < 0: return Enums.GameOver.Destitute
+	if health <= 0:
+		 return Enums.Ending.GameOver_Died
+	if happiness <= 0:
+		 return Enums.Ending.GameOver_Depressed
+	if money < 0:
+		 return Enums.Ending.GameOver_Destitute
 	
 	# ENDING
-	if turn_number > 30: return _process_ending()
+	if turn_number > 30:
+		 return _process_ending()
 	
 	# Compute event draw factors
 	var priority_tags = _parse_priorities(priorities)
@@ -205,6 +211,11 @@ func play(priorities: Dictionary, events_to_draw: int):
 	emit_signal("_factors_computed", factors)
 	
 	var event_indexes = event_selector.spin_dynamic_batch(event_weighted_pool, factors, events_to_draw)
+	match event_indexes:
+		[..]:
+			pass
+		_:
+			print("wat")
 	for i in range(events_to_draw):
 		active_events[i] = data_event_list[event_indexes[i]].id
 		event_resolved[i] = Enums.EventStatus.Unresolved
@@ -261,7 +272,7 @@ func _process_effects(effects: Dictionary) -> void:
 			emit_signal("status_remove_failed", status_id)
 
 func _process_ending():
-	# TODO: Ending Logic
+	return Enums.Ending.Happy
 	pass
 
 func _process_priorities(priorities: Dictionary) -> void:
