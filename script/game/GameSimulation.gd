@@ -207,7 +207,7 @@ func play(priorities: Dictionary, events_to_draw: int):
 	var event_indexes = event_selector.spin_dynamic_batch(event_weighted_pool, factors, events_to_draw)
 	for i in range(events_to_draw):
 		active_events[i] = data_event_list[event_indexes[i]].id
-		event_resolved[i] = false
+		event_resolved[i] = Enums.EventStatus.Unresolved
 	turn_number += 1
 	return active_events
 
