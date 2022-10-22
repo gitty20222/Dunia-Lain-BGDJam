@@ -145,7 +145,7 @@ func decline_event(event_idx: int):
 func play(priorities: Dictionary, events_to_draw: int):
 	
 	# Decline any unresolved events
-	for i in n_events_this_turn:
+	for i in range(n_events_this_turn):
 		if not event_resolved[i]:
 			decline_event(i)
 	
