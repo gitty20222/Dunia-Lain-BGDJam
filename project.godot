@@ -9,6 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "AdvancedDie",
+"language": "GDScript",
+"path": "res://addons/advanced_random/advanced_die.gd"
+}, {
+"base": "Reference",
+"class": "CardDeck",
+"language": "GDScript",
+"path": "res://addons/advanced_random/card_deck.gd"
+}, {
+"base": "Reference",
+"class": "CellEditor",
+"language": "GDScript",
+"path": "res://addons/resources_speadsheet_view/typed_cells/cell_editor.gd"
+}, {
+"base": "CellEditor",
+"class": "CellEditorArray",
+"language": "GDScript",
+"path": "res://addons/resources_speadsheet_view/typed_cells/cell_editor_array.gd"
+}, {
 "base": "Node",
 "class": "Character",
 "language": "GDScript",
@@ -19,34 +39,112 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://script/game/Deck.gd"
 }, {
+"base": "Reference",
+"class": "DiceArray",
+"language": "GDScript",
+"path": "res://addons/advanced_random/dice_array.gd"
+}, {
+"base": "Resource",
+"class": "DynamicWheelItem",
+"language": "GDScript",
+"path": "res://addons/advanced_random/dynamic_wheel_item.gd"
+}, {
 "base": "Resource",
 "class": "Event",
 "language": "GDScript",
 "path": "res://script/game/Event.gd"
 }, {
-"base": "Object",
-"class": "GameData",
+"base": "Resource",
+"class": "EventDeck",
 "language": "GDScript",
-"path": "res://script/GameData.gd"
+"path": "res://script/game/EventDeck.gd"
+}, {
+"base": "Resource",
+"class": "EventDetails",
+"language": "GDScript",
+"path": "res://script/game/_EventDetails.gd"
+}, {
+"base": "Reference",
+"class": "FairNG",
+"language": "GDScript",
+"path": "res://addons/advanced_random/fairng.gd"
+}, {
+"base": "Reference",
+"class": "FortuneWheel",
+"language": "GDScript",
+"path": "res://addons/advanced_random/fortune_wheel.gd"
+}, {
+"base": "Object",
+"class": "GameDataLoader",
+"language": "GDScript",
+"path": "res://script/GameDataLoader.gd"
 }, {
 "base": "Node",
 "class": "GameSimulation",
 "language": "GDScript",
 "path": "res://script/game/GameSimulation.gd"
 }, {
+"base": "GridContainer",
+"class": "SettingsGrid",
+"language": "GDScript",
+"path": "res://addons/resources_speadsheet_view/settings_grid.gd"
+}, {
+"base": "Control",
+"class": "SheetsDockEditor",
+"language": "GDScript",
+"path": "res://addons/resources_speadsheet_view/typed_editors/dock_base.gd"
+}, {
 "base": "Resource",
 "class": "Status",
 "language": "GDScript",
 "path": "res://script/game/Status.gd"
+}, {
+"base": "Reference",
+"class": "TextEditingUtils",
+"language": "GDScript",
+"path": "res://addons/resources_speadsheet_view/text_editing_utils.gd"
+}, {
+"base": "Button",
+"class": "ThemeIconButton",
+"language": "GDScript",
+"path": "res://addons/resources_speadsheet_view/editor_icon_button.gd"
+}, {
+"base": "Control",
+"class": "ThemeStylebox",
+"language": "GDScript",
+"path": "res://addons/resources_speadsheet_view/editor_stylebox_overrider.gd"
 } ]
 _global_script_class_icons={
+"AdvancedDie": "",
+"CardDeck": "",
+"CellEditor": "",
+"CellEditorArray": "",
 "Character": "",
 "Deck": "",
+"DiceArray": "",
+"DynamicWheelItem": "",
 "Event": "",
-"GameData": "",
+"EventDeck": "",
+"EventDetails": "",
+"FairNG": "",
+"FortuneWheel": "",
+"GameDataLoader": "",
 "GameSimulation": "",
-"Status": ""
+"SettingsGrid": "",
+"SheetsDockEditor": "",
+"Status": "",
+"TextEditingUtils": "",
+"ThemeIconButton": "",
+"ThemeStylebox": ""
 }
+
+[addons]
+
+resources_spreadsheet_view/color_rows=true
+resources_spreadsheet_view/color_arrays=true
+resources_spreadsheet_view/array_min_width=128.0
+resources_spreadsheet_view/clip_headers=false
+resources_spreadsheet_view/dupe_arrays=true
 
 [application]
 
@@ -58,6 +156,10 @@ config/icon="res://icon.png"
 
 window/size/width=1280
 window/size/height=720
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/resources_speadsheet_view/plugin.cfg" )
 
 [gui]
 

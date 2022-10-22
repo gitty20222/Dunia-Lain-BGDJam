@@ -1,0 +1,803 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/DynamicFont/Planner.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Image/background.png" type="Texture" id=3]
+[ext_resource path="res://assets/DynamicFont/Priority.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Image/yellow_post_it.png" type="Texture" id=5]
+[ext_resource path="res://node/GameSimulation.tscn" type="PackedScene" id=6]
+[ext_resource path="res://node/ui_test/GameDisplayTesting.gd" type="Script" id=7]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 1280, 720 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.376471, 1, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.34902, 0.862745, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.929412, 0.533333, 0.0235294, 0 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.929412, 0.533333, 0.0235294, 0 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.376471, 1, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.376471, 1, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.376471, 1, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.34902, 0.862745, 1, 0 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.34902, 0.862745, 1, 0 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.34902, 0.862745, 1, 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="MainPanel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer"]
+margin_right = 1334.0
+margin_bottom = 899.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer"]
+margin_right = 1334.0
+margin_bottom = 72.0
+custom_constants/margin_top = 26
+custom_constants/margin_left = 99
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer"]
+margin_left = 99.0
+margin_top = 26.0
+margin_right = 1334.0
+margin_bottom = 72.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 143.0
+margin_bottom = 46.0
+
+[node name="HealthLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+margin_right = 116.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Health:"
+
+[node name="HealthLabelNumber" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 120.0
+margin_right = 143.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="MarginContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 147.0
+margin_right = 350.0
+margin_bottom = 46.0
+
+[node name="HappinessLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+margin_right = 176.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Happiness:"
+
+[node name="HappinessLabelNumber" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+margin_left = 180.0
+margin_right = 203.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 354.0
+margin_right = 508.0
+margin_bottom = 46.0
+
+[node name="MoneyLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+margin_right = 127.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Money: "
+
+[node name="MoneyLabelNumber" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 131.0
+margin_right = 154.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 1334.0
+margin_bottom = 899.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2"]
+margin_right = 1334.0
+margin_bottom = 823.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_right = 1334.0
+margin_bottom = 823.0
+size_flags_horizontal = 3
+custom_constants/margin_top = 19
+custom_constants/margin_left = 17
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+margin_left = 17.0
+margin_top = 19.0
+margin_right = 1334.0
+margin_bottom = 823.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 67.0
+margin_bottom = 804.0
+
+[node name="VBoxContainerPlannerLabel" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+margin_right = 67.0
+margin_bottom = 804.0
+custom_constants/separation = 565
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainerPlannerLabel"]
+margin_right = 67.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "0:00 AM"
+
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainerPlannerLabel"]
+margin_top = 584.0
+margin_right = 67.0
+margin_bottom = 603.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "23:00 PM"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 71.0
+margin_right = 184.0
+margin_bottom = 804.0
+custom_constants/margin_right = 0
+custom_constants/margin_left = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+margin_left = 13.0
+margin_right = 113.0
+margin_bottom = 804.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 600.0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+
+[node name="VBoxContainerPlanner" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+margin_right = 100.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_right = 100.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.376471, 1, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 25.0
+margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.376471, 1, 0, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.376471, 1, 0, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 75.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.376471, 1, 0, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.376471, 1, 0, 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 125.0
+margin_right = 100.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.376471, 1, 0, 1 )
+
+[node name="ColorRect7" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 150.0
+margin_right = 100.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.376471, 1, 0, 1 )
+
+[node name="ColorRect8" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 175.0
+margin_right = 100.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.952941, 1, 0.156863, 1 )
+
+[node name="ColorRect9" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 200.0
+margin_right = 100.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.952941, 1, 0.156863, 1 )
+
+[node name="ColorRect10" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 225.0
+margin_right = 100.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect11" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 250.0
+margin_right = 100.0
+margin_bottom = 275.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect12" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 275.0
+margin_right = 100.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect13" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 300.0
+margin_right = 100.0
+margin_bottom = 325.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect14" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 325.0
+margin_right = 100.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect15" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 350.0
+margin_right = 100.0
+margin_bottom = 375.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect16" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 375.0
+margin_right = 100.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect17" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 400.0
+margin_right = 100.0
+margin_bottom = 425.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect18" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 425.0
+margin_right = 100.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.929412, 0.533333, 0.0235294, 1 )
+
+[node name="ColorRect19" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 450.0
+margin_right = 100.0
+margin_bottom = 475.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.34902, 0.862745, 1, 1 )
+
+[node name="ColorRect20" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 475.0
+margin_right = 100.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.34902, 0.862745, 1, 1 )
+
+[node name="ColorRect21" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 500.0
+margin_right = 100.0
+margin_bottom = 525.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.34902, 0.862745, 1, 1 )
+
+[node name="ColorRect22" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 525.0
+margin_right = 100.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.34902, 0.862745, 1, 1 )
+
+[node name="ColorRect23" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 550.0
+margin_right = 100.0
+margin_bottom = 575.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.537255, 0, 0.466667, 1 )
+
+[node name="ColorRect24" type="ColorRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainerPlanner"]
+margin_top = 575.0
+margin_right = 100.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 100, 25 )
+color = Color( 0.537255, 0, 0.466667, 1 )
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 188.0
+margin_right = 1317.0
+margin_bottom = 804.0
+custom_constants/margin_left = 22
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3"]
+margin_left = 22.0
+margin_right = 1129.0
+margin_bottom = 804.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+margin_right = 1107.0
+margin_bottom = 36.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer"]
+margin_right = 1107.0
+margin_bottom = 36.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_right = 1107.0
+margin_bottom = 36.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+margin_right = 1107.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 101.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Priority"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+margin_top = 40.0
+margin_right = 1107.0
+margin_bottom = 196.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2"]
+margin_right = 1107.0
+margin_bottom = 156.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_right = 212.0
+margin_bottom = 156.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+margin_right = 212.0
+margin_bottom = 156.0
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+margin_right = 212.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( -287, 323 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 2 )
+text = "Food & Exercise"
+
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 40.0
+margin_right = 72.0
+margin_bottom = 76.0
+rect_pivot_offset = Vector2( -287, 323 )
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 3 )
+text = "Work"
+
+[node name="Label3" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 80.0
+margin_right = 65.0
+margin_bottom = 116.0
+rect_pivot_offset = Vector2( -287, 323 )
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 4 )
+text = "Sleep"
+align = 1
+
+[node name="Label4" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 127.0
+margin_bottom = 156.0
+rect_pivot_offset = Vector2( -287, 323 )
+size_flags_horizontal = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "Social Life"
+align = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 216.0
+margin_right = 300.0
+margin_bottom = 156.0
+custom_constants/margin_right = 69
+custom_constants/margin_left = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
+margin_left = 9.0
+margin_right = 15.0
+margin_bottom = 156.0
+
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/VBoxContainer"]
+margin_right = 6.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = ":"
+
+[node name="Label3" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 40.0
+margin_right = 6.0
+margin_bottom = 76.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = ":"
+
+[node name="Label4" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 80.0
+margin_right = 6.0
+margin_bottom = 116.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = ":"
+
+[node name="Label5" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 120.0
+margin_right = 6.0
+margin_bottom = 156.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = ":"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 304.0
+margin_right = 611.0
+margin_bottom = 156.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3"]
+margin_right = 307.0
+margin_bottom = 156.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer"]
+margin_right = 307.0
+margin_bottom = 36.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer"]
+margin_right = 307.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 6 )
+text = "Barely"
+
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 84.0
+margin_right = 99.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "/"
+
+[node name="Label3" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 103.0
+margin_right = 226.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 2 )
+text = "Moderate"
+
+[node name="Label4" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 230.0
+margin_right = 245.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "/"
+
+[node name="Label5" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 249.0
+margin_right = 307.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 7 )
+text = "High"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer"]
+margin_top = 40.0
+margin_right = 307.0
+margin_bottom = 76.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2"]
+margin_right = 307.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 8 )
+text = "Barely"
+
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 84.0
+margin_right = 99.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "/"
+
+[node name="Label3" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 103.0
+margin_right = 226.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 9 )
+text = "Moderate"
+
+[node name="Label4" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 230.0
+margin_right = 245.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "/"
+
+[node name="Label5" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 249.0
+margin_right = 307.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 10 )
+text = "High"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer"]
+margin_top = 80.0
+margin_right = 307.0
+margin_bottom = 116.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3"]
+margin_right = 307.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 11 )
+text = "Barely"
+
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+margin_left = 84.0
+margin_right = 99.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "/"
+
+[node name="Label3" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+margin_left = 103.0
+margin_right = 226.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 12 )
+text = "Moderate"
+
+[node name="Label4" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+margin_left = 230.0
+margin_right = 245.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "/"
+
+[node name="Label5" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+margin_left = 249.0
+margin_right = 307.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 13 )
+text = "High"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer"]
+margin_top = 120.0
+margin_right = 307.0
+margin_bottom = 156.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer4"]
+margin_right = 307.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer4/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 14 )
+text = "Barely"
+
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer4/HBoxContainer"]
+margin_left = 84.0
+margin_right = 99.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "/"
+
+[node name="Label3" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer4/HBoxContainer"]
+margin_left = 103.0
+margin_right = 226.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 15 )
+text = "Moderate"
+
+[node name="Label4" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer4/HBoxContainer"]
+margin_left = 230.0
+margin_right = 245.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "/"
+
+[node name="Label5" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer4/HBoxContainer"]
+margin_left = 249.0
+margin_right = 307.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+custom_styles/normal = SubResource( 16 )
+text = "High"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+margin_top = 200.0
+margin_right = 1107.0
+margin_bottom = 804.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3"]
+margin_right = 1107.0
+margin_bottom = 604.0
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/CenterContainer"]
+margin_right = 1107.0
+margin_bottom = 604.0
+texture = ExtResource( 5 )
+
+[node name="EventLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/CenterContainer"]
+unique_name_in_owner = true
+margin_left = 520.0
+margin_top = 295.0
+margin_right = 587.0
+margin_bottom = 309.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Event Stuff"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3"]
+margin_right = 1107.0
+margin_bottom = 604.0
+
+[node name="YesButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+margin_right = 33.0
+margin_bottom = 604.0
+text = "YES"
+
+[node name="NoButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+margin_left = 37.0
+margin_right = 70.0
+margin_bottom = 604.0
+text = "NO"
+
+[node name="GO" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer"]
+margin_left = 74.0
+margin_right = 107.0
+margin_bottom = 604.0
+text = "GO"
+
+[node name="GameSimulation" parent="." instance=ExtResource( 6 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.98
+autostart = true
+
+[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/YesButton" to="." method="_on_YesButton_button_up"]
+[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/NoButton" to="." method="_on_NoButton_button_up"]
+[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/GO" to="." method="_on_GO_button_up"]
+[connection signal="happiness_updated" from="GameSimulation" to="." method="_on_GameSimulation_happiness_updated"]
+[connection signal="health_updated" from="GameSimulation" to="." method="_on_GameSimulation_health_updated"]
+[connection signal="money_updated" from="GameSimulation" to="." method="_on_GameSimulation_money_updated"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

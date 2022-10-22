@@ -1,0 +1,9 @@
+{
+"hidden_columns": {
+"res://example/Random Upgrades/upgrades/": {
+},
+"res://example/dynamic_wheel/upgrades/": {
+}
+},
+"recent_paths": [ "res://example/Random Upgrades/upgrades", "res://example/dynamic_wheel/upgrades", "res://game_data/events" ]
+}

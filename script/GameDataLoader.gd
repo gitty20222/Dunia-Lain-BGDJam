@@ -1,14 +1,13 @@
 extends Object
-class_name GameData
+class_name GameDataLoader
 
-var statuses: Array
-var events: Array
-	
-func _init(dir: String):
-	self.events = get_choice_list_from_dir(dir + "events/")
-	self.statuses = get_status_list_from_dir(dir + "status/")
+static func load_events_from(dir: String) -> Array:
+	return _get_choice_list_from_dir(dir)
 
-func get_choice_list_from_dir(dir: String) -> Array:
+static func load_status_from(dir: String) -> Array:
+	return _get_status_list_from_dir(dir)
+
+static func _get_choice_list_from_dir(dir: String) -> Array:
 	var files = list_files_in_directory(dir)
 	var events := []
 	for file in files:
@@ -17,7 +16,7 @@ func get_choice_list_from_dir(dir: String) -> Array:
 		events.append(ResourceLoader.load(dir + file)) 
 	return events
 
-func get_status_list_from_dir(dir: String) -> Array:
+static func _get_status_list_from_dir(dir: String) -> Array:
 	var files = list_files_in_directory(dir)
 	var statuses := []
 	for file in files:
@@ -26,7 +25,7 @@ func get_status_list_from_dir(dir: String) -> Array:
 		statuses.append(ResourceLoader.load(dir + file)) 
 	return statuses
 
-func list_files_in_directory(path) -> Array:
+static func list_files_in_directory(path) -> Array:
 	var files = []
 	var dir = Directory.new()
 	dir.open(path)
