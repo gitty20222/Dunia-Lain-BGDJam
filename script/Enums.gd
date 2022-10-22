@@ -9,3 +9,9 @@ enum GameOver {
 	Depressed,
 	Destitute
 }
+
+enum EventStatus {
+	Accepted,
+	Declined,
+	Unresolved
+}

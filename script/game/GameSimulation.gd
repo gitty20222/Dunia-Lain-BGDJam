@@ -50,7 +50,7 @@ var active_statuses := {} # Dictionary(status_id, time_remaining(int))
 # Event State
 var n_events_this_turn := 0
 var active_events := [] # Array (Event Id)
-var event_resolved := [] # Array (bool)
+var event_resolved := [] # Array (Event Status)
 
 func _set_health(value: float):
 	value = clamp(value, 0, 100)
@@ -112,33 +112,21 @@ func accept_event(event_idx: int):
 	if event_idx < 0 or event_idx >= n_events_this_turn:
 		return
 	
-	if event_resolved[event_idx]:
+	if event_resolved[event_idx] != Enums.EventStatus.Unresolved:
 		return
 	
 	var event = data_event_repo[active_events[event_idx]]
-	event_resolved[event_idx] = true
-	_process_effects(event.effect_on_accept)
-	for tag in event.add_tags_on_accept:
-		event_tag_set[tag] = true
-	for tag in event.remove_tags_on_accept:
-		if event_tag_set.has(tag):
-			event_tag_set.erase(tag)
+	event_resolved[event_idx] = Enums.EventStatus.Accepted
 
 func decline_event(event_idx: int):
 	if event_idx < 0 or event_idx >= n_events_this_turn:
 		return
 	
-	if event_resolved[event_idx]:
+	if event_resolved[event_idx] != Enums.EventStatus.Unresolved:
 		return
 	
 	var event = data_event_repo[active_events[event_idx]]
-	event_resolved[event_idx] = true
-	_process_effects(event.effect_on_decline)
-	for tag in event.add_tags_on_decline:
-		event_tag_set[tag] = true
-	for tag in event.remove_tags_on_decline:
-		if event_tag_set.has(tag):
-			event_tag_set.erase(tag)
+	event_resolved[event_idx] = Enums.EventStatus.Declined
 
 # Advance Time
 # Returns next list of events OR Enum for gameover/ending
@@ -146,8 +134,27 @@ func play(priorities: Dictionary, events_to_draw: int):
 	
 	# Decline any unresolved events
 	for i in range(n_events_this_turn):
-		if not event_resolved[i]:
+		if event_resolved[i] == Enums.EventStatus.Unresolved:
 			decline_event(i)
+	
+	# Process events
+	for i in range(n_events_this_turn):
+		var event = data_event_repo[active_events[i]]
+		match event_resolved[i]:
+			Enums.EventStatus.Accepted:
+				_process_effects(event.effect_on_accept)
+				for tag in event.add_tags_on_accept:
+					event_tag_set[tag] = true
+				for tag in event.remove_tags_on_accept:
+					if event_tag_set.has(tag):
+						event_tag_set.erase(tag)
+			Enums.EventStatus.Declined:
+				_process_effects(event.effect_on_decline)
+				for tag in event.add_tags_on_decline:
+					event_tag_set[tag] = true
+				for tag in event.remove_tags_on_decline:
+					if event_tag_set.has(tag):
+						event_tag_set.erase(tag)
 	
 	n_events_this_turn = events_to_draw
 	active_events.clear()
