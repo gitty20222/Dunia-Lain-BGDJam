@@ -18,6 +18,10 @@ export(Dictionary) var effect_on_accept: Dictionary = {
 	"add_health" : 0,
 	"add_happiness": 0,
 	"add_money" : 0,
+	"add_fitness_value" : 0,
+	"add_work_value" : 0,
+	"add_social_value" : 0,
+	"add_sleep_value" : 0,
 	"statuses_to_add[id]" : [],
 	"status_to_remove[id]" : []
 }
@@ -27,6 +31,10 @@ export(Dictionary) var effect_on_decline: Dictionary = {
 	"add_health" : 0,
 	"add_happiness": 0,
 	"add_money" : 0,
+	"add_fitness_value" : 0,
+	"add_work_value" : 0,
+	"add_social_value" : 0,
+	"add_sleep_value" : 0,
 	"statuseses_to_add[id]" : [],
 	"statuses_to_remove[id]" : []
 }

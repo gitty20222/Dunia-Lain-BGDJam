@@ -171,6 +171,11 @@ func _process_effects(effects: Dictionary) -> void:
 	var happiness_to_add = effects["add_happiness"]
 	var money_to_add = effects["add_money"]
 	
+	var fitness_value_to_add = effects["add_fitness_value"]
+	var work_value_to_add = effects["add_work_value"]
+	var social_value_to_add = effects["add_social_value"]
+	var sleep_value_to_add = effects["add_sleep_value"]
+	
 	var status_ids_to_add = effects["statuses_to_add[id]"]
 	var status_ids_to_remove = effects["statuses_to_add[id]"]
 	
@@ -183,6 +188,18 @@ func _process_effects(effects: Dictionary) -> void:
 	if money_to_add and money_to_add != 0:
 		_set_money(money + money_to_add)
 	
+	if fitness_value_to_add and fitness_value_to_add != 0:
+		_add_fitness_value_point(fitness_value_to_add)
+	
+	if work_value_to_add and work_value_to_add != 0:
+		_add_work_value_point(work_value_to_add)
+	
+	if social_value_to_add and social_value_to_add != 0:
+		_add_social_value_point(social_value_to_add)
+	
+	if sleep_value_to_add and sleep_value_to_add != 0:
+		_add_sleep_value_point(sleep_value_to_add)
+	
 	for status_id in status_ids_to_add:
 		var default_duration = data_status_repo[status_id].default_duration
 		if active_statuses.has(status_id):
@@ -190,7 +207,7 @@ func _process_effects(effects: Dictionary) -> void:
 		else:
 			active_statuses[status_id] = default_duration
 			emit_signal("status_added", status_id)
-	
+
 	for status_id in status_ids_to_remove:
 		if active_statuses.has(status_id):
 			active_statuses.erase(status_id)
