@@ -1,13 +1,19 @@
 extends Resource
 class_name Status
 
-export(String) var id
+export(String) var id # Treated as tag
 export(String) var title
-export(Dictionary) var effects
-export(int) var default_duration # -1 means no duration
+export(Dictionary) var per_turn_effects: Dictionary = {
+	"add_health" : 0,
+	"add_happiness": 0,
+	"add_money" : 0
+}
+export(int) var default_duration # 0 means no duration
 
-func _init(p_id = "no_status", p_title = "noTitle", p_effects = {}, p_default_duration = -1):
-	id = p_id
-	title = p_title
-	effects = p_effects
-	default_duration = p_default_duration
+func _init(id = "", title = "", effects = {}, default_duration = 0):
+	self.id = id
+	self.title = title
+	self.effects = effects
+	self.effects["status_to_add[id]"] = null
+	self.effects["status_to_remove[id]"] = null
+	self.default_duration = default_duration

@@ -17,7 +17,7 @@ multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {
-"add_happiness": 0,
+"add_happiness": -10,
 "add_health": 0,
 "add_money": 0,
 "status_to_add[id]": "",
@@ -25,7 +25,7 @@ effect_on_accept = {
 }
 tags_on_accept = [ "had_choice_1" ]
 effect_on_decline = {
-"add_happiness": 0,
+"add_happiness": 10,
 "add_health": 0,
 "add_money": 0,
 "status_to_add[id]": "",

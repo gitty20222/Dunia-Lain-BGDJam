@@ -33,9 +33,14 @@ func _on_NoButton_button_up():
 	event_chosen_this_turn = true
 
 func _on_GO_button_up():
+	# Event has to be accepted or declined
 	if not event_chosen_this_turn:
 		return
+	
+	# Priorities must be selected 
+	
+	# Play out event
 	event_chosen_this_turn = false
-	var event_id = $GameSimulation.play("placeholder")
+	var event_id = $GameSimulation.play({})
 	var event = data_event_dict[event_id]
 	get_node("%EventLabel").text = event.description
