@@ -4,6 +4,7 @@ class_name Event
 export(String) var id: String = ""
 export(String) var title: String = ""
 export(String, MULTILINE) var description: String = ""
+export(bool) var auto_accept = false
 export(int) var duplicates: int = 1
 export(Array, String) var required_tags_to_trigger: Array = []
 export(int) var base_weight: int = 10
