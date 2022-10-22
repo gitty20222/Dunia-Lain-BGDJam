@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PriorityUIClick.ogg-0f9ab8e462b2dc6d0c9282b1ae9ab034.oggstr"
+
+[deps]
+
+source_file="res://assets/SFX/PriorityUIClick.ogg"
+dest_files=[ "res://.import/PriorityUIClick.ogg-0f9ab8e462b2dc6d0c9282b1ae9ab034.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

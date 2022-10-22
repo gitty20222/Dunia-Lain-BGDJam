@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NextDay.ogg-1aee7d5493e8bb93173a5bcd20f7ed9c.oggstr"
+
+[deps]
+
+source_file="res://assets/SFX/NextDay.ogg"
+dest_files=[ "res://.import/NextDay.ogg-1aee7d5493e8bb93173a5bcd20f7ed9c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
