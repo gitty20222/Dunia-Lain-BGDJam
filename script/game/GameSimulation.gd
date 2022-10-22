@@ -1,6 +1,8 @@
 extends Node
 class_name GameSimulation
 
+const Enums = preload("res://script/Enums.gd")
+
 signal health_updated(old, new)
 signal happiness_updated(old, new)
 signal money_updated(old, new)
@@ -17,17 +19,19 @@ signal status_remove_failed(status_id)
 
 signal _factors_computed(factors)
 
-signal game_ended()
+signal game_over(reason)
+signal game_ended(ending)
 
 var event_selector := FortuneWheel.new()
 
 # Game Data
 var data_event_list: Array # Array(Event)
-var data_status_repo: Dictionary
+var data_event_repo: Dictionary # Dictionary(EventId to Event)
+var data_status_repo: Dictionary # Dictionary(StatusId to Status)
 var event_weighted_pool := [] # Array(Event as FortuneWheelItem)
 
 # Overall Game State
-var turn_number := 0
+var turn_number := 1
 
 # Consumable Resources
 var health: float = 70 setget _set_health
@@ -42,28 +46,31 @@ var sleep_value: float = 70 setget _set_sleep_value
 # Current State
 var event_tag_set := {} #(Dictionary of tags [set])
 var active_statuses := {} # Dictionary(status_id, time_remaining(int))
-var current_event_idx = null
-var event_chosen_this_turn = true
+
+# Event State
+var n_events_this_turn := 0
+var active_events := [] # Array (Event Id)
+var event_resolved := [] # Array (Event Status)
 
 func _set_health(value: float):
 	value = clamp(value, 0, 100)
 	emit_signal("health_updated", health, value)
 	health = value
 	if (value <= 0):
-		emit_signal("game_ended")
+		emit_signal("game_over", Enums.GameOver.Died)
 
 func _set_happiness(value: float):
 	value = clamp(value, 0, 100)
 	emit_signal("happiness_updated", happiness, value)
 	happiness = value
 	if (value <= 0):
-		emit_signal("game_ended")
+		emit_signal("game_over", Enums.GameOver.Depressed)
 
 func _set_money(value: float):
 	emit_signal("money_updated", money, value)
 	money = value
 	if (value <= 0):
-		emit_signal("game_ended")
+		emit_signal("game_over", Enums.GameOver.Destitute)
 
 func _set_fitness_value(value: float):
 	value = clamp(value, 0, 100)
@@ -91,56 +98,93 @@ func init(event_list: Array, status_list: Array):
 	self.data_event_list = event_list
 	for event in event_list:
 		self.event_weighted_pool.append(event.as_weighted())
+		self.data_event_repo[event.id] = event
 	for status in status_list:
 		data_status_repo[status.id] = status
 
-func accept_event():
-	if event_chosen_this_turn:
-		return
-	event_chosen_this_turn = true
-	
-	var event = data_event_list[current_event_idx]
-	_process_effects(event.effect_on_accept)
-	for tag in event.add_tags_on_accept:
-		event_tag_set[tag] = true
-	for tag in event.remove_tags_on_accept:
-		if event_tag_set.has(tag):
-			event_tag_set.erase(tag)
+func apply_status(status_id: String):
+	_try_add_status(status_id)
 
-func decline_event():
-	if event_chosen_this_turn:
+func remove_status(status_id: String):
+	_try_remove_status(status_id)
+
+func accept_event(event_idx: int):
+	if event_idx < 0 or event_idx >= n_events_this_turn:
 		return
-	event_chosen_this_turn = true
 	
-	var event = data_event_list[current_event_idx]
-	_process_effects(event.effect_on_decline)
-	for tag in event.add_tags_on_decline:
-		event_tag_set[tag] = true
-	for tag in event.remove_tags_on_decline:
-		if event_tag_set.has(tag):
-			event_tag_set.erase(tag)
+	if event_resolved[event_idx] != Enums.EventStatus.Unresolved:
+		return
+	
+	var event = data_event_repo[active_events[event_idx]]
+	event_resolved[event_idx] = Enums.EventStatus.Accepted
+
+func decline_event(event_idx: int):
+	if event_idx < 0 or event_idx >= n_events_this_turn:
+		return
+	
+	if event_resolved[event_idx] != Enums.EventStatus.Unresolved:
+		return
+	
+	var event = data_event_repo[active_events[event_idx]]
+	event_resolved[event_idx] = Enums.EventStatus.Declined
 
 # Advance Time
-func play(priorities: Dictionary) -> String:
+# Returns next list of events OR Enum for gameover/ending
+func play(priorities: Dictionary, events_to_draw: int):
 	
-	# ENDING
-	if turn_number >= 30:
-		emit_signal("game_ended")
-		return ""
+	# Decline any unresolved events
+	for i in range(n_events_this_turn):
+		if event_resolved[i] == Enums.EventStatus.Unresolved:
+			decline_event(i)
+	
+	# Process events
+	for i in range(n_events_this_turn):
+		var event = data_event_repo[active_events[i]]
+		match event_resolved[i]:
+			Enums.EventStatus.Accepted:
+				_process_effects(event.effect_on_accept)
+				for tag in event.add_tags_on_accept:
+					event_tag_set[tag] = true
+				for tag in event.remove_tags_on_accept:
+					if event_tag_set.has(tag):
+						event_tag_set.erase(tag)
+			Enums.EventStatus.Declined:
+				_process_effects(event.effect_on_decline)
+				for tag in event.add_tags_on_decline:
+					event_tag_set[tag] = true
+				for tag in event.remove_tags_on_decline:
+					if event_tag_set.has(tag):
+						event_tag_set.erase(tag)
+	
+	n_events_this_turn = events_to_draw
+	active_events.clear()
+	event_resolved.clear()
+	active_events.resize(n_events_this_turn)
+	event_resolved.resize(n_events_this_turn)
 	
 	# Remove expired status
 	for status_id in active_statuses.keys():
-		if data_status_repo[status_id].default_duration <= 0: 
+		if data_status_repo[status_id].default_duration != -1: 
 			active_statuses[status_id] -= 1
 			if active_statuses[status_id] <= 0:
-				active_statuses.erase(status_id)
+				_try_remove_status(status_id)
 	
 	# Apply effects of statuses
 	for status_id in active_statuses.keys():
 		_process_effects(data_status_repo[status_id].per_turn_effects)
 	
+	# Apply effects of priorities
+	_process_priorities(priorities)
+	
+	# GAME OVER
+	if health <= 0: return Enums.GameOver.Died
+	if happiness <= 0: return Enums.GameOver.Depressed
+	if money < 0: return Enums.GameOver.Destitute
+	
+	# ENDING
+	if turn_number > 30: return _process_ending()
+	
 	# Compute event draw factors
-	var factors := [] # Array(Dynamic Wheel Item)
 	var priority_tags = _parse_priorities(priorities)
 	var status_tags = _parse_statuses(active_statuses.keys())
 	var aspect_tags = _parse_aspect_values(
@@ -150,34 +194,35 @@ func play(priorities: Dictionary) -> String:
 		sleep_value)
 	var stat_tags = _parse_stats(health, happiness)
 	var event_tags = _parse_event_tags(event_tag_set.keys())
-	factors.append_array(
-		[
+	
+	var factors = [ # Array(Dynamic Wheel Item)
 			priority_tags,
 			status_tags,
 			aspect_tags,
 			stat_tags,
 			event_tags
 		]
-	)
 	emit_signal("_factors_computed", factors)
-	current_event_idx = event_selector.spin_dynamic(event_weighted_pool, factors)
 	
+	var event_indexes = event_selector.spin_dynamic_batch(event_weighted_pool, factors, events_to_draw)
+	for i in range(events_to_draw):
+		active_events[i] = data_event_list[event_indexes[i]].id
+		event_resolved[i] = Enums.EventStatus.Unresolved
 	turn_number += 1
-	event_chosen_this_turn = false
-	return data_event_list[current_event_idx].id
+	return active_events
 
 func _process_effects(effects: Dictionary) -> void:
-	var health_to_add = effects["add_health"]
-	var happiness_to_add = effects["add_happiness"]
-	var money_to_add = effects["add_money"]
+	var health_to_add = effects.get("add_health") 
+	var happiness_to_add = effects.get("add_happiness")
+	var money_to_add = effects.get("add_money")
 	
-	var fitness_value_to_add = effects["add_fitness_value"]
-	var work_value_to_add = effects["add_work_value"]
-	var social_value_to_add = effects["add_social_value"]
-	var sleep_value_to_add = effects["add_sleep_value"]
+	var fitness_value_to_add = effects.get("add_fitness_value")
+	var work_value_to_add = effects.get("add_work_value")
+	var social_value_to_add = effects.get("add_social_value")
+	var sleep_value_to_add = effects.get("add_sleep_value")
 	
-	var status_ids_to_add = effects["statuses_to_add[id]"]
-	var status_ids_to_remove = effects["statuses_to_add[id]"]
+	var status_ids_to_add = effects.get("statuses_to_add[id]")
+	var status_ids_to_remove = effects.get("statuses_to_add[id]")
 	
 	if health_to_add and health_to_add != 0:
 		_set_health(health + health_to_add)
@@ -214,6 +259,10 @@ func _process_effects(effects: Dictionary) -> void:
 			emit_signal("status_removed", status_id)
 		else:
 			emit_signal("status_remove_failed", status_id)
+
+func _process_ending():
+	# TODO: Ending Logic
+	pass
 
 func _process_priorities(priorities: Dictionary) -> void:
 	_process_fitness_priority(priorities["fitness"])
@@ -314,6 +363,20 @@ func _get_value_level(percentage: float) -> String:
 	if percentage < 33: return "low"
 	elif percentage < 66: return "medium"
 	else: return "high"
+
+func _try_add_status(status_id: String):
+	if active_statuses.has(status_id):
+		emit_signal("status_add_failed")
+	else:
+		active_statuses[status_id] = data_status_repo[status_id].default_duration
+		emit_signal("status_added")
+
+func _try_remove_status(status_id: String):
+	if active_statuses.has(status_id):
+		active_statuses.erase(status_id)
+		emit_signal("status_removed")
+	else:
+		emit_signal("status_remove_failed")
 
 func _add_health_point(amount: float):
 	_set_health(health + amount)

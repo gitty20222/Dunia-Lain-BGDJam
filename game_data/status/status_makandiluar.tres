@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://script/game/Status.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "status_makandiluar"
+title = "Beli Makanan Luar"
+per_turn_effects = {
+"add_fitness_value": 0,
+"add_happiness": 0,
+"add_health": -2,
+"add_money": 0,
+"add_sleep_value": 0,
+"add_social_value": 0,
+"add_work_value": 0
+}
+default_duration = -1
+hidden = false

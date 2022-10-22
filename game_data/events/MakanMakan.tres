@@ -1,0 +1,46 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://script/game/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "makanmakan"
+title = "Makan Malam Bersama"
+description = "Teman kerjaku mengajak untuk pergi makan bersama di restoran setelah bekerja hari ini, ikut ngga ya?"
+auto_accept = false
+duplicates = -1
+requires_any_tag_to_trigger = [  ]
+base_weight = 1
+multiplier_per_tag = ""
+multiplier_if_tag_present = "social_1 40;
+social_2 40;
+"
+multiplier_if_tag_not_present = ""
+max_tags_present = ""
+min_tags_present = ""
+effect_on_accept = {
+"add_fitness_value": 0,
+"add_happiness": 5,
+"add_health": 0,
+"add_money": -3,
+"add_sleep_value": 0,
+"add_social_value": 5,
+"add_work_value": 5,
+"statuses_to_add[id]": [  ],
+"statuses_to_remove[id]": [  ]
+}
+add_tags_on_accept = [ "mabuk" ]
+remove_tags_on_accept = [  ]
+effect_on_decline = {
+"add_fitness_value": 0,
+"add_happiness": 0,
+"add_health": 0,
+"add_money": 0,
+"add_sleep_value": 0,
+"add_social_value": -5,
+"add_work_value": 0,
+"statuses_to_add[id]": [  ],
+"statuses_to_remove[id]": [  ]
+}
+add_tags_on_decline = [  ]
+remove_tags_on_decline = [  ]
