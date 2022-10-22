@@ -12,9 +12,9 @@ export(Dictionary) var per_turn_effects: Dictionary = {
 	"add_social_value" : 0,
 	"add_sleep_value" : 0
 }
-export(int) var default_duration # 0 means no duration
+export(int) var default_duration = -1 # 0 means no duration
 
-func _init(id = "", title = "", effects = {}, default_duration = 0):
+func _init(id = "", title = "", effects = {}, default_duration = -1):
 	self.id = id
 	self.title = title
 	self.per_turn_effects["status_to_add[id]"] = null

@@ -130,7 +130,7 @@ func play(priorities: Dictionary) -> String:
 	
 	# Remove expired status
 	for status_id in active_statuses.keys():
-		if data_status_repo[status_id].default_duration != 0:
+		if data_status_repo[status_id].default_duration <= 0: 
 			active_statuses[status_id] -= 1
 			if active_statuses[status_id] <= 0:
 				active_statuses.erase(status_id)
