@@ -171,8 +171,8 @@ func _process_effects(effects: Dictionary) -> void:
 	var happiness_to_add = effects["add_happiness"]
 	var money_to_add = effects["add_money"]
 	
-	var status_id_to_add = effects["status_to_add[id]"]
-	var status_id_to_remove = effects["status_to_add[id]"]
+	var status_ids_to_add = effects["statuses_to_add[id]"]
+	var status_ids_to_remove = effects["statuses_to_add[id]"]
 	
 	if health_to_add and health_to_add != 0:
 		_set_health(health + health_to_add)
@@ -183,20 +183,20 @@ func _process_effects(effects: Dictionary) -> void:
 	if money_to_add and money_to_add != 0:
 		_set_money(money + money_to_add)
 	
-	if status_id_to_add:
-		var default_duration = data_status_repo[status_id_to_add].default_duration
-		if active_statuses.has(status_id_to_add):
-			emit_signal("status_add_failed", status_id_to_add)
+	for status_id in status_ids_to_add:
+		var default_duration = data_status_repo[status_id].default_duration
+		if active_statuses.has(status_id):
+			emit_signal("status_add_failed", status_id)
 		else:
-			active_statuses[status_id_to_add] = default_duration
-			emit_signal("status_added", status_id_to_add)
-
-	if status_id_to_remove:
-		if active_statuses.has(status_id_to_remove):
-			active_statuses.erase(status_id_to_remove)
-			emit_signal("status_removed", status_id_to_remove)
+			active_statuses[status_id] = default_duration
+			emit_signal("status_added", status_id)
+	
+	for status_id in status_ids_to_remove:
+		if active_statuses.has(status_id):
+			active_statuses.erase(status_id)
+			emit_signal("status_removed", status_id)
 		else:
-			emit_signal("status_remove_failed", status_id_to_remove)
+			emit_signal("status_remove_failed", status_id)
 
 func _process_priorities(priorities: Dictionary) -> void:
 	_process_fitness_priority(priorities["fitness"])

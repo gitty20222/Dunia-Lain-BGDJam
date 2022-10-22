@@ -18,8 +18,8 @@ export(Dictionary) var effect_on_accept: Dictionary = {
 	"add_health" : 0,
 	"add_happiness": 0,
 	"add_money" : 0,
-	"status_to_add[id]" : "",
-	"status_to_remove[id]" : ""
+	"statuses_to_add[id]" : [],
+	"status_to_remove[id]" : []
 }
 export(Array, String) var add_tags_on_accept: Array = []
 export(Array, String) var remove_tags_on_accept: Array = []
@@ -27,8 +27,8 @@ export(Dictionary) var effect_on_decline: Dictionary = {
 	"add_health" : 0,
 	"add_happiness": 0,
 	"add_money" : 0,
-	"status_to_add[id]" : "",
-	"status_to_remove[id]" : ""
+	"statuseses_to_add[id]" : [],
+	"statuses_to_remove[id]" : []
 }
 export(Array, String) var add_tags_on_decline: Array = []
 export(Array, String) var remove_tags_on_decline: Array = []
