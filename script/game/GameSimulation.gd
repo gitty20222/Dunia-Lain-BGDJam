@@ -102,6 +102,12 @@ func init(event_list: Array, status_list: Array):
 	for status in status_list:
 		data_status_repo[status.id] = status
 
+func apply_status(status_id: String):
+	_try_add_status(status_id)
+
+func remove_status(status_id: String):
+	_try_remove_status(status_id)
+
 func accept_event(event_idx: int):
 	if event_idx < 0 or event_idx >= n_events_this_turn:
 		return
@@ -153,10 +159,10 @@ func play(priorities: Dictionary, events_to_draw: int) -> Array:
 	
 	# Remove expired status
 	for status_id in active_statuses.keys():
-		if data_status_repo[status_id].default_duration <= 0: 
+		if data_status_repo[status_id].default_duration != -1: 
 			active_statuses[status_id] -= 1
 			if active_statuses[status_id] <= 0:
-				active_statuses.erase(status_id)
+				_try_remove_status(status_id)
 	
 	# Apply effects of statuses
 	for status_id in active_statuses.keys():
@@ -343,6 +349,20 @@ func _get_value_level(percentage: float) -> String:
 	if percentage < 33: return "low"
 	elif percentage < 66: return "medium"
 	else: return "high"
+
+func _try_add_status(status_id: String):
+	if active_statuses.has(status_id):
+		emit_signal("status_add_failed")
+	else:
+		active_statuses[status_id] = data_status_repo[status_id].default_duration
+		emit_signal("status_added")
+
+func _try_remove_status(status_id: String):
+	if active_statuses.has(status_id):
+		active_statuses.erase(status_id)
+		emit_signal("status_removed")
+	else:
+		emit_signal("status_remove_failed")
 
 func _add_health_point(amount: float):
 	_set_health(health + amount)
