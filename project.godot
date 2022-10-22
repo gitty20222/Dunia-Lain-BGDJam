@@ -54,16 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://script/game/Event.gd"
 }, {
-"base": "Resource",
-"class": "EventDeck",
-"language": "GDScript",
-"path": "res://script/game/EventDeck.gd"
-}, {
-"base": "Resource",
-"class": "EventDetails",
-"language": "GDScript",
-"path": "res://script/game/_EventDetails.gd"
-}, {
 "base": "Reference",
 "class": "FairNG",
 "language": "GDScript",
@@ -124,8 +114,6 @@ _global_script_class_icons={
 "DiceArray": "",
 "DynamicWheelItem": "",
 "Event": "",
-"EventDeck": "",
-"EventDetails": "",
 "FairNG": "",
 "FortuneWheel": "",
 "GameDataLoader": "",
