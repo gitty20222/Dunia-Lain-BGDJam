@@ -67,7 +67,6 @@ func _set_happiness(value: int):
 	happiness = value
 
 func _set_money(value: int):
-	value = clamp(value, 0, 100)
 	emit_signal("money_updated", money, value)
 	money = value
 
@@ -226,7 +225,7 @@ func play(priorities: Dictionary, events_to_draw: int):
 		work_value,
 		social_value,
 		sleep_value)
-	var stat_tags = _parse_stats(health, happiness)
+	var stat_tags = _parse_stats(health, happiness, money)
 	var event_tags = _parse_event_tags(event_tag_set.keys())
 	
 	var factors = [ # Array(Dynamic Wheel Item)
@@ -393,13 +392,15 @@ func _parse_aspect_values(fitness_value: int, work_value: int, social_value: int
 	]
 	return item
 
-func _parse_stats(health: int, happiness: int) -> DynamicWheelItem:
+func _parse_stats(health: int, happiness: int, money: int) -> DynamicWheelItem:
 	var item := DynamicWheelItem.new()
 	item.tags_array = [
 		"health_" + _get_value_level(health),
 		"happiness_" + _get_value_level(happiness),
+		"money_" + _get_value_level(money),
 		"health_" + _get_value_flat(health),
-		"happiness_" + _get_value_flat(happiness)
+		"happiness_" + _get_value_flat(happiness),
+		"money_" + _get_value_flat(money),
 	]
 	return item
 
