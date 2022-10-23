@@ -4,28 +4,28 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "pekerjaanbaru"
-title = "Pekerjaan Baru"
-description = "Aku mendapat teguran dari atasanku karena kinerja yang kurang baik, padahal menurutku usaha saya sudah cukup.."
+id = "acarakomunitas"
+title = "Acara Komunitas"
+description = "Sepertinya ada acara komunitas yang diadakan tidak jauh dari tempat tinggalku..ikut ngga ya?"
 auto_accept = false
 duplicates = -1
-requires_any_tag_to_trigger = [ "status_dipecat" ]
+requires_any_tag_to_trigger = [  ]
 base_weight = 1
-multiplier_if_tag_present = ""
-multiplier_if_tag_not_present = "work_prlow 10;
-work_prmed 25;
-work_high 40;"
+multiplier_if_tag_present = "social_prmed 20;
+social_prhigh 20;
+status_makandiluar 20;"
+multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {
 "add_fitness_value": 0,
-"add_happiness": 0,
+"add_happiness": 3,
 "add_health": 0,
 "add_money": 0,
 "add_sleep_value": 0,
 "add_social_value": 0,
-"add_work_value": 60,
-"statuses_to_add[id]": [ "status_jabatan1" ],
+"add_work_value": 0,
+"statuses_to_add[id]": [  ],
 "statuses_to_remove[id]": [  ]
 }
 add_tags_on_accept = [  ]

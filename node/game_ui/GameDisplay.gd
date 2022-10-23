@@ -8,66 +8,6 @@ signal accept(event_idx) # index of event in the array sent in display_events()
 signal decline(event_idx) 
 signal player_apply_status(status_id) # player-triggered status application/removal
 signal player_remove_status(status_id)
-signal return_to_main_menu()
-
-#signal for game display internals
-
-
-#Event Queue
-var event_queue := [] # Array(Event)
-var current_event_idx := 0 # Index of current event (displayed on UI)
-var n_events_this_turn := 0 # Number of events drawn on this turn
-
-#Attributes
-var health: Label
-var happiness: Label
-var money: Label
-
-#Secondary Attrbibutes
-var diet_value: Label
-var kerja_value: Label
-var tidur_value: Label
-var sosial_value: Label
-
-#priority
-var diet_priority := 0
-var kerja_priority := 0
-var tidur_priority := 0
-var sosial_priority := 0
-
-#Status
-var masakSendiriIcon: TextureRect
-var makanBuahIcon: TextureRect
-var makanLuarIcon: TextureRect
-var smokerIcon: TextureRect
-var naikGajiIcon: TextureRect
-var naikJabatanIcon: TextureRect
-var lihatHpIcon: TextureRect
-var insomniaIcon: TextureRect
-var gymMemberIcon: TextureRect
-
-func _ready():
-	#set attributes
-	health = get_node("%JasmaniValueLabel")
-	happiness = get_node("%KejiwaanValueLabel")
-	money = get_node("%RupiahValueLabel")
-	
-	#set second attributes
-	diet_value = get_node("%DietValueLabel")
-	kerja_value = get_node("%KerjaValueLabel")
-	tidur_value = get_node("%TidurValueLabel")
-	sosial_value = get_node("%SosialValueLabel")
-	
-	#set status
-	masakSendiriIcon = get_node("%MasakSendiriStatus")
-	makanBuahIcon = get_node("%MakanBuahStatus")
-	makanLuarIcon = get_node("%MakanLuarStatus")
-	smokerIcon = get_node("%SmokerStatus")
-	naikGajiIcon = get_node("%NaikGajiStatus")
-	naikJabatanIcon = get_node("%NaikJabatanStatus")
-	lihatHpIcon = get_node("%LihatHpStatus")
-	insomniaIcon = get_node("%InsomniaStatus")
-	gymMemberIcon = get_node("%GymMemberStatus")
 
 # interface
 func update_health(new_value):

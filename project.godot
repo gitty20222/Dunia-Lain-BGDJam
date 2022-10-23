@@ -177,7 +177,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/resources_speadsheet_view/plugin.cfg" )
 
 [gui]
 

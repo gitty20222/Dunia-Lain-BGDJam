@@ -2,6 +2,15 @@ extends Node
 class_name Game
 
 export(Array, String) var starting_status_ids := []
+export(Dictionary) var initial_values := {
+	"health" : 70,
+	"happiness" : 70,
+	"money" : 30,
+	"fitness" : 60,
+	"work" : 60,
+	"social" : 60,
+	"sleep" : 70
+}
 
 signal save_requested(game_state)
 signal return_to_main_menu()
@@ -44,7 +53,7 @@ func start_from_save(save_data):
 func start_new():
 	if state != State.Unititalized: return
 	var sim = simulation_scene.instance()
-	sim.init(event_list, status_list)
+	sim.init(event_list, status_list, initial_values)
 	_begin(sim)
 
 func _begin(sim: GameSimulation):
