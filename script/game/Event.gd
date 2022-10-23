@@ -8,7 +8,6 @@ export(bool) var auto_accept = false
 export(int) var duplicates: int = -1
 export(Array, String) var requires_any_tag_to_trigger: Array = []
 export(int) var base_weight: int = 10
-export(String, MULTILINE) var multiplier_per_tag = ""
 export(String, MULTILINE) var multiplier_if_tag_present = ""
 export(String, MULTILINE) var multiplier_if_tag_not_present = ""
 export(String, MULTILINE) var max_tags_present = ""
@@ -48,7 +47,7 @@ func as_weighted() -> DynamicWheelItem:
 	weighted.requires_one_of_tags_array = requires_any_tag_to_trigger
 	weighted.tag_all_copies = false
 	weighted.base_weight = base_weight
-	weighted.multiplier_per_tag = multiplier_per_tag
+	weighted.multiplier_per_tag = ""
 	weighted.multiplier_if_tag_present = multiplier_if_tag_present
 	weighted.multiplier_if_tag_not_present = multiplier_if_tag_not_present
 	weighted.max_tags_present = max_tags_present
