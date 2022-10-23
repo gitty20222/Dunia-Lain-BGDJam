@@ -1,7 +1,10 @@
 extends Node
 class_name Game
 
+export(Array, String) var starting_status_ids := []
+
 signal save_requested(game_state)
+signal game_ended()
 
 const Enums = preload("res://script/Enums.gd")
 const simulation_scene = preload("res://node/GameSimulation.tscn")
@@ -20,10 +23,11 @@ var state = State.Unititalized
 func _ready():
 	event_list = GameDataLoader.load_events_from("res://game_data/events/")
 	status_list = GameDataLoader.load_status_from("res://game_data/status/")
-
-func start_from_save(save_path: String):
+	for event in event_list:
+		data_event_dict[event.id] = event
+	
+func start_from_save(save_data):
 	if state != State.Unititalized: return
-	var save_data = $SaveManager.read_save(save_path)
 	var sim = GameSimulation.from(event_list, status_list, save_data, simulation_scene)
 	_begin(sim)
 
@@ -37,6 +41,8 @@ func _begin(sim: GameSimulation):
 	state = State.Playing
 	_connect_sim(sim)
 	_connect_ui($UI)
+	for status_id in starting_status_ids:
+		sim.apply_status(status_id)
 	add_child(sim)
 
 func _connect_sim(sim: GameSimulation):
