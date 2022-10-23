@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/paper_forstatus_blue_withtape.png-513b456fcf687b9636293703d5d6c33b.stex"
+path="res://.import/paper_forstatus_blue_withtape.png-0f8ac4440fcd74c9bc94ffca5385610d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game_textures/icon_status/paper_forstatus_blue_withtape.png"
-dest_files=[ "res://.import/paper_forstatus_blue_withtape.png-513b456fcf687b9636293703d5d6c33b.stex" ]
+source_file="res://assets/game_textures/paper_forstatus_blue_withtape.png"
+dest_files=[ "res://.import/paper_forstatus_blue_withtape.png-0f8ac4440fcd74c9bc94ffca5385610d.stex" ]
 
 [params]
 
