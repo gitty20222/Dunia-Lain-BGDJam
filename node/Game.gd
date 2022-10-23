@@ -68,6 +68,8 @@ func _connect_ui(ui: Node):
 	ui.connect("accept", self, "_on_UI_accept")
 	ui.connect("decline", self, "_on_UI_decline")
 	ui.connect("go", self, "_on_UI_go")
+	ui.connect("player_apply_status", self, "_on_UI_player_apply_status")
+	ui.connect("player_remove_status", self, "_on_UI_player_remove_status")
 
 func _on_Simulation_health_updated(old, new):
 	ui.update_health(old, new)
@@ -116,3 +118,9 @@ func _on_UI_go(priorities):
 			ui.queue_events([event_id])
 		var ending:
 			ui.game_ended(ending)
+
+func _on_UI_player_apply_status(status_id):
+	sim.apply_status(status_id)
+	
+func _on_UI_player_remove_status(status_id):
+	sim.remove_status(status_id)
