@@ -303,6 +303,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "69%"
 
 [node name="DateLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 789.0
 margin_right = 874.0
 margin_bottom = 46.0

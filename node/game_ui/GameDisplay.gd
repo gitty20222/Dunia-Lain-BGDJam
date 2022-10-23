@@ -9,6 +9,8 @@ signal decline(event_idx)
 signal player_apply_status(status_id) # player-triggered status application/removal
 signal player_remove_status(status_id)
 
+onready var day_label = get_node("%DateLabel")
+
 onready var health = get_node("%JasmaniValueLabel")
 onready var happiness = get_node("%KejiwaanValueLabel")
 onready var money = get_node("%RupiahValueLabel")
@@ -30,6 +32,9 @@ onready var gymMemberIcon = get_node("%GymMemberStatus")
 var event_queue := []
 var current_event_idx := 0
 var n_events_this_turn := 0
+
+func update_day(new_value):
+	day_label.text = str(new_value) + "/30"
 
 # interface
 func update_health(new_value):
