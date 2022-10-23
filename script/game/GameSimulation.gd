@@ -203,9 +203,6 @@ func play(priorities: Dictionary, events_to_draw: int):
 	for status_id in active_statuses.keys():
 		_process_effects(data_status_repo[status_id].per_turn_effects)
 	
-	# Apply effects of priorities
-	_process_priorities(priorities)
-	
 	# GAME OVER
 	if health <= 0:
 		 return Enums.Ending.GameOver_Died
@@ -213,6 +210,9 @@ func play(priorities: Dictionary, events_to_draw: int):
 		 return Enums.Ending.GameOver_Depressed
 	if money < 0:
 		 return Enums.Ending.GameOver_Destitute
+	
+	# Apply effects of priorities
+	_process_priorities(priorities)
 	
 	# ENDING
 	if turn_number > 30:

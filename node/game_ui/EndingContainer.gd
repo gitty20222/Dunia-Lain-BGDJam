@@ -4,12 +4,12 @@ const Enums = preload("res://script/Enums.gd")
 
 signal return_to_main_menu()
 
-export(Texture) var pic_died: Texture
-export(Texture) var pic_depressed: Texture
-export(Texture) var pic_destitute: Texture
-export(Texture) var pic_healthy: Texture
-export(Texture) var pic_happy: Texture
-export(Texture) var pic_rich: Texture
+var pic_died: Texture = preload("res://assets/game_textures/ending/ilustrasi_ending_mati.png")
+var pic_depressed: Texture = preload("res://assets/game_textures/ending/ilustrasi_ending_depresi.png")
+var pic_destitute: Texture = preload("res://assets/game_textures/ending/ilustrasi_ending_miskin.png")
+var pic_healthy: Texture = preload("res://assets/game_textures/ending/ilustrasi_ending_jasmani.png")
+var pic_happy: Texture = preload("res://assets/game_textures/ending/ilustrasi_ending_kejiwaan.png")
+var pic_rich: Texture = preload("res://assets/game_textures/ending/ilustrasi_ending_uang.png")
 #export(Texture) var pic_healthy_happy: Texture
 #export(Texture) var pic_healthy_rich: Texture
 #export(Texture) var pic_happy_rich: Texture
@@ -110,19 +110,25 @@ func set_ending(ending):
 		Enums.Ending.HealthyHappyRich:
 			ending_data = healthy_happy_rich
 	
-#	get_node("%TextureRect").texture = ending_data.texture
 	if ending_data.texture.size() == 1:
 		get_node("%TextureRect").texture = ending_data.texture[0]
+		get_node("%TextureRect").visible = true
 	
 	if ending_data.texture.size() == 2:
 		get_node("%TextureRect").texture = ending_data.texture[0]
+		get_node("%TextureRect").visible = true
 		get_node("%TextureRect3").texture = ending_data.texture[1]
+		get_node("%TextureRect3").visible = true
 		
 	if ending_data.texture.size() == 2:
 		get_node("%TextureRect").texture = ending_data.texture[0]
 		get_node("%TextureRect3").texture = ending_data.texture[1]
 		get_node("%TextureRect4").texture = ending_data.texture[2]
 		get_node("%TextureRect2").texture = ending_data.texture[3]
+		get_node("%TextureRect").visible = true
+		get_node("%TextureRect3").visible = true
+		get_node("%TextureRect4").visible = true
+		get_node("%TextureRect2").visible = true
 	
 	get_node("%EndingTitle").text = ending_data.title
 	get_node("%EndingText").text = ending_data.description

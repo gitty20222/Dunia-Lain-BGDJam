@@ -52,6 +52,7 @@ func _on_Game_game_ended(ending):
 	var game = current_scene
 
 	var ending_node = end_scene.instance()
+	ending_node.set_ending(ending)
 	_connect_ending(ending_node)
 	current_scene = ending_node
 	add_child(ending_node)

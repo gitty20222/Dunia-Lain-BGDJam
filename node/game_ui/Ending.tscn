@@ -1,15 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://node/game_ui/EndingContainer.gd" type="Script" id=1]
 [ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
 [ext_resource path="res://node/game_ui/VPlanner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/font/I am Seventeen.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_jasmani.png" type="Texture" id=5]
-[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_kejiwaan.png" type="Texture" id=6]
-[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_miskin.png" type="Texture" id=7]
 [ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_uang.png" type="Texture" id=8]
-[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_depresi.png" type="Texture" id=9]
-[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_mati.png" type="Texture" id=10]
 [ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_thankyounote.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -34,12 +29,6 @@ font_data = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-pic_died = ExtResource( 10 )
-pic_depressed = ExtResource( 9 )
-pic_destitute = ExtResource( 7 )
-pic_healthy = ExtResource( 5 )
-pic_happy = ExtResource( 6 )
-pic_rich = ExtResource( 8 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_right = 1280.0

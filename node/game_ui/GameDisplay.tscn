@@ -1345,6 +1345,7 @@ custom_constants/margin_right = 0
 
 [node name="VAcara" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
+visible = false
 margin_right = 644.0
 margin_bottom = 312.0
 
