@@ -2,16 +2,18 @@ extends MarginContainer
 
 const Enums = preload("res://script/Enums.gd")
 
+signal return_to_main_menu()
+
 export(Texture) var pic_died: Texture
 export(Texture) var pic_depressed: Texture
 export(Texture) var pic_destitute: Texture
 export(Texture) var pic_healthy: Texture
 export(Texture) var pic_happy: Texture
 export(Texture) var pic_rich: Texture
-export(Texture) var pic_healthy_happy: Texture
-export(Texture) var pic_healthy_rich: Texture
-export(Texture) var pic_happy_rich: Texture
-export(Texture) var pic_healthy_happy_rich: Texture
+#export(Texture) var pic_healthy_happy: Texture
+#export(Texture) var pic_healthy_rich: Texture
+#export(Texture) var pic_happy_rich: Texture
+#export(Texture) var pic_healthy_happy_rich: Texture
 
 const title_died := "Meninggal"
 const title_depressed := "Depresi"
@@ -129,5 +131,4 @@ func set_ending(ending):
 
 func _on_MarginContainer_gui_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		get_tree().reload_current_scene()
-	pass # Replace with function body.
+		emit_signal("return_to_main_menu")
