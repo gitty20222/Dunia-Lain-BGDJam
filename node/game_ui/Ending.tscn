@@ -1,28 +1,187 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://node/game_ui/EndingContainer.gd" type="Script" id=1]
+[ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
+[ext_resource path="res://node/game_ui/VPlanner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/font/I am Seventeen.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_jasmani.png" type="Texture" id=5]
+[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_kejiwaan.png" type="Texture" id=6]
+[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_miskin.png" type="Texture" id=7]
+[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_uang.png" type="Texture" id=8]
+[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_depresi.png" type="Texture" id=9]
+[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_mati.png" type="Texture" id=10]
+[ext_resource path="res://assets/game_textures/ending/ilustrasi_ending_thankyounote.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1600, 900 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+extra_spacing_top = -5
+extra_spacing_space = -5
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 35
+font_data = ExtResource( 4 )
 
 [node name="Ending" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+pic_died = ExtResource( 10 )
+pic_depressed = ExtResource( 9 )
+pic_destitute = ExtResource( 7 )
+pic_healthy = ExtResource( 5 )
+pic_happy = ExtResource( 6 )
+pic_rich = ExtResource( 8 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 margin_right = 1280.0
 margin_bottom = 720.0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
 margin_right = 1280.0
+margin_bottom = 720.0
 
-[node name="EndingTitle" type="Label" parent="VBoxContainer"]
-unique_name_in_owner = true
-margin_top = 4.0
-margin_right = 1280.0
-margin_bottom = 18.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+margin_right = 264.0
+margin_bottom = 720.0
+custom_constants/margin_top = 55
+custom_constants/margin_left = 121
+custom_constants/margin_bottom = 0
 
-[node name="EndingText" type="Label" parent="VBoxContainer"]
-unique_name_in_owner = true
-margin_top = 22.0
+[node name="VPlanner" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer" instance=ExtResource( 3 )]
+margin_left = 121.0
+margin_top = 55.0
+margin_right = 264.0
+margin_bottom = 720.0
+custom_constants/separation = -26
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+margin_left = 268.0
 margin_right = 1280.0
-margin_bottom = 36.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+custom_constants/margin_top = 179
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+margin_top = 179.0
+margin_right = 1012.0
+margin_bottom = 720.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+margin_right = 1012.0
+margin_bottom = 189.0
+custom_constants/margin_top = -36
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3"]
+margin_top = -36.0
+margin_right = 1012.0
+margin_bottom = 189.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 381.0
+margin_right = 631.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 250, 225 )
+texture = ExtResource( 8 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+margin_left = 254.0
+margin_right = 504.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 250, 200 )
+texture = ExtResource( 8 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+margin_left = 381.0
+margin_right = 631.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 250, 200 )
+texture = ExtResource( 8 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+margin_left = 762.0
+margin_right = 1012.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 250, 200 )
+texture = ExtResource( 11 )
+expand = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 193.0
+margin_right = 1012.0
+margin_bottom = 267.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="EndingTitle" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 433.0
+margin_right = 579.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Miskin"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 271.0
+margin_right = 1012.0
+margin_bottom = 444.0
+custom_constants/margin_right = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 47
+
+[node name="EndingText" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+margin_left = 100.0
+margin_right = 912.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 0, 100 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Never gonna give you up, never gonna let you down, Never gonna make you cry. Never gonna say goodbye. Never gonna tell a lie and hurt you, "
+align = 1
+autowrap = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 448.0
+margin_right = 1012.0
+margin_bottom = 500.0
+custom_constants/margin_left = 601
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer2"]
+margin_left = 601.0
+margin_right = 1012.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer2/MarginContainer"]
+margin_right = 411.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Kembali ke Menu Utama"
+
+[connection signal="gui_input" from="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer2/MarginContainer" to="." method="_on_MarginContainer_gui_input"]
