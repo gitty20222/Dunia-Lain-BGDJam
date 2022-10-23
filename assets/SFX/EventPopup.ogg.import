@@ -11,5 +11,5 @@ dest_files=[ "res://.import/EventPopup.ogg-abe133e9f2102750a259bc2a038dcf37.oggs
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

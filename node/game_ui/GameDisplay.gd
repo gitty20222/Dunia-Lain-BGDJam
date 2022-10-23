@@ -175,18 +175,21 @@ func _on_next_pressed(event: InputEvent):
 			"sleep": tidur_priority,
 			"social": sosial_priority
 		})
+		get_node("%NextDayAudio").play()
 
 func _on_accept_pressed(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		emit_signal("accept", current_event_idx)
 		current_event_idx += 1
 		_display_event()
+		get_node("%EventPopupAudio").play()
 
 func _on_decline_pressed(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		emit_signal("decline", current_event_idx)
 		current_event_idx += 1
 		_display_event()
+		get_node("%EventPopupAudio").play()
 
 func _on_remove_status_pressed(status_name: String, status_id: String):
 	emit_signal("player_remove_status", status_id)

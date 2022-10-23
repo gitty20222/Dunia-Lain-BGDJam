@@ -11,5 +11,5 @@ dest_files=[ "res://.import/NextDay.ogg-1aee7d5493e8bb93173a5bcd20f7ed9c.oggstr"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
