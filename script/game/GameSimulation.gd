@@ -37,7 +37,7 @@ var turn_number := 1
 
 var health: int = 70 setget _set_health
 var happiness: int = 70 setget _set_happiness
-var money := 30.0 setget _set_money
+var money: int = 30 setget _set_money
 
 var fitness_value: int = 60 setget _set_fitness_value
 var work_value: int = 60 setget _set_work_value
@@ -66,7 +66,8 @@ func _set_happiness(value: int):
 	emit_signal("happiness_updated", happiness, value)
 	happiness = value
 
-func _set_money(value: float):
+func _set_money(value: int):
+	value = clamp(value, 0, 100)
 	emit_signal("money_updated", money, value)
 	money = value
 
@@ -430,7 +431,7 @@ func _add_health_point(amount: int):
 func _add_happiness_point(amount: int):
 	_set_happiness(happiness + amount)
 
-func _add_money(amount: float):
+func _add_money(amount: int):
 	_set_money(money + amount)
 
 func _add_fitness_value_point(amount: int):
