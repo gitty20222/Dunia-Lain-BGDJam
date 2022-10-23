@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "membershipgym"
 title = "Berolahraga di Gym"
-description = "Mungkin berolahraga di gym dapat membuatku lebih bertenaga dalam menjalani hari.."
+description = "Mungkin berolahraga di gym dapat membuatku lebih bertenaga dalam menjalani hari..
+
+(Efek: +2 Jasmani/hari, +1 Diet & Olahraga/hari, -2 Uang/hari)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]

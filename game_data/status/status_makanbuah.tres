@@ -7,7 +7,7 @@ script = ExtResource( 1 )
 id = "status_makanbuah"
 title = "Makan Buah"
 per_turn_effects = {
-"add_fitness_value": 1,
+"add_fitness_value": 3,
 "add_happiness": 0,
 "add_health": 1,
 "add_money": -1,

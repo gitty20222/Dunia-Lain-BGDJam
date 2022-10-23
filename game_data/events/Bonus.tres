@@ -6,12 +6,14 @@
 script = ExtResource( 1 )
 id = "bonus"
 title = "Dapat Bonus"
-description = "Aku mendapat bonus  dari atasanku karena kinerja yang baik!"
+description = "Aku mendapat bonus  dari atasanku karena kinerja yang baik!
+
+(Efek: +4 Uang)"
 auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3", "status_jabatan4", "status_jabatan5" ]
 base_weight = 1
-multiplier_if_tag_present = ""
+multiplier_if_tag_present = "status_makandiluar 20;"
 multiplier_if_tag_not_present = "work_60 10;
 work_61 10;
 work_62 10;

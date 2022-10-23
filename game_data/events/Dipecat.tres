@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "dipecat"
 title = "Dipecat"
-description = "Aku dipecat.."
+description = "Aku dipecat..
+
+(Efek: Kerja = 0, Uang pemasukan = 0/hari)"
 auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3" ]

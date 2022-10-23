@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "atasantidakpuas"
 title = "Teguran dari Atasan"
-description = "Aku mendapat teguran dari atasanku karena kinerja yang kurang baik, padahal menurutku usaha saya sudah cukup.."
+description = "Aku mendapat teguran dari atasanku karena kinerja yang kurang baik, padahal menurutku usaha saya sudah cukup..
+
+(Efek: Uang -5, Kerja -10)"
 auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3", "status_jabatan4", "status_jabatan5" ]

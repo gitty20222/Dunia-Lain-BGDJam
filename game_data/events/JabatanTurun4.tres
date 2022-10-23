@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "jabatanturun4"
 title = "Turun Jabatan"
-description = ""
+description = "Jabatanku diturunkan karena kinerja yang kurang baik..
+
+(Efek: -2 Uang/hari)"
 auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_atasantidakpuas", "status_jabatan5" ]
@@ -18,7 +20,7 @@ status_jabatan4 0;
 work_prlow 20;
 work_prmed 0;
 work_prhigh 0;"
-multiplier_if_tag_not_present = "Jabatanku diturunkan karena kinerja yang kurang baik.."
+multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {

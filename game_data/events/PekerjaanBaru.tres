@@ -6,7 +6,11 @@
 script = ExtResource( 1 )
 id = "pekerjaanbaru"
 title = "Pekerjaan Baru"
-description = "Aku mendapat teguran dari atasanku karena kinerja yang kurang baik, padahal menurutku usaha saya sudah cukup.."
+description = "Pekerjaan baru, semoga lebih baik dari sebelumnya.
+
+(Efek: +60 Kerja, +4 Uang/hari)
+
+"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_dipecat" ]
