@@ -35,14 +35,14 @@ var turn_number := 1
 
 # Consumable Resources
 
-var health: int = 70 setget _set_health
-var happiness: int = 70 setget _set_happiness
-var money: int = 30 setget _set_money
+var health: int setget _set_health
+var happiness: int setget _set_happiness
+var money: int setget _set_money
 
-var fitness_value: int = 60 setget _set_fitness_value
-var work_value: int = 60 setget _set_work_value
-var social_value: int = 60 setget _set_social_value
-var sleep_value: int = 70 setget _set_sleep_value
+var fitness_value: int setget _set_fitness_value
+var work_value: int setget _set_work_value
+var social_value: int setget _set_social_value
+var sleep_value: int setget _set_sleep_value
 
 # Current State
 var event_tag_set := {} #(Dictionary of tags [set])
@@ -116,7 +116,18 @@ static func from(event_list: Array, status_list: Array, save: GameStateData, sce
 
 # List of all events are stored, 
 # And events are converted to weighted wheel items
-func init(event_list: Array, status_list: Array):
+# Dictionary of initial values
+func init(event_list: Array, status_list: Array, initial_values: Dictionary):
+	# Initial values
+	_set_health(initial_values["health"])
+	_set_happiness(initial_values["happiness"])
+	_set_money(initial_values["money"])
+	
+	_set_fitness_value(initial_values["fitness"])
+	_set_work_value(initial_values["work"])
+	_set_social_value(initial_values["social"])
+	_set_sleep_value(initial_values["sleep"])
+	
 	self.data_event_list = event_list
 	for event in event_list:
 		self.event_weighted_pool.append(event.as_weighted())
