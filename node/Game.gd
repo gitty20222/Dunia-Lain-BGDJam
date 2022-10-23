@@ -47,7 +47,7 @@ func _ready():
 	
 func start_from_save(save_data):
 	if state != State.Unititalized: return
-	var sim = GameSimulation.from(event_list, status_list, save_data, simulation_scene, initial_values)
+	var sim = GameSimulation.from(event_list, status_list, save_data, simulation_scene)
 	_begin(sim)
 
 func start_new():
