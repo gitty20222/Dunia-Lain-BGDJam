@@ -4,31 +4,69 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "makanmakan"
-title = "Makan Malam Bersama"
-description = "Teman kerjaku mengajak untuk pergi makan bersama di restoran setelah bekerja hari ini, ikut ngga ya?"
-auto_accept = false
+id = "bonus"
+title = "Dapat Bonus"
+description = "Aku mendapat bonus  dari atasanku karena kinerja yang baik!"
+auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3", "status_jabatan4", "status_jabatan5" ]
 base_weight = 1
-multiplier_if_tag_present = "social_prmed 40;
-social_prhigh 40;
-"
-multiplier_if_tag_not_present = ""
+multiplier_if_tag_present = ""
+multiplier_if_tag_not_present = "work_60 10;
+work_61 10;
+work_62 10;
+work_63 10;
+work_64 10;
+work_65 10;
+work_66 10;
+work_67 10;
+work_68 10;
+work_69 10;
+work_70 10;
+work_71 10;
+work_72 10;
+work_73 10;
+work_74 10;
+work_75 10;
+work_76 10;
+work_77 10;
+work_78 10;
+work_79 10;
+work_80 10;
+work_81 10;
+work_82 10;
+work_83 10;
+work_84 10;
+work_85 10;
+work_86 10;
+work_87 10;
+work_88 10;
+work_89 10;
+work_90 10;
+work_91 10;
+work_92 10;
+work_93 10;
+work_94 10;
+work_95 10;
+work_96 10;
+work_97 10;
+work_98 10;
+work_99 10;
+work_100 10;"
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {
 "add_fitness_value": 0,
-"add_happiness": 5,
+"add_happiness": 0,
 "add_health": 0,
-"add_money": -3,
+"add_money": 4,
 "add_sleep_value": 0,
-"add_social_value": 5,
-"add_work_value": 5,
+"add_social_value": 0,
+"add_work_value": 0,
 "statuses_to_add[id]": [  ],
 "statuses_to_remove[id]": [  ]
 }
-add_tags_on_accept = [ "mabuk" ]
+add_tags_on_accept = [  ]
 remove_tags_on_accept = [  ]
 effect_on_decline = {
 "add_fitness_value": 0,
