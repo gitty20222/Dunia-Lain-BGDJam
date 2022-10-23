@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "makanbuah"
 title = "Makan Buah"
-description = "Buah punya nutrisi penting untuk jaga kesehatan tapi harganya ngga murah, aku rutin makan buah ngga ya?"
+description = "Buah punya nutrisi penting untuk jaga kesehatan tapi harganya ngga murah, aku rutin makan buah ngga ya?
+
+(Efek: +3 Diet & Olahraga/hari, +1 Jasmani/hari, -1 Uang/hari)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]

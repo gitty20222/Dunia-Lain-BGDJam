@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "lembur"
 title = "Lembur"
-description = "Waktu kerja udah selesai, tapi masih banyak pekerjaan yang tersisa.. lanjut besok atau lembur ya?"
+description = "Waktu kerja udah selesai, tapi masih banyak pekerjaan yang tersisa.. lanjut besok atau lembur ya?
+
+(Efek: +3 Uang, +10 Kerja, -3 Jasmani, -5 Kejiwaan)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
