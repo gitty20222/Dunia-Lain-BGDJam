@@ -175,15 +175,21 @@ resources_spreadsheet_view/dupe_arrays=true
 config/name="Dunia Lain BGDjam"
 run/main_scene="res://node/Main.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 
 window/size/width=1280
 window/size/height=720
+window/size/resizable=false
 
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/resources_speadsheet_view/plugin.cfg" )
+
+[global]
+
+json=false
 
 [gui]
 
