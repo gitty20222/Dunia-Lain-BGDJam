@@ -9,6 +9,8 @@ signal game_ended()
 const Enums = preload("res://script/Enums.gd")
 const simulation_scene = preload("res://node/GameSimulation.tscn")
 
+const EVENTS_TO_DRAW = 1
+
 var data_event_dict: Dictionary
 var data_status_dict: Dictionary
 var event_list: Array
@@ -112,10 +114,14 @@ func _on_UI_decline(event_idx):
 	sim.decline_event(event_idx)
 
 func _on_UI_go(priorities):
-	var result = sim.play(priorities, 1)
+	var result = sim.play(priorities, EVENTS_TO_DRAW)
 	match result:
-		[var event_id]:
-			ui.queue_events([event_id])
+		TYPE_ARRAY:
+			var events := []
+			events.resize(EVENTS_TO_DRAW)
+			for event_id in result:
+				events.append(data_event_dict[event_id])
+			ui.queue_events(events)
 		var ending:
 			ui.game_ended(ending)
 
