@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
@@ -43,7 +43,8 @@
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_liathp.png" type="Texture" id=41]
 [ext_resource path="res://node/game_ui/GameDisplay.gd" type="Script" id=42]
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_gym.png" type="Texture" id=43]
-[ext_resource path="res://assets/DynamicFont/StatusRemove.tres" type="DynamicFont" id=44]
+[ext_resource path="res://assets/SFX/NextDay.ogg" type="AudioStream" id=44]
+[ext_resource path="res://assets/SFX/EventPopup.ogg" type="AudioStream" id=45]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -1603,13 +1604,13 @@ text = "n ( +/- n)"
 [node name="MarginStatus" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 238.0
 margin_right = 327.0
-margin_bottom = 345.0
+margin_bottom = 265.0
 custom_constants/margin_left = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus"]
 margin_left = 12.0
 margin_right = 327.0
-margin_bottom = 107.0
+margin_bottom = 27.0
 custom_constants/separation = 0
 
 [node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer"]
@@ -1622,167 +1623,55 @@ text = "Status"
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer"]
 margin_top = 27.0
 margin_right = 315.0
-margin_bottom = 67.0
+margin_bottom = 27.0
 custom_constants/margin_left = 30
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer"]
 margin_left = 30.0
 margin_right = 315.0
-margin_bottom = 40.0
 
-[node name="MasakSendiriStatus" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="MasakSendiriStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_right = 42.0
-margin_bottom = 56.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MasakSendiriStatus"]
-margin_right = 42.0
-margin_bottom = 56.0
-custom_constants/separation = -17
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MasakSendiriStatus/VBoxContainer"]
-margin_right = 42.0
-margin_bottom = 33.0
-custom_constants/margin_right = 18
-custom_constants/margin_left = 0
-
-[node name="Button" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MasakSendiriStatus/VBoxContainer/MarginContainer"]
-margin_right = 24.0
-margin_bottom = 33.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 44 )
-text = "X"
-flat = true
-
-[node name="MasakSendiriStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MasakSendiriStatus/VBoxContainer"]
-margin_top = 16.0
-margin_right = 42.0
-margin_bottom = 56.0
+margin_right = 40.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 37 )
 expand = true
 
+[node name="MakanBuahStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_left = 46.0
-margin_right = 88.0
-margin_bottom = 56.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanBuahStatus"]
-margin_right = 42.0
-margin_bottom = 56.0
-custom_constants/separation = -17
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanBuahStatus/VBoxContainer"]
-margin_right = 42.0
-margin_bottom = 33.0
-custom_constants/margin_right = 18
-custom_constants/margin_left = 0
-
-[node name="Button" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanBuahStatus/VBoxContainer/MarginContainer"]
-margin_right = 24.0
-margin_bottom = 33.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 44 )
-text = "X"
-flat = true
-
-[node name="MakanBuahStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanBuahStatus/VBoxContainer"]
-margin_top = 16.0
-margin_right = 42.0
-margin_bottom = 56.0
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 30 )
 expand = true
 
+[node name="MakanLuarStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_left = 92.0
-margin_right = 134.0
-margin_bottom = 56.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanLuarStatus"]
-margin_right = 42.0
-margin_bottom = 56.0
-custom_constants/separation = -17
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanLuarStatus/VBoxContainer"]
-margin_right = 42.0
-margin_bottom = 33.0
-custom_constants/margin_right = 18
-custom_constants/margin_left = 0
-
-[node name="Button" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanLuarStatus/VBoxContainer/MarginContainer"]
-margin_right = 24.0
-margin_bottom = 33.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 44 )
-text = "X"
-flat = true
-
-[node name="MakanLuarStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanLuarStatus/VBoxContainer"]
-margin_top = 16.0
-margin_right = 42.0
-margin_bottom = 56.0
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 29 )
 expand = true
 
+[node name="SmokerStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_left = 138.0
-margin_right = 180.0
-margin_bottom = 56.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/SmokerStatus"]
-margin_right = 42.0
-margin_bottom = 56.0
-custom_constants/separation = -17
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/SmokerStatus/VBoxContainer"]
-margin_right = 42.0
-margin_bottom = 33.0
-custom_constants/margin_right = 18
-custom_constants/margin_left = 0
-
-[node name="Button" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/SmokerStatus/VBoxContainer/MarginContainer"]
-margin_right = 24.0
-margin_bottom = 33.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 44 )
-text = "X"
-flat = true
-
-[node name="SmokerStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/SmokerStatus/VBoxContainer"]
-margin_top = 16.0
-margin_right = 42.0
-margin_bottom = 56.0
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 36 )
 expand = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer"]
-margin_top = 67.0
 margin_top = 27.0
 margin_right = 315.0
-margin_bottom = 107.0
 margin_bottom = 27.0
 custom_constants/margin_left = -3
 
@@ -1790,155 +1679,47 @@ custom_constants/margin_left = -3
 margin_left = -3.0
 margin_right = 315.0
 
+[node name="NaikGajiStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_right = 42.0
-margin_bottom = 56.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikGajiStatus"]
-margin_right = 42.0
-margin_bottom = 56.0
-custom_constants/separation = -17
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikGajiStatus/VBoxContainer"]
-margin_right = 42.0
-margin_bottom = 33.0
-custom_constants/margin_right = 18
-custom_constants/margin_left = 0
-
-[node name="Button" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikGajiStatus/VBoxContainer/MarginContainer"]
-margin_right = 24.0
-margin_bottom = 33.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 44 )
-text = "X"
-flat = true
-
-[node name="NaikGajiStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikGajiStatus/VBoxContainer"]
-margin_top = 16.0
-margin_right = 42.0
-margin_bottom = 56.0
+margin_right = 40.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 40 )
 expand = true
 
-[node name="NaikJabatanStatus" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="NaikJabatanStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_left = 46.0
-margin_right = 88.0
-margin_bottom = 56.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikJabatanStatus"]
-margin_right = 42.0
-margin_bottom = 56.0
-custom_constants/separation = -17
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikJabatanStatus/VBoxContainer"]
-margin_right = 42.0
-margin_bottom = 33.0
-custom_constants/margin_right = 18
-custom_constants/margin_left = 0
-
-[node name="Button" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikJabatanStatus/VBoxContainer/MarginContainer"]
-margin_right = 24.0
-margin_bottom = 33.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 44 )
-text = "X"
-flat = true
-
-[node name="NaikJabatanStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikJabatanStatus/VBoxContainer"]
-margin_top = 16.0
-margin_right = 42.0
-margin_bottom = 56.0
+margin_right = 40.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 39 )
 expand = true
 
+[node name="LihatHpStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_left = 92.0
-margin_right = 134.0
-margin_bottom = 56.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/LihatHpStatus"]
-margin_right = 42.0
-margin_bottom = 56.0
-custom_constants/separation = -17
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/LihatHpStatus/VBoxContainer"]
-margin_right = 42.0
-margin_bottom = 33.0
-custom_constants/margin_right = 18
-custom_constants/margin_left = 0
-
-[node name="Button" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/LihatHpStatus/VBoxContainer/MarginContainer"]
-margin_right = 24.0
-margin_bottom = 33.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 44 )
-text = "X"
-flat = true
-
-[node name="LihatHpStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/LihatHpStatus/VBoxContainer"]
-margin_top = 16.0
-margin_right = 42.0
-margin_bottom = 56.0
+margin_right = 40.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 41 )
 expand = true
 
+[node name="InsomniaStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
-margin_left = 138.0
-margin_right = 180.0
-margin_bottom = 56.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/InsomniaStatus"]
-margin_right = 42.0
-margin_bottom = 56.0
-custom_constants/separation = -17
-
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/InsomniaStatus/VBoxContainer"]
-margin_right = 42.0
-margin_bottom = 33.0
-custom_constants/margin_right = 18
-custom_constants/margin_left = 0
-
-[node name="Button" type="Button" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/InsomniaStatus/VBoxContainer/MarginContainer"]
-margin_right = 24.0
-margin_bottom = 33.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 44 )
-text = "X"
-flat = true
-
-[node name="InsomniaStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/InsomniaStatus/VBoxContainer"]
-margin_top = 16.0
-margin_right = 42.0
-margin_bottom = 56.0
+margin_right = 40.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 38 )
 expand = true
 
+[node name="GymMemberStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 43 )
 expand = true
@@ -1982,6 +1763,14 @@ emptyPriorityStylebox = ExtResource( 15 )
 unique_name_in_owner = true
 stream = ExtResource( 16 )
 
+[node name="EventPopupAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 45 )
+
+[node name="NextDayAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 44 )
+
 [connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="." method="_on_change_diet_priority" binds= [ 0, "%DietRendah", "%DietSedang", "%DietTinggi" ]]
 [connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%DietRendah" ]]
 [connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%DietRendah" ]]
@@ -2021,12 +1810,4 @@ stream = ExtResource( 16 )
 [connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%SosialTinggi" ]]
 [connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer/VSetuju" to="." method="_on_accept_pressed"]
 [connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer/VTolak" to="." method="_on_decline_pressed"]
-[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MasakSendiriStatus/VBoxContainer/MarginContainer/Button" to="." method="_on_remove_status_pressed" binds= [ "%MasakSendiriStatus", "status_makansendiri" ]]
-[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanBuahStatus/VBoxContainer/MarginContainer/Button" to="." method="_on_remove_status_pressed" binds= [ "%MakanBuahStatus", "status_makanbuah" ]]
-[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/MakanLuarStatus/VBoxContainer/MarginContainer/Button" to="." method="_on_remove_status_pressed" binds= [ "%MakanLuarStatus", "status_makandiluar" ]]
-[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer/SmokerStatus/VBoxContainer/MarginContainer/Button" to="." method="_on_remove_status_pressed" binds= [ "%SmokerStatus", "status_merokok" ]]
-[connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikGajiStatus/VBoxContainer/MarginContainer/Button" to="." method="_on_remove_status_pressed" binds= [ "%NaikGajiStatus", "status_naikgaji" ]]
-[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/NaikJabatanStatus/VBoxContainer/MarginContainer/Button" to="." method="_on_remove_status_pressed" binds= [ "%NaikJabatanStatus", "status_jabatan1" ]]
-[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/LihatHpStatus/VBoxContainer/MarginContainer/Button" to="." method="_on_remove_status_pressed" binds= [ "%LihatHpStatus", "status_liathpsebelumtidur" ]]
-[connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer/GymMemberStatus/VBoxContainer/MarginContainer/Button" to="." method="_on_remove_status_pressed" binds= [ "%GymMemberStatus", "status_membershipgym" ]]
 [connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginGo" to="." method="_on_next_pressed"]
