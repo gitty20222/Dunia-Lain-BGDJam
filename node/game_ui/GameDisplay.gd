@@ -79,6 +79,10 @@ func add_status(status: Status):
 		smokerIcon.visible = true
 	if status.id.find("status_naikgaji") != -1:
 		naikGajiIcon.visible = true
+	if status.id.find("status_liathpsebelumtidur") != -1:
+		lihatHpIcon.visible = true
+	if status.id.find("status_membershipgym") != -1:
+		gymMemberIcon.visible = true
 		
 func remove_status(status: Status):
 	if status.id.find("status_jabatan") != -1:

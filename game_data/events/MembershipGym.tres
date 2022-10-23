@@ -28,7 +28,7 @@ effect_on_accept = {
 "add_sleep_value": 0,
 "add_social_value": 0,
 "add_work_value": 0,
-"statuses_to_add[id]": [  ],
+"statuses_to_add[id]": [ "status_membershipgym" ],
 "statuses_to_remove[id]": [  ]
 }
 add_tags_on_accept = [ "status_membershipgym" ]
