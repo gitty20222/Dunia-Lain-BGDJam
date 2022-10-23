@@ -13,7 +13,7 @@ export(Dictionary) var initial_values := {
 }
 
 signal save_requested(game_state)
-signal return_to_main_menu()
+signal game_ended(ending)
 
 const Enums = preload("res://script/Enums.gd")
 const simulation_scene = preload("res://node/GameSimulation.tscn")
@@ -72,6 +72,7 @@ func _begin(sim: GameSimulation):
 	ui.update_work(sim.work_value)
 	ui.update_sleep(sim.sleep_value)
 	ui.update_social(sim.social_value)
+	ui.update_day(sim.turn_number)
 
 func _connect_sim(sim: GameSimulation):
 	sim.connect("health_updated", self, "_on_Simulation_health_updated")
@@ -150,6 +151,7 @@ func _on_UI_go(priorities):
 	ui.update_work(sim.work_value)
 	ui.update_sleep(sim.sleep_value)
 	ui.update_social(sim.social_value)
+	ui.update_day(sim.turn_number)
 
 	match typeof(result):
 		TYPE_ARRAY:
@@ -158,7 +160,8 @@ func _on_UI_go(priorities):
 				events.append(data_event_dict[event_id])
 			ui.queue_events(events)
 		_:
-			ui.game_ended(result)
+			ui.queue_free()
+			emit_signal("game_ended", result)
 
 func _on_UI_player_apply_status(status_id):
 	sim.apply_status(status_id)

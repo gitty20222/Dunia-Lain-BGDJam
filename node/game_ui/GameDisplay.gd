@@ -107,30 +107,6 @@ func queue_events(events: Array): # Array(Event resource object) that were drawn
 	
 	_display_event()
 
-# interface
-func game_ended(ending): # Ending Enum
-	match ending:
-		Enums.Ending.GameOver_Died:
-			pass
-		Enums.Ending.GameOver_Depressed:
-			pass
-		Enums.Ending.GameOver_Destitute:
-			pass
-		Enums.Ending.Healthy:
-			pass
-		Enums.Ending.Happy:
-			pass
-		Enums.Ending.Rich:
-			pass
-		Enums.Ending.HealthyHappy:
-			pass
-		Enums.Ending.HealthyRich:
-			pass
-		Enums.Ending.HappyRich:
-			pass
-		Enums.Ending.HealthyHappyRich:
-			pass
-
 #handle input
 func _on_priority_label_gui_input(event: InputEvent, 
 	main_priority_name: String, 

@@ -3,11 +3,13 @@ extends Node
 const SAVE_PATH = "user://save.tres"
 const main_menu_scene = preload("res://node/game_ui/MainMenu.tscn")
 const game_scene = preload("res://node/Game.tscn")
+#const end_scene
 
 var dir = Directory.new()
 
 enum GameScene {
 	MainMenu,
+	Ending,
 	Game
 }
 
@@ -57,16 +59,17 @@ func _on_Main_Menu_new_game():
 #	else:
 #		game.start_new()
 
-func _on_Game_game_ended():
+func _on_Game_game_ended(ending):
 	if state != GameScene.Game: return
-	state = GameScene.MainMenu
+	
+	state = GameScene.Ending
 	var game = current_scene
-	
-	var main_menu = main_menu_scene.instance()
-	_connect_main_menu(main_menu)
-	current_scene = main_menu
-	add_child(main_menu)
-	
+
+#	var main_menu = main_menu_scene.instance()
+#	_connect_main_menu(main_menu)
+#	current_scene = main_menu
+#	add_child(main_menu)
+
 	game.queue_free()
 
 func _on_Game_save_requested(save_data):
@@ -79,4 +82,4 @@ func _connect_main_menu(main_menu):
 
 func _connect_game(game):
 	game.connect("save_requested", self, "_on_Game_save_requested")
-	game.connect("return_to_main_menu", self, "_on_Game_game_ended")
+	game.connect("game_ended", self, "_on_Game_game_ended")
