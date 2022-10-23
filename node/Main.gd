@@ -1,40 +1,74 @@
 extends Node
 
-const SAVE_PATH = "user://save"
+const SAVE_PATH = "user://save.tres"
+const main_menu_scene = preload("res://node/game_ui/MainMenu.tscn")
+const game_scene = preload("res://node/Game.tscn")
+#const end_scene
+
+var dir = Directory.new()
+
+enum GameScene {
+	MainMenu,
+	Ending,
+	Game
+}
+
+var state
+var current_scene: Node
 
 func _ready():
-	pass
+	state = GameScene.MainMenu
+	var main_menu = main_menu_scene.instance()
+	_connect_main_menu(main_menu)
+	current_scene = main_menu
+	add_child(main_menu)
 
-func _on_Simulation_health_updated(old, new):
-	pass # Replace with function body.
+func _on_Main_Menu_exit_game():
+	get_tree().quit()
 
-func _on_Simulation_happiness_updated(old, new):
-	pass # Replace with function body.
+func _on_Main_Menu_new_game():
+	if state != GameScene.MainMenu: return
+	
+	dir.remove(SAVE_PATH)
+	
+	state = GameScene.Game
+	var main_menu = current_scene
+	
+	var game = game_scene.instance()
+	_connect_game(game)
+	current_scene = game
+	add_child(game)
+	
+	main_menu.queue_free()
+	
+	game.start_new()
+	
+#	if dir.file_exists(SAVE_PATH):
+#		var save_data = $GameSaveManager.read_save(SAVE_PATH)
+#		game.start_from_save(save_data)
+#	else:
+#		game.start_new()
 
-func _on_Simulation_money_updated(old, new):
-	pass # Replace with function body.
+func _on_Game_game_ended(ending):
+	if state != GameScene.Game: return
+	
+	state = GameScene.Ending
+	var game = current_scene
 
-func _on_Simulation_fitness_value_updated(old, new):
-	pass # Replace with function body.
+#	var main_menu = main_menu_scene.instance()
+#	_connect_main_menu(main_menu)
+#	current_scene = main_menu
+#	add_child(main_menu)
 
-func _on_Simulation_work_value_updated(old, new):
-	pass # Replace with function body.
+	game.queue_free()
 
-func _on_Simulation_social_value_updated(old, new):
-	pass # Replace with function body.
+func _on_Game_save_requested(save_data):
+	$GameSaveManager.write_save(SAVE_PATH, save_data)
 
-func _on_Simulation_sleep_value_updated(old, new):
-	pass # Replace with function body.
+func _connect_main_menu(main_menu):
+	main_menu.connect("new_game", self, "_on_Main_Menu_new_game")
+	main_menu.connect("exit_game", self, "_on_Main_Menu_exit_game")
 
-func _on_Simulation_status_added(status_id):
-	pass # Replace with function body.
-
-func _on_Simulation_status_removed(status_id):
-	pass # Replace with function body.
-
-func _on_Simulation_turn_resolved(game_state, turn_number):
-	$SaveManager.write_save(SAVE_PATH, game_state)
-
-func _on_Simulation_turn_started(game_state, turn_number):
-	# Set calendar to be turn number
-	pass # Replace with function body.
+func _connect_game(game):
+	game.connect("save_requested", self, "_on_Game_save_requested")
+	game.connect("game_ended", self, "_on_Game_game_ended")

@@ -6,19 +6,54 @@
 script = ExtResource( 1 )
 id = "jabatanturun1"
 title = "Turun Jabatan"
-description = ""
-auto_accept = false
+description = "Jabatanku diturunkan karena kinerja yang kurang baik..
+
+(Efek: -2 Uang/hari)
+"
+auto_accept = true
 duplicates = -1
-requires_any_tag_to_trigger = [  ]
+requires_any_tag_to_trigger = [ "status_atasantidakpuas", "status_jabatan2" ]
 base_weight = 1
 multiplier_if_tag_present = "status_jabatan1 0;
 status_jabatan3 0;
 status_jabatan4 0;
 status_jabatan5 0;
-work_prlow 20;
-work_prmed 0;
-work_prhigh 0;
-"
+work_0 35;
+work_1 35;
+work_2 35;
+work_3 35;
+work_4 35;
+work_5 35;
+work_6 35;
+work_7 35;
+work_8 35;
+work_9 35;
+work_10 35;
+work_11 35;
+work_12 35;
+work_13 35;
+work_14 35;
+work_15 35;
+work_16 35;
+work_17 35;
+work_18 35;
+work_19 35;
+work_20 35;
+work_21 35;
+work_22 35;
+work_23 35;
+work_24 35;
+work_25 35;
+work_26 35;
+work_27 35;
+work_28 35;
+work_29 35;
+work_30 35;
+work_31 35;
+work_32 35;
+work_33 35;
+work_34 35;
+work_35 35;"
 multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""

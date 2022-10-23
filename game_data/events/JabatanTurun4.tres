@@ -6,10 +6,12 @@
 script = ExtResource( 1 )
 id = "jabatanturun4"
 title = "Turun Jabatan"
-description = ""
-auto_accept = false
+description = "Jabatanku diturunkan karena kinerja yang kurang baik..
+
+(Efek: -2 Uang/hari)"
+auto_accept = true
 duplicates = -1
-requires_any_tag_to_trigger = [  ]
+requires_any_tag_to_trigger = [ "status_atasantidakpuas", "status_jabatan5" ]
 base_weight = 1
 multiplier_if_tag_present = "status_jabatan1 0;
 status_jabatan2 0;

@@ -16,4 +16,4 @@ per_turn_effects = {
 "add_work_value": 0
 }
 default_duration = -1
-hidden = false
+hidden = true

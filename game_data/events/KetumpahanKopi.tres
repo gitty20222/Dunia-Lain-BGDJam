@@ -6,8 +6,10 @@
 script = ExtResource( 1 )
 id = "ketumpahankopi"
 title = "Ketumpahan Kopi"
-description = "Atasan aku cukup gegabah dan tidak sengaja menumpahkan kopi panasnya kearahku karena dia menabrak salah satu karyawan saat berjalan..dia minta maaf setelahnya"
-auto_accept = false
+description = "Atasan aku cukup gegabah dan tidak sengaja menumpahkan kopi panasnya kearahku karena dia menabrak salah satu karyawan saat berjalan..dia minta maaf setelahnya
+
+(Efek: +10 Kerja, -3 Jasmani, -5 Kejiwaan)"
+auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
 base_weight = 1

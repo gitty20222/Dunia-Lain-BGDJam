@@ -1,0 +1,75 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://script/game/Event.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "ketiduranpaskerja"
+title = "Ketiduran Saat Kerja"
+description = "Aku ketahuan tertidur saat bekerja dan ditegur oleh atasanku..
+
+(Efek: -10 Kerja, +5 Kejiwaan)"
+auto_accept = true
+duplicates = -1
+requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3", "status_jabatan4", "status_jabatan5" ]
+base_weight = 1
+multiplier_if_tag_present = ""
+multiplier_if_tag_not_present = "sleep_0 35;
+sleep_1 35;
+sleep_2 35;
+sleep_3 35;
+sleep_4 35;
+sleep_5 35;
+sleep_6 35;
+sleep_7 35;
+sleep_8 35;
+sleep_9 35;
+sleep_10 35;
+sleep_11 35;
+sleep_12 35;
+sleep_13 35;
+sleep_14 35;
+sleep_15 35;
+sleep_16 35;
+sleep_17 35;
+sleep_18 35;
+sleep_19 35;
+sleep_20 35;
+sleep_21 35;
+sleep_22 35;
+sleep_23 35;
+sleep_24 35;
+sleep_25 35;
+sleep_26 35;
+sleep_27 35;
+sleep_28 35;
+sleep_29 35;
+sleep_30 35;"
+max_tags_present = ""
+min_tags_present = ""
+effect_on_accept = {
+"add_fitness_value": 0,
+"add_happiness": -5,
+"add_health": 0,
+"add_money": 0,
+"add_sleep_value": 0,
+"add_social_value": 0,
+"add_work_value": -10,
+"statuses_to_add[id]": [ "status_atasantidakpuas" ],
+"statuses_to_remove[id]": [  ]
+}
+add_tags_on_accept = [  ]
+remove_tags_on_accept = [  ]
+effect_on_decline = {
+"add_fitness_value": 0,
+"add_happiness": 0,
+"add_health": 0,
+"add_money": 0,
+"add_sleep_value": 0,
+"add_social_value": -5,
+"add_work_value": 0,
+"statuses_to_add[id]": [  ],
+"statuses_to_remove[id]": [  ]
+}
+add_tags_on_decline = [  ]
+remove_tags_on_decline = [  ]
