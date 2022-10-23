@@ -33,6 +33,17 @@ var event_weighted_pool := [] # Array(Event as FortuneWheelItem)
 var turn_number := 1
 
 # Consumable Resources
+
+const resource_strings = [
+	"health",
+	"happiness",
+	"money",
+	"fitness",
+	"work",
+	"social",
+	"sleep"
+]
+
 var health: float = 70 setget _set_health
 var happiness: float = 70 setget _set_happiness
 var money := 30.0 setget _set_money
@@ -222,6 +233,7 @@ func play(priorities: Dictionary, events_to_draw: int):
 			stat_tags,
 			event_tags
 		]
+
 	emit_signal("_factors_computed", factors)
 	
 	var event_indexes = event_selector.spin_dynamic_batch(event_weighted_pool, factors, events_to_draw)
@@ -371,7 +383,11 @@ func _parse_aspect_values(fitness_value: float, work_value: float, social_value:
 		"fitness_" + _get_value_level(fitness_value),
 		"work_" + _get_value_level(work_value),
 		"social_" + _get_value_level(social_value),
-		"sleep_" + _get_value_level(sleep_value)
+		"sleep_" + _get_value_level(sleep_value),
+		"fitness_" + _get_value_flat(fitness_value),
+		"work_" + _get_value_flat(work_value),
+		"social_" + _get_value_flat(social_value),
+		"sleep_" + _get_value_flat(sleep_value)
 	]
 	return item
 
@@ -380,10 +396,17 @@ func _parse_stats(health: float, happiness: float) -> DynamicWheelItem:
 	item.tags_array = [
 		"health_" + _get_value_level(health),
 		"happiness_" + _get_value_level(happiness),
+		"health_" + _get_value_flat(health),
+		"happiness_" + _get_value_flat(happiness)
 	]
 	return item
 
 func _get_value_level(percentage: float) -> String:
+	if percentage <= 33: return "low"
+	elif percentage <= 66: return "medium"
+	else: return "high"
+
+func _get_value_flat(percentage: float) -> String:
 	return str(percentage)
 
 func _try_add_status(status_id: String):
