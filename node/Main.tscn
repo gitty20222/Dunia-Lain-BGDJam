@@ -11,6 +11,7 @@ script = ExtResource( 3 )
 [node name="UI" parent="." instance=ExtResource( 2 )]
 
 [node name="Simulation" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
 
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource( 4 )
