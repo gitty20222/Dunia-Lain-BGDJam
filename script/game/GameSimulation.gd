@@ -298,8 +298,43 @@ func _process_effects(effects: Dictionary) -> void:
 			emit_signal("status_remove_failed", status_id)
 
 func _process_ending():
-	return Enums.Ending.Happy
-	pass
+	var vhealth = health
+	var vhappiness = happiness
+	var vmoney = clamp(money/4, 0, 100)
+	
+	# All same
+	if vhealth == vhappiness and vhealth == vmoney:
+		return Enums.Ending.HealthyHappyRich
+	# Health distinct
+	elif vhappiness == vmoney:
+		if vhealth < vhappiness:
+			return Enums.Ending.HappyRich
+		else:
+			return Enums.Ending.Healthy
+	# Happiness distinct
+	elif vhealth == vmoney:
+		if vhappiness < vhealth:
+			return Enums.Ending.HealthyRich
+		else:
+			return Enums.Ending.Happy
+	# Money distinct
+	elif vhealth == vhappiness:
+		if vmoney < vhealth:
+			return Enums.Ending.HealthyHappy
+		else:
+			return Enums.Ending.Rich
+	# All distinct
+	else:
+		var maximum = max(max(vhealth, happiness), vmoney)
+		match maximum:
+			vhealth:
+				return Enums.Ending.Healthy
+			vhappiness:
+				return Enums.Ending.Happy
+			_:
+				return Enums.Ending.Rich
+	
+	
 
 func _process_priorities(priorities: Dictionary) -> void:
 	_process_fitness_priority(priorities["fitness"])
