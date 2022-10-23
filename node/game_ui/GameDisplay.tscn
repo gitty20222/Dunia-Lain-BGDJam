@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
@@ -43,6 +43,8 @@
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_liathp.png" type="Texture" id=41]
 [ext_resource path="res://node/game_ui/GameDisplay.gd" type="Script" id=42]
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_gym.png" type="Texture" id=43]
+[ext_resource path="res://assets/SFX/NextDay.ogg" type="AudioStream" id=44]
+[ext_resource path="res://assets/SFX/EventPopup.ogg" type="AudioStream" id=45]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -1757,6 +1759,14 @@ emptyPriorityStylebox = ExtResource( 15 )
 [node name="PriorityClickAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource( 16 )
+
+[node name="EventPopupAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 45 )
+
+[node name="NextDayAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 44 )
 
 [connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="." method="_on_change_diet_priority" binds= [ 0, "%DietRendah", "%DietSedang", "%DietTinggi" ]]
 [connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%DietRendah" ]]
