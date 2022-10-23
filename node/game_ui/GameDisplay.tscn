@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://script/UI/Attributes/JasmaniValueLabel.gd" type="Script" id=28]
 [ext_resource path="res://script/UI/Attributes/KejiwaanValueLabel.gd" type="Script" id=29]
 [ext_resource path="res://script/UI/Attributes/RupiahValueLabel.gd" type="Script" id=30]
+[ext_resource path="res://node/game_ui/GameDisplay.gd" type="Script" id=31]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -68,6 +69,7 @@ region_rect = Rect2( 0, 0, 1107, 604 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 31 )
 
 [node name="MainPanel" type="Panel" parent="."]
 anchor_right = 1.0

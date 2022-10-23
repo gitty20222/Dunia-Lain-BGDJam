@@ -107,6 +107,11 @@ static func from(event_list: Array, status_list: Array, save: GameStateData, sce
 	sim.active_events = save.active_events.duplicate()
 	sim.event_history = save.event_history.duplicate()
 	
+	var arr = []
+	for event in range(save.n_events_this_turn):
+		arr.append(Enums.EventStatus.Unresolved)
+	sim.event_resolved = arr
+	
 	return sim
 
 # List of all events are stored, 

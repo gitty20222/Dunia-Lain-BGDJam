@@ -10,15 +10,23 @@ signal player_apply_status(status_id) # player-triggered status application/remo
 signal player_remove_status(status_id)
 
 # interface
-func set_health_label(value):
+func update_health(old_value, new_value):
 	pass
 
 # interface	
-func set_happiness_label(value):
+func update_happiness(old_value, new_value):
 	pass
 	
 # interface
-func set_money_label(value):
+func update_money(old_value, new_value):
+	pass
+
+# interface
+func add_status(status: Status):
+	pass
+	
+# interface
+func remove_status(status: Status):
 	pass
 
 # interface
@@ -26,5 +34,5 @@ func queue_events(events: Array): # Array(Event resource object) that were drawn
 	pass
 
 # interface
-func game_ended(): # Ending Enum
+func game_ended(ending): # Ending Enum
 	pass
