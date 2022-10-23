@@ -19,9 +19,6 @@ signal status_remove_failed(status_id)
 
 signal _factors_computed(factors)
 
-signal game_over(reason)
-signal game_ended(ending)
-
 var event_selector := FortuneWheel.new()
 
 # Game Data
@@ -56,21 +53,15 @@ func _set_health(value: float):
 	value = clamp(value, 0, 100)
 	emit_signal("health_updated", health, value)
 	health = value
-	if (value <= 0):
-		emit_signal("game_over", Enums.Ending.GameOver_Died)
 
 func _set_happiness(value: float):
 	value = clamp(value, 0, 100)
 	emit_signal("happiness_updated", happiness, value)
 	happiness = value
-	if (value <= 0):
-		emit_signal("game_over", Enums.Ending.GameOver_Depressed)
 
 func _set_money(value: float):
 	emit_signal("money_updated", money, value)
 	money = value
-	if (value <= 0):
-		emit_signal("game_over", Enums.Ending.GameOver_Destitute)
 
 func _set_fitness_value(value: float):
 	value = clamp(value, 0, 100)
