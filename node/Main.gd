@@ -26,16 +26,6 @@ func _ready():
 func _on_Main_Menu_exit_game():
 	get_tree().quit()
 
-func _on_Main_Menu_continue_game():
-	if state != GameScene.MainMenu: return
-	
-	if dir.file_exists(SAVE_PATH):
-		var save_data = $GameSaveManager.read_save(SAVE_PATH)
-		if save_data == null:
-			pass
-		else:
-			_on_Main_Menu_new_game()
-
 func _on_Main_Menu_new_game():
 	if state != GameScene.MainMenu: return
 	
@@ -77,7 +67,6 @@ func _on_Game_save_requested(save_data):
 
 func _connect_main_menu(main_menu):
 	main_menu.connect("new_game", self, "_on_Main_Menu_new_game")
-	main_menu.connect("continue_game", self, "_on_Main_Menu_continue_game")
 	main_menu.connect("exit_game", self, "_on_Main_Menu_exit_game")
 
 func _connect_game(game):

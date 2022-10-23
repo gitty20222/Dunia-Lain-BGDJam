@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "makandiluar"
 title = "Beli Makanan Luar"
-description = "Akan lebih praktis jika membeli makanan dari luar dibanding memasak"
+description = "Akan lebih praktis jika membeli makanan dari luar dibanding memasak
+
+(Efek: -2 Jasmani/hari, peluang beberapa acara kerja dan sosial +20%, peluang keracunan makanan +10%)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]

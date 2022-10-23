@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "wisatasetelahkerja"
 title = "Wisata Setelah Kerja"
-description = "Teman kerjaku mengajak untuk berwisata di perkotaan setelah bekerja hari ini, ikut ngga ya?"
+description = "Teman kerjaku mengajak untuk berwisata di perkotaan setelah bekerja hari ini, ikut ngga ya?
+
+(Efek: +5 Kejiwaan, +5 Sosial, +5 Kerja, -2 Uang)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3", "status_jabatan4", "status_jabatan5" ]

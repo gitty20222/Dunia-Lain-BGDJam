@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "naikgaji"
 title = "Kenaikan Gaji"
-description = "Karena usahaku selama bekerja, dinaikkan gajinya dari atasan"
+description = "Karena usahaku selama bekerja, dinaikkan gajinya dari atasan
+
+(Efek: +2 Uang/hari)"
 auto_accept = true
 duplicates = 4
 requires_any_tag_to_trigger = [  ]

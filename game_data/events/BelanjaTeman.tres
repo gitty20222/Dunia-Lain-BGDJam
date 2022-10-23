@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "belanjateman"
 title = "Belanja Dengan Teman"
-description = "Teman sebayaku mengajak untuk berbelanja pada waktu senggang, pergi ngga ya?"
+description = "Teman sebayaku mengajak untuk berbelanja pada waktu senggang, pergi ngga ya?
+
+(Efek: +5 Kejiwaan, +5 Kerja, -3 Uang)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]

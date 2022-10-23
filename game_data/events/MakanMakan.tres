@@ -6,13 +6,16 @@
 script = ExtResource( 1 )
 id = "makanmakan"
 title = "Makan Malam Bersama"
-description = "Teman kerjaku mengajak untuk pergi makan bersama di restoran setelah bekerja hari ini, ikut ngga ya?"
+description = "Teman kerjaku mengajak untuk pergi makan bersama di restoran setelah bekerja hari ini, ikut ngga ya?
+
+(Efek: +5 Kejiwaan, +5 Kerja, +5 Sosial, -3 Uang)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3", "status_jabatan4", "status_jabatan5" ]
 base_weight = 1
 multiplier_if_tag_present = "social_prmed 40;
 social_prhigh 40;
+status_makandiluar 20;
 "
 multiplier_if_tag_not_present = ""
 max_tags_present = ""

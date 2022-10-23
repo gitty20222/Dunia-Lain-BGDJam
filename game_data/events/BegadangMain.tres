@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "begadangmain"
 title = "Begadang Main"
-description = "Kayaknya mau main gim dulu, belum mau tidur.."
+description = "Kayaknya mau main gim dulu, belum mau tidur..
+
+(Efek: +10 Kejiwaan, -5 Jasmani, -20 Tidur)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]

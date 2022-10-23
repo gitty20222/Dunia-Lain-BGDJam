@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "ketiduranpaskerja"
 title = "Ketiduran Saat Kerja"
-description = "Aku ketahuan tertidur saat bekerja dan ditegur oleh atasanku.."
+description = "Aku ketahuan tertidur saat bekerja dan ditegur oleh atasanku..
+
+(Efek: -10 Kerja, +5 Kejiwaan)"
 auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3", "status_jabatan4", "status_jabatan5" ]

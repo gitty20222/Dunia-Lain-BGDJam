@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "acarakomunitas"
 title = "Acara Komunitas"
-description = "Sepertinya ada acara komunitas yang diadakan tidak jauh dari tempat tinggalku..ikut ngga ya?"
+description = "Sepertinya ada acara komunitas yang diadakan tidak jauh dari tempat tinggalku..ikut ngga ya?
+
+(Efek: +3 Kejiwaan)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]

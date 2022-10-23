@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "ayce"
 title = "All You Can Eat"
-description = "Teman sebaya mengajakku untuk ikut restoran all you can eat yang ada di perkotaan sebelah, pergi tidak ya?"
+description = "Teman sebaya mengajakku untuk ikut restoran all you can eat yang ada di perkotaan sebelah, pergi tidak ya?
+
+(Efek: Uang -4, Jasmani -2, +5 Kejiwaan)"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]

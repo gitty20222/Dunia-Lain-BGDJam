@@ -6,7 +6,9 @@
 script = ExtResource( 1 )
 id = "keracunan"
 title = "Keracunan Makanan"
-description = "Perutku sakit banget.."
+description = "Perutku sakit sekali..
+
+(Efek: -2 Jasmani, Kejiwaan -5, Uang -5)"
 auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
@@ -18,7 +20,7 @@ max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {
 "add_fitness_value": -5,
-"add_happiness": -10,
+"add_happiness": -5,
 "add_health": -2,
 "add_money": -5,
 "add_sleep_value": 0,
