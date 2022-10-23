@@ -17,7 +17,8 @@ signal status_removed(status_id)
 signal status_add_failed(status_id)
 signal status_remove_failed(status_id)
 
-signal turn_resolved(game_state)
+signal turn_resolved(game_state, turn_number)
+signal turn_started(game_state, turn_number)
 
 signal _factors_computed(factors)
 
@@ -33,16 +34,6 @@ var event_weighted_pool := [] # Array(Event as FortuneWheelItem)
 var turn_number := 1
 
 # Consumable Resources
-
-const resource_strings = [
-	"health",
-	"happiness",
-	"money",
-	"fitness",
-	"work",
-	"social",
-	"sleep"
-]
 
 var health: float = 70 setget _set_health
 var happiness: float = 70 setget _set_happiness
@@ -158,10 +149,13 @@ func decline_event(event_idx: int):
 # Advance Time
 # Returns next list of events OR Enum for gameover/ending
 func play(priorities: Dictionary, events_to_draw: int):
+	
 	# Decline any unresolved events
 	for i in range(n_events_this_turn):
 		if event_resolved[i] == Enums.EventStatus.Unresolved:
 			decline_event(i)
+	
+	# RESOLVE THE TURN
 	
 	# Process events
 	for i in range(n_events_this_turn):
@@ -182,12 +176,6 @@ func play(priorities: Dictionary, events_to_draw: int):
 				for tag in event.remove_tags_on_decline:
 					if event_tag_set.has(tag):
 						event_tag_set.erase(tag)
-	
-	n_events_this_turn = events_to_draw
-	active_events.clear()
-	event_resolved.clear()
-	active_events.resize(n_events_this_turn)
-	event_resolved.resize(n_events_this_turn)
 	
 	# Remove expired status
 	for status_id in active_statuses.keys():
@@ -214,6 +202,16 @@ func play(priorities: Dictionary, events_to_draw: int):
 	# ENDING
 	if turn_number > 30:
 		 return _process_ending()
+	
+	# Turn has been resolved
+	emit_signal("turn_resolved", GameStateData.new(self), turn_number)
+	
+	# START OF NEXT TURN
+	n_events_this_turn = events_to_draw
+	active_events.clear()
+	event_resolved.clear()
+	active_events.resize(n_events_this_turn)
+	event_resolved.resize(n_events_this_turn)
 	
 	# Compute event draw factors
 	var priority_tags = _parse_priorities(priorities)
@@ -242,8 +240,7 @@ func play(priorities: Dictionary, events_to_draw: int):
 		event_resolved[i] = Enums.EventStatus.Unresolved
 	turn_number += 1
 	
-	# Turn has been resolved
-	emit_signal("turn_resolved", GameStateData.new(self))
+	emit_signal("turn_started", GameStateData.new(self), turn_number)
 	
 	return active_events
 

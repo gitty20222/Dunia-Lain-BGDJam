@@ -24,4 +24,5 @@ script = ExtResource( 4 )
 [connection signal="status_added" from="Simulation" to="." method="_on_Simulation_status_added"]
 [connection signal="status_removed" from="Simulation" to="." method="_on_Simulation_status_removed"]
 [connection signal="turn_resolved" from="Simulation" to="." method="_on_Simulation_turn_resolved"]
+[connection signal="turn_started" from="Simulation" to="." method="_on_Simulation_turn_started"]
 [connection signal="work_value_updated" from="Simulation" to="." method="_on_Simulation_work_value_updated"]

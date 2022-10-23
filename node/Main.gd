@@ -32,5 +32,9 @@ func _on_Simulation_status_added(status_id):
 func _on_Simulation_status_removed(status_id):
 	pass # Replace with function body.
 
-func _on_Simulation_turn_resolved(game_state):
+func _on_Simulation_turn_resolved(game_state, turn_number):
+	$SaveManager.write_save(SAVE_PATH, game_state)
+
+func _on_Simulation_turn_started(game_state, turn_number):
+	# Set calendar to be turn number
 	pass # Replace with function body.
