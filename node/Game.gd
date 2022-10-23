@@ -83,16 +83,16 @@ func _on_Simulation_money_updated(old, new):
 	ui.update_money(old, new)
 
 func _on_Simulation_fitness_value_updated(old, new):
-	pass # Replace with function body.
+	ui.update_fitness_value(old, new)
 
 func _on_Simulation_work_value_updated(old, new):
-	pass # Replace with function body.
+	ui.update_work_value(old, new)
 
 func _on_Simulation_social_value_updated(old, new):
-	pass # Replace with function body.
+	ui.update_social_value(old, new)
 
 func _on_Simulation_sleep_value_updated(old, new):
-	pass # Replace with function body.
+	ui.update_sleep_value(old, new)
 
 func _on_Simulation_status_added(status_id):
 	ui.add_status(data_status_dict[status_id])
