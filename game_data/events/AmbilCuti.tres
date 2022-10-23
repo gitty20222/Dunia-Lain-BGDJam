@@ -11,10 +11,9 @@ auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
 base_weight = 1
-multiplier_per_tag = ""
 multiplier_if_tag_present = ""
-multiplier_if_tag_not_present = "work_0 40;
-work_1 40;"
+multiplier_if_tag_not_present = "work_prlow 40;
+work_prmed 40;"
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {

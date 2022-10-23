@@ -10,9 +10,10 @@ description = "Atasan aku cukup gegabah dan tidak sengaja menumpahkan kopi panas
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
-base_weight = 10
-multiplier_per_tag = ""
-multiplier_if_tag_present = ""
+base_weight = 1
+multiplier_if_tag_present = "work_prlow 10;
+work_prmed 10;
+work_prhigh 10;"
 multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""

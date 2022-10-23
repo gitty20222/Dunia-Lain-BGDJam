@@ -11,10 +11,9 @@ auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
 base_weight = 1
-multiplier_per_tag = ""
-multiplier_if_tag_present = "fitness_0 0;
-fitness_1 40;
-fitness_2 40;
+multiplier_if_tag_present = "fitness_prlow 0;
+fitness_prmed 40;
+fitness_prhigh 40;
 status_makanbuah 0;"
 multiplier_if_tag_not_present = "status_makanbuah 40;"
 max_tags_present = ""

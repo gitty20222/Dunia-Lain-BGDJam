@@ -10,9 +10,9 @@ description = "Perutku sakit banget.."
 auto_accept = true
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
-base_weight = 1
-multiplier_per_tag = ""
-multiplier_if_tag_present = "status_makandiluar 10;"
+base_weight = 10
+multiplier_if_tag_present = "status_makandiluar 2;
+"
 multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""

@@ -11,13 +11,12 @@ auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
 base_weight = 1
-multiplier_per_tag = ""
 multiplier_if_tag_present = "status_jabatan1 0;
 status_jabatan3 0;
 status_jabatan4 0;
 status_jabatan5 0;
-work_1 10;
-work_2 25;
+work_prmed 10;
+work_prhigh 25;
 "
 multiplier_if_tag_not_present = ""
 max_tags_present = ""

@@ -11,9 +11,8 @@ auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
 base_weight = 1
-multiplier_per_tag = ""
-multiplier_if_tag_present = "sleep_0 40;
-sleep_1 40;"
+multiplier_if_tag_present = "sleep_prlow 40;
+sleep_prmed 40;"
 multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""
