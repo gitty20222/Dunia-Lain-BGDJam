@@ -167,7 +167,7 @@ resources_spreadsheet_view/dupe_arrays=true
 [application]
 
 config/name="Dunia Lain BGDjam"
-run/main_scene="res://node/Main.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [display]
