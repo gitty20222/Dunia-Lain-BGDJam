@@ -188,10 +188,6 @@ func _on_decline_pressed(event: InputEvent):
 		current_event_idx += 1
 		_display_event()
 
-func _on_remove_status_pressed(status_name: String, status_id: String):
-	emit_signal("player_remove_status", status_id)
-	get_node(status_name).visible = false
-	pass
 
 #inner function
 
