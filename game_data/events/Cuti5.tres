@@ -6,10 +6,10 @@
 script = ExtResource( 1 )
 id = "cuti5"
 title = "Cuti"
-description = ""
+description = "Rasanya tidak ingin bekerja besok.."
 auto_accept = false
 duplicates = -1
-requires_any_tag_to_trigger = [  ]
+requires_any_tag_to_trigger = [ "status_jabatan5" ]
 base_weight = 1
 multiplier_if_tag_present = "status_jabatan1 0;
 status_jabatan2 0;
@@ -30,7 +30,7 @@ effect_on_accept = {
 "add_sleep_value": 0,
 "add_social_value": 0,
 "add_work_value": 0,
-"statuses_to_add[id]": [  ],
+"statuses_to_add[id]": [ "status_ambilcuti" ],
 "statuses_to_remove[id]": [  ]
 }
 add_tags_on_accept = [  ]
