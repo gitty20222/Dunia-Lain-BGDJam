@@ -270,7 +270,7 @@ func _process_effects(effects: Dictionary) -> void:
 	var sleep_value_to_add = effects.get("add_sleep_value")
 	
 	var status_ids_to_add = effects.get("statuses_to_add[id]")
-	var status_ids_to_remove = effects.get("statuses_to_add[id]")
+	var status_ids_to_remove = effects.get("statuses_to_remove[id]")
 	
 	if health_to_add and health_to_add != 0:
 		_set_health(health + health_to_add)
@@ -293,20 +293,22 @@ func _process_effects(effects: Dictionary) -> void:
 	if sleep_value_to_add and sleep_value_to_add != 0:
 		_add_sleep_value_point(sleep_value_to_add)
 	
-	for status_id in status_ids_to_add:
-		var default_duration = data_status_repo[status_id].default_duration
-		if active_statuses.has(status_id):
-			emit_signal("status_add_failed", status_id)
-		else:
-			active_statuses[status_id] = default_duration
-			emit_signal("status_added", status_id)
-
-	for status_id in status_ids_to_remove:
-		if active_statuses.has(status_id):
-			active_statuses.erase(status_id)
-			emit_signal("status_removed", status_id)
-		else:
-			emit_signal("status_remove_failed", status_id)
+	if status_ids_to_add:
+		for status_id in status_ids_to_add:
+			var default_duration = data_status_repo[status_id].default_duration
+			if active_statuses.has(status_id):
+				emit_signal("status_add_failed", status_id)
+			else:
+				active_statuses[status_id] = default_duration
+				emit_signal("status_added", status_id)
+	
+	if status_ids_to_remove:
+		for status_id in status_ids_to_remove:
+			if active_statuses.has(status_id):
+				active_statuses.erase(status_id)
+				emit_signal("status_removed", status_id)
+			else:
+				emit_signal("status_remove_failed", status_id)
 
 func _process_ending():
 	var vhealth = health
