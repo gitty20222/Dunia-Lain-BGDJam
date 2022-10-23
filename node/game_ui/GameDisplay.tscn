@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
@@ -28,11 +28,19 @@
 [ext_resource path="res://assets/game_textures/icon_uang_empty.png" type="Texture" id=26]
 [ext_resource path="res://assets/game_textures/icon_uang_full.png" type="Texture" id=27]
 [ext_resource path="res://assets/game_textures/statuspaper_plus_lines.png" type="Texture" id=28]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_makanluar.png" type="Texture" id=29]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_makanbuah.png" type="Texture" id=30]
 [ext_resource path="res://assets/game_textures/icon_kerja.png" type="Texture" id=31]
 [ext_resource path="res://assets/game_textures/icon_dietolahraga.png" type="Texture" id=32]
 [ext_resource path="res://assets/game_textures/icon tidur.png" type="Texture" id=33]
 [ext_resource path="res://assets/game_textures/icon_sosial.png" type="Texture" id=34]
 [ext_resource path="res://assets/font/I am Seventeen.ttf" type="DynamicFontData" id=35]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_smoker.png" type="Texture" id=36]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_makanmasaksendiri.png" type="Texture" id=37]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_insomnia.png" type="Texture" id=38]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_naikjabatan.png" type="Texture" id=39]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_naikgaji.png" type="Texture" id=40]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_liathp.png" type="Texture" id=41]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -93,6 +101,22 @@ font_data = ExtResource( 35 )
 [sub_resource type="StyleBoxTexture" id=28]
 texture = ExtResource( 28 )
 region_rect = Rect2( 0, 0, 473, 663 )
+
+[sub_resource type="DynamicFont" id=34]
+size = 25
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 35 )
+
+[sub_resource type="DynamicFont" id=35]
+size = 24
+font_data = ExtResource( 35 )
+
+[sub_resource type="DynamicFont" id=36]
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 35 )
 
 [sub_resource type="DynamicFont" id=29]
 size = 35
@@ -769,7 +793,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
-text = "Rendah"
+text = "Kecil"
 
 [node name="DietRendah" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah/VBoxContainer"]
 unique_name_in_owner = true
@@ -781,6 +805,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Kecil"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 56.0
 margin_bottom = 38.0
@@ -825,6 +850,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Sedang"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginSedang/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 88.0
 margin_bottom = 38.0
@@ -857,7 +883,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 3 )
-text = "Tinggi"
+text = "Utama"
 
 [node name="DietTinggi" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginTinggi/VBoxContainer"]
 unique_name_in_owner = true
@@ -869,6 +895,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Utama"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginTinggi/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 80.0
 margin_bottom = 38.0
@@ -901,7 +928,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 14 )
-text = "Rendah"
+text = "Kecil"
 
 [node name="KerjaRendah" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginRendah/VBoxContainer"]
 unique_name_in_owner = true
@@ -913,6 +940,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Kecil"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginRendah/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 56.0
 margin_bottom = 38.0
@@ -957,6 +985,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Sedang"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginSedang/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 88.0
 margin_bottom = 38.0
@@ -989,7 +1018,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 14 )
-text = "Tinggi"
+text = "Utama"
 
 [node name="KerjaTinggi" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginTinggi/VBoxContainer"]
 unique_name_in_owner = true
@@ -1001,6 +1030,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Utama"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginTinggi/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 80.0
 margin_bottom = 38.0
@@ -1033,7 +1063,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 13 )
-text = "Rendah"
+text = "Kecil"
 
 [node name="TidurRendah" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginRendah/VBoxContainer"]
 unique_name_in_owner = true
@@ -1045,6 +1075,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Kecil"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginRendah/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 56.0
 margin_bottom = 38.0
@@ -1089,6 +1120,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Sedang"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginSedang/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 88.0
 margin_bottom = 38.0
@@ -1121,7 +1153,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 13 )
-text = "Tinggi"
+text = "utama"
 
 [node name="TidurTinggi" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginTinggi/VBoxContainer"]
 unique_name_in_owner = true
@@ -1133,6 +1165,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Utama"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginTinggi/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 80.0
 margin_bottom = 38.0
@@ -1165,7 +1198,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 12 )
-text = "Rendah"
+text = "Kecil"
 
 [node name="SosialRendah" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginRendah/VBoxContainer"]
 unique_name_in_owner = true
@@ -1177,6 +1210,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Kecil"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginRendah/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 56.0
 margin_bottom = 38.0
@@ -1221,6 +1255,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Sedang"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginSedang/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 88.0
 margin_bottom = 38.0
@@ -1253,7 +1288,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 12 )
-text = "Tinggi"
+text = "Utama"
 
 [node name="SosialTinggi" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginTinggi/VBoxContainer"]
 unique_name_in_owner = true
@@ -1265,6 +1300,7 @@ custom_styles/normal = ExtResource( 15 )
 text = "Utama"
 
 [node name="underline" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginTinggi/VBoxContainer"]
+visible = false
 margin_top = 28.0
 margin_right = 80.0
 margin_bottom = 38.0
@@ -1413,18 +1449,238 @@ custom_constants/margin_bottom = 0
 margin_right = 418.0
 margin_bottom = 653.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="MarginStatus" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 margin_right = 418.0
 margin_bottom = 550.0
 custom_constants/margin_bottom = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus"]
 margin_right = 418.0
 margin_bottom = 550.0
 rect_min_size = Vector2( 0, 550 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 28 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer"]
+margin_right = 418.0
+margin_bottom = 550.0
+custom_constants/margin_top = 111
+custom_constants/margin_left = 91
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer"]
+margin_left = 91.0
+margin_top = 111.0
+margin_right = 418.0
+margin_bottom = 550.0
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 327.0
+margin_bottom = 38.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 34 )
+text = "Perubahan"
+
+[node name="MarginSecondAttrib" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 327.0
+margin_bottom = 234.0
+custom_constants/margin_right = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib"]
+margin_right = 247.0
+margin_bottom = 192.0
+custom_constants/separation = 0
+
+[node name="MarginSecondAttribIcon" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer"]
+margin_right = 79.0
+margin_bottom = 192.0
+custom_constants/margin_left = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribIcon"]
+margin_left = 20.0
+margin_right = 79.0
+margin_bottom = 192.0
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribIcon/VBoxContainer"]
+margin_right = 59.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 59, 45 )
+texture = ExtResource( 32 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribIcon/VBoxContainer"]
+margin_top = 49.0
+margin_right = 59.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 59, 45 )
+texture = ExtResource( 31 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribIcon/VBoxContainer"]
+margin_top = 98.0
+margin_right = 59.0
+margin_bottom = 143.0
+rect_min_size = Vector2( 59, 45 )
+texture = ExtResource( 33 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribIcon/VBoxContainer"]
+margin_top = 147.0
+margin_right = 59.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 59, 45 )
+texture = ExtResource( 34 )
+expand = true
+
+[node name="MarginSecondAttribValue" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer"]
+margin_left = 79.0
+margin_right = 209.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( -289, 74 )
+custom_constants/margin_top = 5
+custom_constants/margin_left = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue"]
+margin_left = 20.0
+margin_top = 5.0
+margin_right = 130.0
+margin_bottom = 192.0
+custom_constants/separation = 13
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+margin_right = 110.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "n ( +/- n)"
+
+[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+margin_top = 49.0
+margin_right = 110.0
+margin_bottom = 85.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "n ( +/- n)"
+
+[node name="Label3" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+margin_top = 98.0
+margin_right = 110.0
+margin_bottom = 134.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "n ( +/- n)"
+
+[node name="Label4" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+margin_top = 147.0
+margin_right = 110.0
+margin_bottom = 183.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 35 )
+text = "n ( +/- n)"
+
+[node name="MarginStatus" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 238.0
+margin_right = 327.0
+margin_bottom = 345.0
+custom_constants/margin_left = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus"]
+margin_left = 12.0
+margin_right = 327.0
+margin_bottom = 107.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer"]
+margin_right = 315.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 36 )
+text = "Status"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer"]
+margin_top = 27.0
+margin_right = 315.0
+margin_bottom = 67.0
+custom_constants/margin_left = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer"]
+margin_left = 10.0
+margin_right = 315.0
+margin_bottom = 40.0
+
+[node name="MasakSendiriStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 37 )
+expand = true
+
+[node name="MakanBuahStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 30 )
+expand = true
+
+[node name="MakanLuarStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 29 )
+expand = true
+
+[node name="SmokerStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 36 )
+expand = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer"]
+margin_top = 67.0
+margin_right = 315.0
+margin_bottom = 107.0
+custom_constants/margin_left = 29
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2"]
+margin_left = 29.0
+margin_right = 315.0
+margin_bottom = 40.0
+
+[node name="NaikGajiStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 40 )
+expand = true
+
+[node name="NaikJabatanStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 39 )
+expand = true
+
+[node name="LihatHpStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 41 )
+expand = true
+
+[node name="InsomniaStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 38 )
+expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 margin_top = 554.0
@@ -1433,7 +1689,8 @@ margin_bottom = 635.0
 custom_constants/margin_top = 29
 custom_constants/margin_left = 71
 
-[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+[node name="GoLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 margin_left = 71.0
 margin_top = 29.0
 margin_right = 418.0
