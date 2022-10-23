@@ -233,7 +233,7 @@ func play(priorities: Dictionary, events_to_draw: int):
 			stat_tags,
 			event_tags
 		]
-
+	
 	emit_signal("_factors_computed", factors)
 	
 	var event_indexes = event_selector.spin_dynamic_batch(event_weighted_pool, factors, events_to_draw)
@@ -359,10 +359,10 @@ func _parse_priorities(priorities: Dictionary) -> DynamicWheelItem:
 	
 	var tagged_item := DynamicWheelItem.new()
 	tagged_item.tags_array = [
-		"fitness_" + str(fitness_p),
-		"work_" + str(work_p),
-		"sleep_" + str(sleep_p),
-		"social_" + str(social_p)
+		"fitness_pr" + Enums.str_short_priority(fitness_p),
+		"work_pr" + Enums.str_short_priority(work_p),
+		"sleep_pr" + Enums.str_short_priority(sleep_p),
+		"social_pr" + Enums.str_short_priority(social_p)
 	]
 	
 	return tagged_item

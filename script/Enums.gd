@@ -14,6 +14,23 @@ enum EventStatus {
 	Unresolved
 }
 
+enum Priority {
+	Low = 0,
+	Medium = 1,
+	High = 2
+}
+
+static func str_short_priority(priority_enum) -> String:
+	match priority_enum:
+		Priority.Low:
+			return "low"
+		Priority.Medium:
+			return "med"
+		Priority.High:
+			return "high"
+		_:
+			return ""
+
 static func str_ending(ending_enum) -> String:
 	match ending_enum:
 		Ending.Healthy:
