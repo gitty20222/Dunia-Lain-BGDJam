@@ -37,7 +37,7 @@ var turn_number := 1
 
 var health: int = 70 setget _set_health
 var happiness: int = 70 setget _set_happiness
-var money := 30.0 setget _set_money
+var money: int = 30 setget _set_money
 
 var fitness_value: int = 60 setget _set_fitness_value
 var work_value: int = 60 setget _set_work_value
@@ -66,7 +66,7 @@ func _set_happiness(value: int):
 	emit_signal("happiness_updated", happiness, value)
 	happiness = value
 
-func _set_money(value: float):
+func _set_money(value: int):
 	emit_signal("money_updated", money, value)
 	money = value
 
@@ -225,7 +225,7 @@ func play(priorities: Dictionary, events_to_draw: int):
 		work_value,
 		social_value,
 		sleep_value)
-	var stat_tags = _parse_stats(health, happiness)
+	var stat_tags = _parse_stats(health, happiness, money)
 	var event_tags = _parse_event_tags(event_tag_set.keys())
 	
 	var factors = [ # Array(Dynamic Wheel Item)
@@ -298,8 +298,43 @@ func _process_effects(effects: Dictionary) -> void:
 			emit_signal("status_remove_failed", status_id)
 
 func _process_ending():
-	return Enums.Ending.Happy
-	pass
+	var vhealth = health
+	var vhappiness = happiness
+	var vmoney = clamp(money/4, 0, 100)
+	
+	# All same
+	if vhealth == vhappiness and vhealth == vmoney:
+		return Enums.Ending.HealthyHappyRich
+	# Health distinct
+	elif vhappiness == vmoney:
+		if vhealth < vhappiness:
+			return Enums.Ending.HappyRich
+		else:
+			return Enums.Ending.Healthy
+	# Happiness distinct
+	elif vhealth == vmoney:
+		if vhappiness < vhealth:
+			return Enums.Ending.HealthyRich
+		else:
+			return Enums.Ending.Happy
+	# Money distinct
+	elif vhealth == vhappiness:
+		if vmoney < vhealth:
+			return Enums.Ending.HealthyHappy
+		else:
+			return Enums.Ending.Rich
+	# All distinct
+	else:
+		var maximum = max(max(vhealth, happiness), vmoney)
+		match maximum:
+			vhealth:
+				return Enums.Ending.Healthy
+			vhappiness:
+				return Enums.Ending.Happy
+			_:
+				return Enums.Ending.Rich
+	
+	
 
 func _process_priorities(priorities: Dictionary) -> void:
 	_process_fitness_priority(priorities["fitness"])
@@ -392,13 +427,15 @@ func _parse_aspect_values(fitness_value: int, work_value: int, social_value: int
 	]
 	return item
 
-func _parse_stats(health: int, happiness: int) -> DynamicWheelItem:
+func _parse_stats(health: int, happiness: int, money: int) -> DynamicWheelItem:
 	var item := DynamicWheelItem.new()
 	item.tags_array = [
 		"health_" + _get_value_level(health),
 		"happiness_" + _get_value_level(happiness),
+		"money_" + _get_value_level(money),
 		"health_" + _get_value_flat(health),
-		"happiness_" + _get_value_flat(happiness)
+		"happiness_" + _get_value_flat(happiness),
+		"money_" + _get_value_flat(money),
 	]
 	return item
 
@@ -430,7 +467,7 @@ func _add_health_point(amount: int):
 func _add_happiness_point(amount: int):
 	_set_happiness(happiness + amount)
 
-func _add_money(amount: float):
+func _add_money(amount: int):
 	_set_money(money + amount)
 
 func _add_fitness_value_point(amount: int):
