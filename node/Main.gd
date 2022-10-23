@@ -1,7 +1,7 @@
 extends Node
 
 const SAVE_PATH = "user://save.tres"
-const main_menu_scene = preload("res://node/MainMenu.tscn")
+const main_menu_scene = preload("res://node/game_ui/MainMenu.tscn")
 const game_scene = preload("res://node/Game.tscn")
 
 var dir = Directory.new()
@@ -24,11 +24,21 @@ func _ready():
 func _on_Main_Menu_exit_game():
 	get_tree().quit()
 
-func _on_Main_Menu_reset_game():
-	dir.remove(SAVE_PATH)
-
-func _on_Main_Menu_play_game():
+func _on_Main_Menu_continue_game():
 	if state != GameScene.MainMenu: return
+	
+	if dir.file_exists(SAVE_PATH):
+		var save_data = $GameSaveManager.read_save(SAVE_PATH)
+		if save_data == null:
+			pass
+		else:
+			_on_Main_Menu_new_game()
+
+func _on_Main_Menu_new_game():
+	if state != GameScene.MainMenu: return
+	
+	dir.remove(SAVE_PATH)
+	
 	state = GameScene.Game
 	var main_menu = current_scene
 	
@@ -39,11 +49,13 @@ func _on_Main_Menu_play_game():
 	
 	main_menu.queue_free()
 	
-	if dir.file_exists(SAVE_PATH):
-		var save_data = $GameSaveManager.read_save(SAVE_PATH)
-		game.start_from_save(save_data)
-	else:
-		game.start_new()
+	game.start_new()
+	
+#	if dir.file_exists(SAVE_PATH):
+#		var save_data = $GameSaveManager.read_save(SAVE_PATH)
+#		game.start_from_save(save_data)
+#	else:
+#		game.start_new()
 
 func _on_Game_game_ended():
 	if state != GameScene.Game: return
@@ -61,8 +73,8 @@ func _on_Game_save_requested(save_data):
 	$GameSaveManager.write_save(SAVE_PATH)
 
 func _connect_main_menu(main_menu):
-	main_menu.connect("play_game", self, "_on_Main_Menu_play_game")
-	main_menu.connect("reset_game", self, "_on_Main_Menu_reset_game")
+	main_menu.connect("new_game", self, "_on_Main_Menu_new_game")
+	main_menu.connect("continue_game", self, "_on_Main_Menu_continue_game")
 	main_menu.connect("exit_game", self, "_on_Main_Menu_exit_game")
 
 func _connect_game(game):
