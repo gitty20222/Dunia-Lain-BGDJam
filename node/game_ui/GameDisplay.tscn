@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
@@ -27,9 +27,6 @@
 [ext_resource path="res://assets/game_textures/icon_kejiwaan_blue_full.png" type="Texture" id=25]
 [ext_resource path="res://assets/game_textures/icon_uang_empty.png" type="Texture" id=26]
 [ext_resource path="res://assets/game_textures/icon_uang_full.png" type="Texture" id=27]
-[ext_resource path="res://script/UI/Attributes/JasmaniValueLabel.gd" type="Script" id=28]
-[ext_resource path="res://script/UI/Attributes/KejiwaanValueLabel.gd" type="Script" id=29]
-[ext_resource path="res://script/UI/Attributes/RupiahValueLabel.gd" type="Script" id=30]
 [ext_resource path="res://assets/game_textures/icon_kerja.png" type="Texture" id=31]
 [ext_resource path="res://assets/game_textures/icon_dietolahraga.png" type="Texture" id=32]
 [ext_resource path="res://assets/game_textures/icon tidur.png" type="Texture" id=33]
@@ -157,13 +154,13 @@ custom_fonts/font = ExtResource( 1 )
 text = "Jasmani:"
 
 [node name="JasmaniValueLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer/HJasmani"]
+unique_name_in_owner = true
 margin_left = 178.0
 margin_right = 234.0
 margin_bottom = 46.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "69%"
-script = ExtResource( 28 )
 
 [node name="HKejiwaan" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 278.0
@@ -199,13 +196,13 @@ custom_fonts/font = ExtResource( 1 )
 text = "Kejiwaan:"
 
 [node name="KejiwaanValueLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer/HKejiwaan"]
+unique_name_in_owner = true
 margin_left = 182.0
 margin_right = 238.0
 margin_bottom = 46.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "69%"
-script = ExtResource( 29 )
 
 [node name="HKejiwaan2" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 556.0
@@ -241,13 +238,13 @@ custom_fonts/font = ExtResource( 1 )
 text = "Rupiah:"
 
 [node name="RupiahValueLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer/HKejiwaan2"]
+unique_name_in_owner = true
 margin_left = 156.0
 margin_right = 212.0
 margin_bottom = 46.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "69%"
-script = ExtResource( 30 )
 
 [node name="DateLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 835.0
