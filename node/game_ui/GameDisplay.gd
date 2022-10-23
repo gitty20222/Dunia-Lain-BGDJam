@@ -62,13 +62,38 @@ func queue_events(events: Array): # Array(Event resource object) that were drawn
 
 # interface
 func game_ended(ending): # Ending Enum
-	pass
+	match ending:
+		Enums.Ending.GameOver_Died:
+			pass
+		Enums.Ending.GameOver_Depressed:
+			pass
+		Enums.Ending.GameOver_Destitute:
+			pass
+		Enums.Ending.Healthy:
+			pass
+		Enums.Ending.Happy:
+			pass
+		Enums.Ending.Rich:
+			pass
+		Enums.Ending.HealthyHappy:
+			pass
+		Enums.Ending.HealthyRich:
+			pass
+		Enums.Ending.HappyRich:
+			pass
+		Enums.Ending.HealthyHappyRich:
+			pass
 
 func _update_ui():
 	# Update UI values
 	
+	# Stats
 	
-	# Reset delta
+	# Aspect Values
+	
+	# Statuses
+	
+	# Reset deltas
 	dhealth = 0
 	dhappiness = 0
 	dmoney = 0
