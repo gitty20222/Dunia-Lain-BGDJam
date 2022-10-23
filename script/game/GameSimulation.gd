@@ -90,9 +90,9 @@ func _set_sleep_value(value: int):
 	emit_signal("sleep_value_updated", sleep_value, value)
 	sleep_value = value
 
-static func from(event_list: Array, status_list: Array, save: GameStateData, scene) -> GameSimulation:
+static func from(event_list: Array, status_list: Array, save: GameStateData, scene, initial_values: Dictionary) -> GameSimulation:
 	var sim = scene.instance()
-	sim.init(event_list, status_list)
+	sim.init(event_list, status_list, initial_values)
 	sim.turn_number = save.turn_number
 	sim.health = save.health
 	sim.happiness = save.happiness
