@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "dipecat"
-title = "Dipecat"
+id = "pekerjaanbaru"
+title = "Pekerjaan Baru"
 description = "Aku mendapat teguran dari atasanku karena kinerja yang kurang baik, padahal menurutku usaha saya sudah cukup.."
 auto_accept = false
 duplicates = -1
