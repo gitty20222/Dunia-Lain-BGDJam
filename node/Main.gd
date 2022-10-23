@@ -70,7 +70,7 @@ func _on_Game_game_ended():
 	game.queue_free()
 
 func _on_Game_save_requested(save_data):
-	$GameSaveManager.write_save(SAVE_PATH)
+	$GameSaveManager.write_save(SAVE_PATH, save_data)
 
 func _connect_main_menu(main_menu):
 	main_menu.connect("new_game", self, "_on_Main_Menu_new_game")
@@ -79,4 +79,4 @@ func _connect_main_menu(main_menu):
 
 func _connect_game(game):
 	game.connect("save_requested", self, "_on_Game_save_requested")
-	game.connect("game_ended", self, "_on_Game_game_ended")
+	game.connect("return_to_main_menu", self, "_on_Game_game_ended")

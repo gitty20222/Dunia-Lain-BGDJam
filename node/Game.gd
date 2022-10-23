@@ -64,6 +64,14 @@ func _begin(sim: GameSimulation):
 	for status_id in starting_status_ids:
 		sim.apply_status(status_id)
 	add_child(sim)
+	
+	ui.update_health(sim.health)
+	ui.update_happiness(sim.happiness)
+	ui.update_money(sim.money)
+	ui.update_fitness(sim.fitness_value)
+	ui.update_work(sim.work_value)
+	ui.update_sleep(sim.sleep_value)
+	ui.update_social(sim.social_value)
 
 func _connect_sim(sim: GameSimulation):
 	sim.connect("health_updated", self, "_on_Simulation_health_updated")
@@ -86,31 +94,31 @@ func _connect_ui(ui: GameDisplay):
 	ui.connect("player_remove_status", self, "_on_UI_player_remove_status")
 
 func _on_Simulation_health_updated(old, new):
-	ui.update_health(new)
+#	ui.update_health(new)
 	pass
 
 func _on_Simulation_happiness_updated(old, new):
-	ui.update_happiness(new)
+#	ui.update_happiness(new)
 	pass
 
 func _on_Simulation_money_updated(old, new):
-	ui.update_money(new)
+#	ui.update_money(new)
 	pass
 
 func _on_Simulation_fitness_value_updated(old, new):
-	ui.update_fitness(new)
+#	ui.update_fitness(new)
 	pass # Replace with function body.
 
 func _on_Simulation_work_value_updated(old, new):
-	ui.update_work(new)
+#	ui.update_work(new)
 	pass # Replace with function body.
 
 func _on_Simulation_social_value_updated(old, new):
-	ui.update_social(new)
+#	ui.update_social(new)
 	pass # Replace with function body.
 
 func _on_Simulation_sleep_value_updated(old, new):
-	ui.update_sleep(new)
+#	ui.update_sleep(new)
 	pass # Replace with function body.
 
 func _on_Simulation_status_added(status_id):
@@ -143,15 +151,14 @@ func _on_UI_go(priorities):
 	ui.update_sleep(sim.sleep_value)
 	ui.update_social(sim.social_value)
 
-	match result:
+	match typeof(result):
 		TYPE_ARRAY:
 			var events := []
-			events.resize(events_to_draw)
 			for event_id in result:
 				events.append(data_event_dict[event_id])
 			ui.queue_events(events)
-		var ending:
-			ui.game_ended(ending)
+		_:
+			ui.game_ended(result)
 
 func _on_UI_player_apply_status(status_id):
 	sim.apply_status(status_id)

@@ -9,9 +9,31 @@ signal decline(event_idx)
 signal player_apply_status(status_id) # player-triggered status application/removal
 signal player_remove_status(status_id)
 
+onready var health = get_node("%JasmaniValueLabel")
+onready var happiness = get_node("%KejiwaanValueLabel")
+onready var money = get_node("%RupiahValueLabel")
+
+onready var diet_value = get_node("%DietValueLabel")
+onready var kerja_value = get_node("%KerjaValueLabel")
+onready var tidur_value = get_node("%TidurValueLabel")
+onready var sosial_value = get_node("%SosialValueLabel")
+
+onready var naikJabatanIcon = get_node("%NaikJabatanStatus")
+onready var makanBuahIcon = get_node("%MakanBuahStatus")
+onready var masakSendiriIcon = get_node("%MasakSendiriStatus")
+onready var makanLuarIcon = get_node("%MakanLuarStatus")
+onready var smokerIcon = get_node("%SmokerStatus")
+onready var naikGajiIcon = get_node("%NaikGajiStatus")
+onready var lihatHpIcon = get_node("%LihatHpStatus")
+onready var gymMemberIcon = get_node("%GymMemberStatus")
+
+var event_queue := []
+var current_event_idx := 0
+var n_events_this_turn := 0
+
 # interface
 func update_health(new_value):
-	money.text = "%" + str(new_value)
+	health.text = "%" + str(new_value)
 
 # interface	
 func update_happiness(new_value):
@@ -78,8 +100,6 @@ func queue_events(events: Array): # Array(Event resource object) that were drawn
 	current_event_idx = 0
 	n_events_this_turn = events.size()
 	
-	# TODO: Display the first event
-	
 	_display_event()
 
 # interface
@@ -107,8 +127,6 @@ func game_ended(ending): # Ending Enum
 			pass
 
 #handle input
-const maximum_overall_priority := 5 # 2 highs, 1 medium and 1 low, at the most extreme
-
 func _on_priority_label_gui_input(event: InputEvent, 
 	main_priority_name: String, 
 	other_priority_name: String, 
@@ -139,11 +157,16 @@ func _on_priority_label_gui_input(event: InputEvent,
 		other_highlight_label2.visible = false
 	pass # Replace with function body.
 
+const maximum_overall_priority := 5 # 2 highs, 1 medium and 1 low, at the most extreme
+var diet_priority := 0
+var kerja_priority := 0
+var sosial_priority := 0
+var tidur_priority := 0
+
 func _on_change_diet_priority(event: InputEvent, new_value: int, main_name: String, other_name1: String, other_name2: String):
 	if kerja_priority + sosial_priority + tidur_priority + new_value <= maximum_overall_priority:
 		diet_priority = new_value
 		_on_priority_label_gui_input(event, main_name, other_name1, other_name2)
-		# Update highlight
 
 func _on_change_kerja_priority(event: InputEvent, new_value: int, main_name: String, other_name1: String, other_name2: String):
 	if diet_priority + sosial_priority + tidur_priority + new_value <= maximum_overall_priority:
@@ -161,7 +184,8 @@ func _on_change_sosial_priority(event: InputEvent, new_value: int, main_name: St
 		_on_priority_label_gui_input(event, main_name, other_name1, other_name2)
 
 func _on_next_pressed(event: InputEvent):
-	if current_event_idx < event_queue.size():
+	# still events left in queue
+	if current_event_idx < n_events_this_turn:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		emit_signal("go", {
