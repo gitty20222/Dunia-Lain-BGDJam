@@ -90,8 +90,7 @@ func _set_sleep_value(value: int):
 	emit_signal("sleep_value_updated", sleep_value, value)
 	sleep_value = value
 
-static func from(event_list: Array, status_list: Array, save: GameStateData) -> GameSimulation:
-	var scene := load("res://node/GameSimulation.tscn")
+static func from(event_list: Array, status_list: Array, save: GameStateData, scene) -> GameSimulation:
 	var sim = scene.instance()
 	sim.init(event_list, status_list)
 	sim.turn_number = save.turn_number

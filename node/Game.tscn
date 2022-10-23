@@ -1,28 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://node/Game.gd" type="Script" id=1]
 [ext_resource path="res://script/GameSaveManager.gd" type="Script" id=2]
 [ext_resource path="res://node/game_ui/GameDisplay.tscn" type="PackedScene" id=3]
-[ext_resource path="res://node/GameSimulation.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 
 [node name="UI" parent="." instance=ExtResource( 3 )]
 
-[node name="Simulation" parent="." instance=ExtResource( 4 )]
-
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource( 2 )
-
-[connection signal="fitness_value_updated" from="Simulation" to="." method="_on_Simulation_fitness_value_updated"]
-[connection signal="happiness_updated" from="Simulation" to="." method="_on_Simulation_happiness_updated"]
-[connection signal="health_updated" from="Simulation" to="." method="_on_Simulation_health_updated"]
-[connection signal="money_updated" from="Simulation" to="." method="_on_Simulation_money_updated"]
-[connection signal="sleep_value_updated" from="Simulation" to="." method="_on_Simulation_sleep_value_updated"]
-[connection signal="social_value_updated" from="Simulation" to="." method="_on_Simulation_social_value_updated"]
-[connection signal="status_added" from="Simulation" to="." method="_on_Simulation_status_added"]
-[connection signal="status_removed" from="Simulation" to="." method="_on_Simulation_status_removed"]
-[connection signal="turn_resolved" from="Simulation" to="." method="_on_Simulation_turn_resolved"]
-[connection signal="turn_started" from="Simulation" to="." method="_on_Simulation_turn_started"]
-[connection signal="work_value_updated" from="Simulation" to="." method="_on_Simulation_work_value_updated"]
