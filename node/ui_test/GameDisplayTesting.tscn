@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/DynamicFont/Planner.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/Image/yellow_post_it.png" type="Texture" id=5]
 [ext_resource path="res://node/GameSimulation.tscn" type="PackedScene" id=6]
 [ext_resource path="res://node/ui_test/GameDisplayTesting.gd" type="Script" id=7]
+[ext_resource path="res://script/GameSaveManager.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -804,6 +805,9 @@ text = "GO"
 
 [node name="GameSimulation" parent="." instance=ExtResource( 6 )]
 
+[node name="GameSaveManager" type="Node" parent="."]
+script = ExtResource( 8 )
+
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/YesButton" to="." method="_on_YesButton_button_up"]
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/NoButton" to="." method="_on_NoButton_button_up"]
 [connection signal="button_up" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/HBoxContainer/GO" to="." method="_on_GO_button_up"]
@@ -811,3 +815,4 @@ text = "GO"
 [connection signal="happiness_updated" from="GameSimulation" to="." method="_on_GameSimulation_happiness_updated"]
 [connection signal="health_updated" from="GameSimulation" to="." method="_on_GameSimulation_health_updated"]
 [connection signal="money_updated" from="GameSimulation" to="." method="_on_GameSimulation_money_updated"]
+[connection signal="turn_resolved" from="GameSimulation" to="." method="_on_GameSimulation_turn_resolved"]

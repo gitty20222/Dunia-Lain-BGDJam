@@ -4,7 +4,8 @@ enum Ending {
 	Rich,
 	GameOver_Died,
 	GameOver_Depressed,
-	GameOver_Destitute
+	GameOver_Destitute,
+	EVENT_POOL_INSUFFICIENT
 }
 
 enum EventStatus {

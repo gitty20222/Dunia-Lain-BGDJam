@@ -17,6 +17,8 @@ signal status_removed(status_id)
 signal status_add_failed(status_id)
 signal status_remove_failed(status_id)
 
+signal turn_resolved(game_state)
+
 signal _factors_computed(factors)
 
 var event_selector := FortuneWheel.new()
@@ -48,6 +50,9 @@ var active_statuses := {} # Dictionary(status_id, time_remaining(int))
 var n_events_this_turn := 0
 var active_events := [] # Array (Event Id)
 var event_resolved := [] # Array (Event Status)
+
+# Logging
+var event_history := [] # Array (Event Id)
 
 func _set_health(value: float):
 	value = clamp(value, 0, 100)
@@ -108,7 +113,6 @@ func accept_event(event_idx: int):
 	if event_resolved[event_idx] != Enums.EventStatus.Unresolved:
 		return
 	
-	var event = data_event_repo[active_events[event_idx]]
 	event_resolved[event_idx] = Enums.EventStatus.Accepted
 
 func decline_event(event_idx: int):
@@ -118,13 +122,11 @@ func decline_event(event_idx: int):
 	if event_resolved[event_idx] != Enums.EventStatus.Unresolved:
 		return
 	
-	var event = data_event_repo[active_events[event_idx]]
 	event_resolved[event_idx] = Enums.EventStatus.Declined
 
 # Advance Time
 # Returns next list of events OR Enum for gameover/ending
 func play(priorities: Dictionary, events_to_draw: int):
-	
 	# Decline any unresolved events
 	for i in range(n_events_this_turn):
 		if event_resolved[i] == Enums.EventStatus.Unresolved:
@@ -133,6 +135,7 @@ func play(priorities: Dictionary, events_to_draw: int):
 	# Process events
 	for i in range(n_events_this_turn):
 		var event = data_event_repo[active_events[i]]
+		event_history.append(event.id)
 		match event_resolved[i]:
 			Enums.EventStatus.Accepted:
 				_process_effects(event.effect_on_accept)
@@ -202,15 +205,14 @@ func play(priorities: Dictionary, events_to_draw: int):
 	emit_signal("_factors_computed", factors)
 	
 	var event_indexes = event_selector.spin_dynamic_batch(event_weighted_pool, factors, events_to_draw)
-	match event_indexes:
-		[..]:
-			pass
-		_:
-			print("wat")
 	for i in range(events_to_draw):
 		active_events[i] = data_event_list[event_indexes[i]].id
 		event_resolved[i] = Enums.EventStatus.Unresolved
 	turn_number += 1
+	
+	# Turn has been resolved
+	emit_signal("turn_resolved", GameStateData.new(self))
+	
 	return active_events
 
 func _process_effects(effects: Dictionary) -> void:
