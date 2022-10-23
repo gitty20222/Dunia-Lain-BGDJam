@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_naikgaji.png" type="Texture" id=40]
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_liathp.png" type="Texture" id=41]
 [ext_resource path="res://node/game_ui/GameDisplay.gd" type="Script" id=42]
+[ext_resource path="res://node/game_ui/CachedNumberLabel.gd" type="Script" id=43]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -214,6 +215,7 @@ margin_bottom = 46.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "69%"
+script = ExtResource( 43 )
 
 [node name="HKejiwaan" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 263.0
@@ -256,6 +258,7 @@ margin_bottom = 46.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "69%"
+script = ExtResource( 43 )
 
 [node name="HKejiwaan2" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 526.0
@@ -298,6 +301,7 @@ margin_bottom = 46.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "69%"
+script = ExtResource( 43 )
 
 [node name="DateLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_left = 789.0

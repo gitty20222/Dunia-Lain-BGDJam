@@ -3,6 +3,8 @@ class_name GameDisplay
 
 const Enums = preload("res://script/Enums.gd")
 
+export(bool) var auto_play_debug := false
+
 signal go(priorities) # {"fitness": 0, "social": 2, etc etc}
 signal accept(event_idx) # index of event in the array sent in display_events()
 signal decline(event_idx) 
@@ -23,17 +25,30 @@ var statuses_to_remove := [] # Array(Status)
 
 var active_events := [] # Array(Event)
 
+func _ready():
+	if auto_play_debug:
+		$"Autoplay Debug Timer".connect("timeout", self, "_debug_play")
+		$"Autoplay Debug Timer".start()
+
+func setup_values(health, happiness, money, fitness_value, work_value, social_value, sleep_value):
+	get_node("%JasmaniValueLabel").value += health
+	get_node("%KejiwaanValueLabel").value += happiness
+	get_node("%RupiahValueLabel").value += money
+
 # interface
 func update_health(old_value, new_value):
 	dhealth += (new_value - old_value)
+	print_debug(dhealth)
 
-# interface	
+# interface
 func update_happiness(old_value, new_value):
 	dhappiness += (new_value - old_value)
+	print_debug(dhappiness)
 	
 # interface
 func update_money(old_value, new_value):
 	dmoney += (new_value - old_value)
+	print_debug(dmoney)
 
 # interface
 func update_fitness_value(old_value, new_value):
@@ -88,6 +103,12 @@ func _update_ui():
 	# Update UI values
 	
 	# Stats
+	get_node("%JasmaniValueLabel").value += dhealth
+	get_node("%KejiwaanValueLabel").value += dhappiness
+	get_node("%RupiahValueLabel").value += dmoney
+	print_debug(dhealth)
+	print_debug(dhappiness)
+	print_debug(dmoney)
 	
 	# Aspect Values
 	
@@ -105,3 +126,17 @@ func _update_ui():
 	
 	statuses_to_add.clear()
 	statuses_to_remove.clear()
+
+func _go():
+	pass
+
+func _debug_play():
+	print("Auto Play")
+	emit_signal("go", {
+		"fitness" : 2,
+		"work" : 2,
+		"social" : 2,
+		"sleep" : 2
+	})
+	emit_signal("accept", 0)
+	_update_ui()

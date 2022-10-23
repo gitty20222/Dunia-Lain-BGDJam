@@ -2,6 +2,7 @@ extends Node
 class_name Game
 
 export(Array, String) var starting_status_ids := []
+export(bool) var independent_scene := false
 
 signal save_requested(game_state)
 signal game_ended()
@@ -32,7 +33,11 @@ func _ready():
 		data_event_dict[event.id] = event
 	for status in status_list:
 		data_status_dict[status.id] = status
-	
+		
+	if independent_scene:
+		print_debug("Scene is alone, starting new game")
+		start_new()
+		
 func start_from_save(save_data):
 	if state != State.Unititalized: return
 	var sim = GameSimulation.from(event_list, status_list, save_data, simulation_scene)
@@ -52,6 +57,16 @@ func _begin(sim: GameSimulation):
 	for status_id in starting_status_ids:
 		sim.apply_status(status_id)
 	add_child(sim)
+	
+	ui.setup_values(
+		sim.health,
+		sim.happiness,
+		sim.money,
+		sim.fitness_value,
+		sim.work_value,
+		sim.social_value,
+		sim.sleep_value
+	)
 
 func _connect_sim(sim: GameSimulation):
 	sim.connect("health_updated", self, "_on_Simulation_health_updated")

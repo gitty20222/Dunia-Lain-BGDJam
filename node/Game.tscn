@@ -6,8 +6,12 @@
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
+independent_scene = true
 
 [node name="UI" parent="." instance=ExtResource( 3 )]
+auto_play_debug = true
+
+[node name="Autoplay Debug Timer" type="Timer" parent="UI"]
 
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource( 2 )
