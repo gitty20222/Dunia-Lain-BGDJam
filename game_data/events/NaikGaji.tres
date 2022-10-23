@@ -27,10 +27,10 @@ effect_on_accept = {
 "add_sleep_value": 0,
 "add_social_value": 0,
 "add_work_value": 0,
-"statuses_to_add[id]": [  ],
+"statuses_to_add[id]": [ "status_naikgaji" ],
 "statuses_to_remove[id]": [  ]
 }
-add_tags_on_accept = [ "status_naikgaji" ]
+add_tags_on_accept = [  ]
 remove_tags_on_accept = [  ]
 effect_on_decline = {
 "add_fitness_value": 0,
