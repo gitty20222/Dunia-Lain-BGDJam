@@ -50,3 +50,16 @@ func _on_priority_label_gui_input(event: InputEvent,
 			other_priority_label2.visible = true
 			other_highlight_label2.visible = false
 	pass # Replace with function body.
+
+
+
+func _on_priority_label_mouse_entered(label_name: String):
+	var priority_label = get_node(label_name)
+	var underline = priority_label.get_parent().get_node("underline")
+	underline.visible = true
+	pass # Replace with function body.
+
+func _on_priority_label_mouse_exited(label_name: String):
+	var priority_label = get_node(label_name)
+	var underline = priority_label.get_parent().get_node("underline")
+	underline.visible = false

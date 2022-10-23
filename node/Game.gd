@@ -13,12 +13,14 @@ export(Dictionary) var initial_values := {
 }
 
 signal save_requested(game_state)
-signal game_ended()
+signal return_to_main_menu()
 
 const Enums = preload("res://script/Enums.gd")
 const simulation_scene = preload("res://node/GameSimulation.tscn")
 
-const EVENTS_TO_DRAW = 1
+const EVENT_RANGE = Vector2(1, 4)
+
+var rng := RandomNumberGenerator.new()
 
 var data_event_dict: Dictionary
 var data_status_dict: Dictionary
@@ -35,6 +37,7 @@ var sim: GameSimulation
 onready var ui: GameDisplay = $UI
 
 func _ready():
+	rng.randomize()
 	event_list = GameDataLoader.load_events_from("res://game_data/events/")
 	status_list = GameDataLoader.load_status_from("res://game_data/status/")
 	for event in event_list:
@@ -75,7 +78,7 @@ func _connect_sim(sim: GameSimulation):
 	sim.connect("turn_resolved", self, "_on_Simulation_turn_resolved")
 	sim.connect("turn_started", self, "_on_Simulation_turn_started")
 
-func _connect_ui(ui: Node):
+func _connect_ui(ui: GameDisplay):
 	ui.connect("accept", self, "_on_UI_accept")
 	ui.connect("decline", self, "_on_UI_decline")
 	ui.connect("go", self, "_on_UI_go")
@@ -83,25 +86,32 @@ func _connect_ui(ui: Node):
 	ui.connect("player_remove_status", self, "_on_UI_player_remove_status")
 
 func _on_Simulation_health_updated(old, new):
-	ui.update_health(old, new)
+	ui.update_health(new)
+	pass
 
 func _on_Simulation_happiness_updated(old, new):
-	ui.update_happiness(old, new)
+	ui.update_happiness(new)
+	pass
 
 func _on_Simulation_money_updated(old, new):
-	ui.update_money(old, new)
+	ui.update_money(new)
+	pass
 
 func _on_Simulation_fitness_value_updated(old, new):
-	ui.update_fitness_value(old, new)
+	ui.update_fitness(new)
+	pass # Replace with function body.
 
 func _on_Simulation_work_value_updated(old, new):
-	ui.update_work_value(old, new)
+	ui.update_work(new)
+	pass # Replace with function body.
 
 func _on_Simulation_social_value_updated(old, new):
-	ui.update_social_value(old, new)
+	ui.update_social(new)
+	pass # Replace with function body.
 
 func _on_Simulation_sleep_value_updated(old, new):
-	ui.update_sleep_value(old, new)
+	ui.update_sleep(new)
+	pass # Replace with function body.
 
 func _on_Simulation_status_added(status_id):
 	ui.add_status(data_status_dict[status_id])
@@ -123,11 +133,20 @@ func _on_UI_decline(event_idx):
 	sim.decline_event(event_idx)
 
 func _on_UI_go(priorities):
-	var result = sim.play(priorities, EVENTS_TO_DRAW)
+	var events_to_draw = rng.randi_range(EVENT_RANGE.x, EVENT_RANGE.y)
+	var result = sim.play(priorities, events_to_draw)
+	ui.update_health(sim.health)
+	ui.update_happiness(sim.happiness)
+	ui.update_money(sim.money)
+	ui.update_fitness(sim.fitness_value)
+	ui.update_work(sim.work_value)
+	ui.update_sleep(sim.sleep_value)
+	ui.update_social(sim.social_value)
+
 	match result:
 		TYPE_ARRAY:
 			var events := []
-			events.resize(EVENTS_TO_DRAW)
+			events.resize(events_to_draw)
 			for event_id in result:
 				events.append(data_event_dict[event_id])
 			ui.queue_events(events)
