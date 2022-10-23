@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://assets/DynamicFont/Attributes.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/game_textures/Final_UI_BG_VERY_blank.png" type="Texture" id=2]
@@ -41,6 +41,8 @@
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_naikjabatan.png" type="Texture" id=39]
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_naikgaji.png" type="Texture" id=40]
 [ext_resource path="res://assets/game_textures/icon_status/icon_status_liathp.png" type="Texture" id=41]
+[ext_resource path="res://node/game_ui/GameDisplay.gd" type="Script" id=42]
+[ext_resource path="res://assets/game_textures/icon_status/icon_status_gym.png" type="Texture" id=43]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -125,7 +127,7 @@ font_data = ExtResource( 35 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 31 )
+script = ExtResource( 42 )
 
 [node name="MainPanel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -135,6 +137,7 @@ custom_styles/panel = SubResource( 1 )
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer"]
 margin_right = 1280.0
@@ -143,6 +146,7 @@ margin_bottom = 720.0
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer"]
 margin_right = 1280.0
 margin_bottom = 70.0
+mouse_filter = 1
 custom_constants/margin_right = 46
 custom_constants/margin_top = 24
 custom_constants/margin_left = 156
@@ -310,6 +314,7 @@ text = "69/69"
 margin_top = 74.0
 margin_right = 1280.0
 margin_bottom = 709.0
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2"]
 margin_right = 1280.0
@@ -318,6 +323,7 @@ margin_bottom = 635.0
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
 margin_right = 1280.0
 margin_bottom = 635.0
+mouse_filter = 1
 size_flags_horizontal = 3
 custom_constants/margin_top = -18
 custom_constants/margin_left = 121
@@ -331,6 +337,7 @@ margin_bottom = 635.0
 [node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_right = 146.0
 margin_bottom = 653.0
+mouse_filter = 1
 custom_constants/margin_right = 0
 custom_constants/margin_left = 0
 
@@ -549,6 +556,7 @@ expand = true
 margin_left = 150.0
 margin_right = 737.0
 margin_bottom = 653.0
+mouse_filter = 1
 custom_constants/margin_top = 36
 custom_constants/margin_left = 5
 
@@ -589,6 +597,7 @@ text = "Prioritas"
 margin_top = 73.0
 margin_right = 582.0
 margin_bottom = 274.0
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2"]
 margin_right = 582.0
@@ -762,19 +771,23 @@ text = ":"
 margin_left = 318.0
 margin_right = 582.0
 margin_bottom = 201.0
+mouse_filter = 1
 
 [node name="VPriority" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3"]
 margin_right = 264.0
 margin_bottom = 201.0
+mouse_filter = 2
 custom_constants/separation = 15
 
 [node name="MarginDiet" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority"]
 margin_right = 264.0
 margin_bottom = 38.0
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet"]
 margin_right = 264.0
 margin_bottom = 38.0
+mouse_filter = 2
 
 [node name="MarginRendah" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer"]
 margin_right = 56.0
@@ -1153,7 +1166,7 @@ margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 custom_styles/normal = ExtResource( 13 )
-text = "utama"
+text = "Utama"
 
 [node name="TidurTinggi" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginTinggi/VBoxContainer"]
 unique_name_in_owner = true
@@ -1311,6 +1324,7 @@ custom_styles/panel = SubResource( 19 )
 margin_top = 278.0
 margin_right = 582.0
 margin_bottom = 617.0
+mouse_filter = 2
 size_flags_vertical = 3
 custom_constants/margin_right = -62
 custom_constants/margin_top = 17
@@ -1328,18 +1342,19 @@ margin_right = 644.0
 margin_bottom = 312.0
 custom_constants/margin_right = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer"]
+[node name="VAcara" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 margin_right = 644.0
 margin_bottom = 312.0
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara"]
 margin_right = 225.0
 margin_bottom = 81.735
 size_flags_horizontal = 0
 custom_constants/margin_top = 7
 custom_constants/margin_left = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer"]
 margin_left = 30.0
 margin_top = 7.0
 margin_right = 225.0
@@ -1347,7 +1362,7 @@ margin_bottom = 81.735
 rect_min_size = Vector2( 0, 74.735 )
 custom_constants/separation = -11
 
-[node name="AcaraTitle" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="AcaraTitle" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 margin_right = 195.0
 margin_bottom = 52.0
@@ -1357,21 +1372,21 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 30 )
 text = "Acara Title"
 
-[node name="PanelContainer" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer/VBoxContainer"]
 margin_top = 41.0
 margin_right = 195.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 0, 10 )
 custom_styles/panel = SubResource( 33 )
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara"]
 margin_top = 85.0
 margin_right = 644.0
 margin_bottom = 227.0
 custom_constants/margin_right = 55
 custom_constants/margin_left = 34
 
-[node name="AcaraDescription" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="AcaraDescription" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer2"]
 unique_name_in_owner = true
 margin_left = 34.0
 margin_right = 589.0
@@ -1382,55 +1397,54 @@ custom_fonts/font = SubResource( 31 )
 text = "According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off tuhe ground. The bee, of course, flies anyway because bees don't carew what humans think is impossible"
 autowrap = true
 
-[node name="MarginContainer3" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara"]
 margin_top = 231.0
 margin_right = 644.0
 margin_bottom = 291.0
 custom_constants/margin_bottom = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3"]
 margin_right = 644.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 custom_constants/separation = 185
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
+[node name="VSetuju" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer"]
 margin_left = 111.0
 margin_right = 240.0
 margin_bottom = 60.0
 custom_constants/separation = -12
 
-[node name="SetujuLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="SetujuLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer/VSetuju"]
 margin_right = 129.0
 margin_bottom = 60.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 32 )
 text = "Setuju"
 
-[node name="PanelContainer" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer/VSetuju"]
 margin_top = 48.0
 margin_right = 129.0
 margin_bottom = 60.0
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 33 )
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
+[node name="VTolak" type="VBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 425.0
 margin_right = 532.0
 margin_bottom = 60.0
 custom_constants/separation = -12
 
-[node name="TolakLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
+[node name="TolakLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer/VTolak"]
 margin_right = 107.0
 margin_bottom = 60.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 32 )
 text = "Tolak"
 
-[node name="PanelContainer" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer/VTolak"]
 margin_top = 48.0
 margin_right = 107.0
 margin_bottom = 60.0
@@ -1548,14 +1562,16 @@ margin_right = 130.0
 margin_bottom = 192.0
 custom_constants/separation = 13
 
-[node name="Label" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+[node name="DietValueLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+unique_name_in_owner = true
 margin_right = 110.0
 margin_bottom = 36.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 35 )
 text = "n ( +/- n)"
 
-[node name="Label2" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+[node name="KerjaValueLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 49.0
 margin_right = 110.0
 margin_bottom = 85.0
@@ -1563,7 +1579,8 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 35 )
 text = "n ( +/- n)"
 
-[node name="Label3" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+[node name="TidurValueLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 98.0
 margin_right = 110.0
 margin_bottom = 134.0
@@ -1571,7 +1588,8 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 35 )
 text = "n ( +/- n)"
 
-[node name="Label4" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+[node name="SosialValueLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginSecondAttrib/HBoxContainer/MarginSecondAttribValue/VBoxContainer"]
+unique_name_in_owner = true
 margin_top = 147.0
 margin_right = 110.0
 margin_bottom = 183.0
@@ -1602,14 +1620,15 @@ text = "Status"
 margin_top = 27.0
 margin_right = 315.0
 margin_bottom = 67.0
-custom_constants/margin_left = 10
+custom_constants/margin_left = 30
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer"]
-margin_left = 10.0
+margin_left = 30.0
 margin_right = 315.0
 margin_bottom = 40.0
 
 [node name="MasakSendiriStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
@@ -1617,6 +1636,7 @@ texture = ExtResource( 37 )
 expand = true
 
 [node name="MakanBuahStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 44.0
 margin_right = 84.0
 margin_bottom = 40.0
@@ -1625,6 +1645,7 @@ texture = ExtResource( 30 )
 expand = true
 
 [node name="MakanLuarStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 88.0
 margin_right = 128.0
 margin_bottom = 40.0
@@ -1633,6 +1654,7 @@ texture = ExtResource( 29 )
 expand = true
 
 [node name="SmokerStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 132.0
 margin_right = 172.0
 margin_bottom = 40.0
@@ -1644,14 +1666,15 @@ expand = true
 margin_top = 67.0
 margin_right = 315.0
 margin_bottom = 107.0
-custom_constants/margin_left = 29
+custom_constants/margin_left = -3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2"]
-margin_left = 29.0
+margin_left = -3.0
 margin_right = 315.0
 margin_bottom = 40.0
 
 [node name="NaikGajiStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
@@ -1659,6 +1682,7 @@ texture = ExtResource( 40 )
 expand = true
 
 [node name="NaikJabatanStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 44.0
 margin_right = 84.0
 margin_bottom = 40.0
@@ -1667,6 +1691,7 @@ texture = ExtResource( 39 )
 expand = true
 
 [node name="LihatHpStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 88.0
 margin_right = 128.0
 margin_bottom = 40.0
@@ -1675,6 +1700,7 @@ texture = ExtResource( 41 )
 expand = true
 
 [node name="InsomniaStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 132.0
 margin_right = 172.0
 margin_bottom = 40.0
@@ -1682,14 +1708,23 @@ rect_min_size = Vector2( 40, 40 )
 texture = ExtResource( 38 )
 expand = true
 
-[node name="MarginContainer" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="GymMemberStatus" type="TextureRect" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginStatus/PanelContainer/MarginContainer/VBoxContainer/MarginStatus/VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 176.0
+margin_right = 216.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 43 )
+expand = true
+
+[node name="MarginGo" type="MarginContainer" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
 margin_top = 554.0
 margin_right = 418.0
 margin_bottom = 635.0
 custom_constants/margin_top = 29
 custom_constants/margin_left = 71
 
-[node name="GoLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+[node name="GoLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginGo"]
 unique_name_in_owner = true
 margin_left = 71.0
 margin_top = 29.0
@@ -1721,16 +1756,43 @@ emptyPriorityStylebox = ExtResource( 15 )
 unique_name_in_owner = true
 stream = ExtResource( 16 )
 
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%DietRendah", "%DietSedang", "%DietTinggi" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="." method="_on_change_diet_priority" binds= [ 0, "%DietRendah", "%DietSedang", "%DietTinggi" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%DietRendah" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%DietRendah" ]]
 [connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginRendah/VBoxContainer/DietRendahHighlight" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%DietRendah" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%DietSedang", "%DietRendah", "%DietTinggi" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%DietTinggi", "%DietRendah", "%DietSedang" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%KerjaRendah", "%KerjaSedang", "%KerjaTinggi" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%KerjaSedang", "%KerjaRendah", "%KerjaTinggi" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%KerjaTinggi", "%KerjaRendah", "%KerjaSedang" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%TidurRendah", "%TidurSedang", "%TidurTinggi" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%TidurSedang", "%TidurRendah", "%TidurTinggi" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%TidurTinggi", "%TidurRendah", "%TidurSedang" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%SosialRendah", "%SosialSedang", "%SosialTinggi" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%SosialSedang", "%SosialRendah", "%SosialTinggi" ]]
-[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_gui_input" binds= [ "%SosialTinggi", "%SosialRendah", "%SosialSedang" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginSedang" to="." method="_on_change_diet_priority" binds= [ 1, "%DietSedang", "%DietRendah", "%DietTinggi" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%DietSedang" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%DietSedang" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginTinggi" to="." method="_on_change_diet_priority" binds= [ 2, "%DietTinggi", "%DietRendah", "%DietSedang" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%DietTinggi" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginDiet/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%DietTinggi" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginRendah" to="." method="_on_change_kerja_priority" binds= [ 0, "%KerjaRendah", "%KerjaSedang", "%KerjaTinggi" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%KerjaRendah" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%KerjaRendah" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginSedang" to="." method="_on_change_kerja_priority" binds= [ 1, "%KerjaSedang", "%KerjaRendah", "%KerjaTinggi" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%KerjaSedang" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%KerjaSedang" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginTinggi" to="." method="_on_change_kerja_priority" binds= [ 2, "%KerjaTinggi", "%KerjaRendah", "%KerjaSedang" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%KerjaTinggi" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginKerja/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%KerjaTinggi" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginRendah" to="." method="_on_change_tidur_priority" binds= [ 0, "%TidurRendah", "%TidurSedang", "%TidurTinggi" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%TidurRendah" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%TidurRendah" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginSedang" to="." method="_on_change_tidur_priority" binds= [ 1, "%TidurSedang", "%TidurRendah", "%TidurTinggi" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%TidurSedang" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%TidurSedang" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginTinggi" to="." method="_on_change_tidur_priority" binds= [ 2, "%TidurTinggi", "%TidurRendah", "%TidurSedang" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%TidurTinggi" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginTidur/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%TidurTinggi" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginRendah" to="." method="_on_change_sosial_priority" binds= [ 0, "%SosialRendah", "%SosialSedang", "%SosialTinggi" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%SosialRendah" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginRendah" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%SosialRendah" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginSedang" to="." method="_on_change_sosial_priority" binds= [ 1, "%SosialSedang", "%SosialRendah", "%SosialTinggi" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%SosialSedang" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginSedang" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%SosialSedang" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginTinggi" to="." method="_on_change_sosial_priority" binds= [ 2, "%SosialTinggi", "%SosialRendah", "%SosialSedang" ]]
+[connection signal="mouse_entered" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_entered" binds= [ "%SosialTinggi" ]]
+[connection signal="mouse_exited" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VPriority/MarginSosial/HBoxContainer/MarginTinggi" to="InputHandler/PriorityInputHandler" method="_on_priority_label_mouse_exited" binds= [ "%SosialTinggi" ]]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer/VSetuju" to="." method="_on_accept_pressed"]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/MarginContainer3/PanelContainer/MarginContainer/VAcara/MarginContainer3/HBoxContainer/VTolak" to="." method="_on_decline_pressed"]
+[connection signal="gui_input" from="MainPanel/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginGo" to="." method="_on_next_pressed"]
