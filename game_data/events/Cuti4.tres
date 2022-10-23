@@ -4,32 +4,36 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "keluarga"
-title = "Habiskan Waktu dengan Keluarga"
-description = "Setelah "
+id = "cuti2"
+title = "Cuti"
+description = ""
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
 base_weight = 1
 multiplier_per_tag = ""
-multiplier_if_tag_present = "social_1 40;
-social_2 40;
+multiplier_if_tag_present = "status_jabatan1 0;
+status_jabatan2 0;
+status_jabatan4 0;
+status_jabatan5 0;
+work_0 30;
+work_1 30;
 "
 multiplier_if_tag_not_present = ""
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {
 "add_fitness_value": 0,
-"add_happiness": 5,
+"add_happiness": 2,
 "add_health": 0,
-"add_money": -3,
+"add_money": -10,
 "add_sleep_value": 0,
-"add_social_value": 5,
-"add_work_value": 5,
+"add_social_value": 0,
+"add_work_value": 0,
 "statuses_to_add[id]": [  ],
 "statuses_to_remove[id]": [  ]
 }
-add_tags_on_accept = [ "mabuk" ]
+add_tags_on_accept = [  ]
 remove_tags_on_accept = [  ]
 effect_on_decline = {
 "add_fitness_value": 0,

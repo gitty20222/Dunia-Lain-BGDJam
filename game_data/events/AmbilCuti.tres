@@ -4,30 +4,28 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "makandiluar"
-title = "Beli Makanan Luar"
-description = "Akan lebih praktis jika membeli makanan dari luar dibanding memasak"
+id = "ambilcuti1"
+title = "Ambil Cuti"
+description = "Gw mau cuti anjeng"
 auto_accept = false
 duplicates = -1
 requires_any_tag_to_trigger = [  ]
 base_weight = 1
 multiplier_per_tag = ""
-multiplier_if_tag_present = "fitness_0 40;
-fitness_1 40;
-fitness_2 0;
-status_makandiluar 0;"
-multiplier_if_tag_not_present = "status_makandiluar 40;"
+multiplier_if_tag_present = ""
+multiplier_if_tag_not_present = "work_0 40;
+work_1 40;"
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {
-"add_fitness_value": 0,
+"add_fitness_value": 2,
 "add_happiness": 0,
 "add_health": 0,
 "add_money": 0,
 "add_sleep_value": 0,
 "add_social_value": 0,
-"add_work_value": 0,
-"statuses_to_add[id]": [ "status_makandiluar" ],
+"add_work_value": -5,
+"statuses_to_add[id]": [  ],
 "statuses_to_remove[id]": [  ]
 }
 add_tags_on_accept = [  ]
@@ -38,7 +36,7 @@ effect_on_decline = {
 "add_health": 0,
 "add_money": 0,
 "add_sleep_value": 0,
-"add_social_value": 0,
+"add_social_value": -5,
 "add_work_value": 0,
 "statuses_to_add[id]": [  ],
 "statuses_to_remove[id]": [  ]
