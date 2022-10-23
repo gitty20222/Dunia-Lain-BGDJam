@@ -69,10 +69,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/advanced_random/fortune_wheel.gd"
 }, {
+"base": "Node",
+"class": "Game",
+"language": "GDScript",
+"path": "res://node/Game.gd"
+}, {
 "base": "Object",
 "class": "GameDataLoader",
 "language": "GDScript",
 "path": "res://script/GameDataLoader.gd"
+}, {
+"base": "Control",
+"class": "GameDisplay",
+"language": "GDScript",
+"path": "res://node/game_ui/GameDisplay.gd"
 }, {
 "base": "Node",
 "class": "GameSimulation",
@@ -132,7 +142,9 @@ _global_script_class_icons={
 "Event": "",
 "FairNG": "",
 "FortuneWheel": "",
+"Game": "",
 "GameDataLoader": "",
+"GameDisplay": "",
 "GameSimulation": "",
 "GameStateData": "",
 "SettingsGrid": "",
@@ -155,7 +167,7 @@ resources_spreadsheet_view/dupe_arrays=true
 [application]
 
 config/name="Dunia Lain BGDjam"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://node/Main.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -165,7 +177,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/resources_speadsheet_view/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 

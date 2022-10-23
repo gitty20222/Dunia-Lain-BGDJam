@@ -11,5 +11,5 @@ dest_files=[ "res://.import/PriorityUIClick.ogg-0f9ab8e462b2dc6d0c9282b1ae9ab034
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
