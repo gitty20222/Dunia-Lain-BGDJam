@@ -20,7 +20,6 @@ func _ready():
 	_connect_main_menu(main_menu)
 	current_scene = main_menu
 	add_child(main_menu)
-	
 
 func _on_Main_Menu_exit_game():
 	get_tree().quit()

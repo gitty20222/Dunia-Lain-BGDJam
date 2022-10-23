@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/yellow_post_it.png-eb6229efa53d9e7a0359ade8714d1eae.stex"
+path="res://.import/lines_for_statuspaper.png-f1676f852ffe508b4a209648d1818157.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Image/yellow_post_it.png"
-dest_files=[ "res://.import/yellow_post_it.png-eb6229efa53d9e7a0359ade8714d1eae.stex" ]
+source_file="res://assets/game_textures/lines_for_statuspaper.png"
+dest_files=[ "res://.import/lines_for_statuspaper.png-f1676f852ffe508b4a209648d1818157.stex" ]
 
 [params]
 
