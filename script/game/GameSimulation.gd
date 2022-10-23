@@ -35,14 +35,14 @@ var turn_number := 1
 
 # Consumable Resources
 
-var health: float = 70 setget _set_health
-var happiness: float = 70 setget _set_happiness
+var health: int = 70 setget _set_health
+var happiness: int = 70 setget _set_happiness
 var money := 30.0 setget _set_money
 
-var fitness_value: float = 60 setget _set_fitness_value
-var work_value: float = 60 setget _set_work_value
-var social_value: float = 60 setget _set_social_value
-var sleep_value: float = 70 setget _set_sleep_value
+var fitness_value: int = 60 setget _set_fitness_value
+var work_value: int = 60 setget _set_work_value
+var social_value: int = 60 setget _set_social_value
+var sleep_value: int = 70 setget _set_sleep_value
 
 # Current State
 var event_tag_set := {} #(Dictionary of tags [set])
@@ -56,12 +56,12 @@ var event_resolved := [] # Array (Event Status)
 # Logging
 var event_history := [] # Array (Event Id)
 
-func _set_health(value: float):
+func _set_health(value: int):
 	value = clamp(value, 0, 100)
 	emit_signal("health_updated", health, value)
 	health = value
 
-func _set_happiness(value: float):
+func _set_happiness(value: int):
 	value = clamp(value, 0, 100)
 	emit_signal("happiness_updated", happiness, value)
 	happiness = value
@@ -70,22 +70,22 @@ func _set_money(value: float):
 	emit_signal("money_updated", money, value)
 	money = value
 
-func _set_fitness_value(value: float):
+func _set_fitness_value(value: int):
 	value = clamp(value, 0, 100)
 	emit_signal("fitness_value_updated", fitness_value, value)
 	fitness_value = value
 
-func _set_work_value(value: float):
+func _set_work_value(value: int):
 	value = clamp(value, 0, 100)
 	emit_signal("work_value_updated", work_value, value)
 	work_value = value
 	
-func _set_social_value(value: float):
+func _set_social_value(value: int):
 	value = clamp(value, 0, 100)
 	emit_signal("social_value_updated", social_value, value)
 	social_value = value
 	
-func _set_sleep_value(value: float):
+func _set_sleep_value(value: int):
 	value = clamp(value, 0, 70)
 	emit_signal("sleep_value_updated", sleep_value, value)
 	sleep_value = value
@@ -374,7 +374,7 @@ func _parse_statuses(status_ids: Array) -> DynamicWheelItem:
 	tagged_item.tags_array = status_ids
 	return tagged_item
 
-func _parse_aspect_values(fitness_value: float, work_value: float, social_value: float, sleep_value: float) -> DynamicWheelItem:
+func _parse_aspect_values(fitness_value: int, work_value: int, social_value: int, sleep_value: int) -> DynamicWheelItem:
 	var item := DynamicWheelItem.new()
 	item.tags_array = [
 		"fitness_" + _get_value_level(fitness_value),
@@ -388,7 +388,7 @@ func _parse_aspect_values(fitness_value: float, work_value: float, social_value:
 	]
 	return item
 
-func _parse_stats(health: float, happiness: float) -> DynamicWheelItem:
+func _parse_stats(health: int, happiness: int) -> DynamicWheelItem:
 	var item := DynamicWheelItem.new()
 	item.tags_array = [
 		"health_" + _get_value_level(health),
@@ -398,12 +398,12 @@ func _parse_stats(health: float, happiness: float) -> DynamicWheelItem:
 	]
 	return item
 
-func _get_value_level(percentage: float) -> String:
+func _get_value_level(percentage) -> String:
 	if percentage <= 33: return "low"
 	elif percentage <= 66: return "medium"
 	else: return "high"
 
-func _get_value_flat(percentage: float) -> String:
+func _get_value_flat(percentage) -> String:
 	return str(percentage)
 
 func _try_add_status(status_id: String):
@@ -420,23 +420,23 @@ func _try_remove_status(status_id: String):
 	else:
 		emit_signal("status_remove_failed")
 
-func _add_health_point(amount: float):
+func _add_health_point(amount: int):
 	_set_health(health + amount)
 
-func _add_happiness_point(amount: float):
+func _add_happiness_point(amount: int):
 	_set_happiness(happiness + amount)
 
 func _add_money(amount: float):
 	_set_money(money + amount)
 
-func _add_fitness_value_point(amount: float):
+func _add_fitness_value_point(amount: int):
 	_set_fitness_value(fitness_value + amount)
 	
-func _add_work_value_point(amount: float):
+func _add_work_value_point(amount: int):
 	_set_work_value(work_value + amount)
 	
-func _add_social_value_point(amount: float):
+func _add_social_value_point(amount: int):
 	_set_social_value(social_value + amount)
 	
-func _add_sleep_value_point(amount: float):
+func _add_sleep_value_point(amount: int):
 	_set_sleep_value(sleep_value + amount)
