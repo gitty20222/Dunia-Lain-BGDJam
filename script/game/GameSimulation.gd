@@ -88,6 +88,26 @@ func _set_sleep_value(value: float):
 	emit_signal("sleep_value_updated", sleep_value, value)
 	sleep_value = value
 
+static func from(event_list: Array, status_list: Array, save: GameStateData) -> GameSimulation:
+	var scene := load("res://node/GameSimulation.tscn")
+	var sim = scene.instance()
+	sim.init(event_list, status_list)
+	sim.turn_number = save.turn_number
+	sim.health = save.health
+	sim.happiness = save.happiness
+	sim.money = save.money
+	sim.fitness_value = save.fitness_value
+	sim.work_value = save.work_value
+	sim.social_value = save.social_value
+	sim.sleep_value = save.sleep_value
+	sim.event_tag_set = save.event_tag_set.duplicate()
+	sim.active_statuses = save.active_statuses.duplicate()
+	sim.n_events_this_turn = save.n_events_this_turn
+	sim.active_events = save.active_events.duplicate()
+	sim.event_history = save.event_history.duplicate()
+	
+	return sim
+
 # List of all events are stored, 
 # And events are converted to weighted wheel items
 func init(event_list: Array, status_list: Array):
@@ -364,9 +384,7 @@ func _parse_stats(health: float, happiness: float) -> DynamicWheelItem:
 	return item
 
 func _get_value_level(percentage: float) -> String:
-	if percentage < 33: return "low"
-	elif percentage < 66: return "medium"
-	else: return "high"
+	return str(percentage)
 
 func _try_add_status(status_id: String):
 	if active_statuses.has(status_id):
