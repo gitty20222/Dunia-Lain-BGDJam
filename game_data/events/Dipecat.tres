@@ -4,21 +4,42 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "jabatannaik5"
-title = "Naik Jabatan"
-description = "Aku diberi kenaikan jabatan karena kinerjaku yang baik!"
+id = "dipecat"
+title = "Dipecat"
+description = "Aku dipecat.."
 auto_accept = true
 duplicates = -1
-requires_any_tag_to_trigger = [ "status_jabatan4" ]
+requires_any_tag_to_trigger = [ "status_jabatan1", "status_jabatan2", "status_jabatan3" ]
 base_weight = 1
-multiplier_if_tag_present = "status_jabatan1 0;
-status_jabatan2 0;
-status_jabatan3 0;
+multiplier_if_tag_present = ""
+multiplier_if_tag_not_present = "status_jabatan4 0;
 status_jabatan5 0;
-work_prmed 10;
-work_prhigh 25;
-"
-multiplier_if_tag_not_present = ""
+work_0 30;
+work_1 30;
+work_2 30;
+work_3 30;
+work_4 30;
+work_5 30;
+work_6 30;
+work_7 30;
+work_8 30;
+work_9 30;
+work_10 30;
+work_11 30;
+work_12 30;
+work_13 30;
+work_14 30;
+work_15 30;
+work_16 30;
+work_17 30;
+work_18 30;
+work_19 30;
+work_20 30;
+work_21 30;
+work_22 30;
+work_23 30;
+work_24 30;
+work_25 30;"
 max_tags_present = ""
 min_tags_present = ""
 effect_on_accept = {
@@ -28,9 +49,9 @@ effect_on_accept = {
 "add_money": 0,
 "add_sleep_value": 0,
 "add_social_value": 0,
-"add_work_value": 0,
-"statuses_to_add[id]": [ "status_jabatan5" ],
-"statuses_to_remove[id]": [ "status_jabatan4" ]
+"add_work_value": -100,
+"statuses_to_add[id]": [ "status_dipecat" ],
+"statuses_to_remove[id]": [ "status_jabatan1", "status_jabatan2", "status_jabatan3" ]
 }
 add_tags_on_accept = [  ]
 remove_tags_on_accept = [  ]

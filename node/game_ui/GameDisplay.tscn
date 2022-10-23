@@ -101,6 +101,7 @@ font_data = ExtResource( 35 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 31 )
 
 [node name="MainPanel" type="Panel" parent="."]
 anchor_right = 1.0

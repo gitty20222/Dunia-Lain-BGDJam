@@ -4,16 +4,16 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "status_jabatan1"
-title = "Jabatan 1"
+id = "status_ambilcuti"
+title = "Ambil Cuti"
 per_turn_effects = {
 "add_fitness_value": 0,
 "add_happiness": 0,
 "add_health": 0,
-"add_money": 4,
+"add_money": 0,
 "add_sleep_value": 0,
 "add_social_value": 0,
 "add_work_value": 0
 }
-default_duration = -1
+default_duration = 7
 hidden = true
